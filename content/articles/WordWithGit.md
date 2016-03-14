@@ -7,14 +7,14 @@ Author: Jonathan DEKHTIAR
 Summary: Setting up a diff tool to manipulate Word Files : Rakali.
 
 
-I'd like first of all to acknowledge [Martin Fenner](http://blog.martinfenner.org/about.html) for the method and the development.  
-You can find extended blog post about this here : [link](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/)
+I'd like first of all to acknowledge [Martin Fenner](http://blog.martinfenner.org/about.html){:target="_blank"} for the method and the development.  
+You can find extended blog post about this here : [link](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/){:target="_blank"}
 
 So let’s get to businesss:
 
 **Here are the steps you will need to follow :**
 
-1.  Install GIT, if it’s not done yet: [link](https://git-scm.com/downloads)
+1.  Install GIT, if it’s not done yet: [link2](https://git-scm.com/downloads){:target="_blank"}
 
 2.  Install RUBY:
 
@@ -30,14 +30,14 @@ So let’s get to businesss:
 
     3.  Mac OS X :
 
-        1.  Install Homebrew: [link](http://brew.sh/)
+        1.  Install Homebrew: [link](http://brew.sh/){:target="_blank"}
 
         2.  Then Install Ruby: 
 		
 		        :::shell
                 brew install ruby
 
-3.  Then install Rakali: [Github Repo](https://github.com/rakali/rakali.rb)
+3.  Then install Rakali: [Github Repo](https://github.com/rakali/rakali.rb){:target="_blank"}
 
 		:::shell
         gem install rakali
