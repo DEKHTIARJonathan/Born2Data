@@ -49,6 +49,9 @@ COLOR_SCHEME_CSS = 'github.css'
 TWITTER_HANDLE = "@born2data"
 FAVICON = "images/favicon.png"
 
+ADDTHIS_PUBID = "ra-56e6dd573663678e"
+
+
 # Menu
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
