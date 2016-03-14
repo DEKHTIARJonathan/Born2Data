@@ -5,8 +5,6 @@ from __future__ import unicode_literals
 AUTHOR = u'Jonathan DEKHTIAR'
 SITENAME = u'Born2Data'
 SITESUBTITLE = u'Tales of a Data Junkie' 
-#SITEURL = 'https://www.born2data.com'
-SITEURL = ''  
 DATE_FORMATS = {
     'en': ('usa','%A, %Y %B %d')
 }
@@ -31,7 +29,8 @@ ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
 
 # Feed generation is usually not desired when developing
-FEED_DOMAIN = None
+SITEURL = 'https://www.born2data.com'
+FEED_DOMAIN = "https://www.born2data.com"
 FEED_ALL_ATOM = 'feed.xml'
 FEED_ALL_RSS = None
 CATEGORY_FEED_ATOM = None 
