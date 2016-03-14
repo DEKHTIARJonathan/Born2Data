@@ -1,10 +1,10 @@
-Title: How to deal with Word Files in Git Systems
-Date: 2016-02-26 10:20
-Category: Versioning
-Tags: Git, Word, Versioning, Agile, DOC, DOCX
-Slug: word-files-with-git
+Title: Rapid API Prototyping with Bottle.py
+Date: 2016-03-14 17:12
+Category: Python
+Tags: Python, API, REST
+Slug: fast-API-with-Bottle
 Author: Jonathan DEKHTIAR
-Headline: Setting up a diff tool to manipulate Word Files : Rakali.
+Headline: Python Tutorial: How to create rapidly a REST API with Bottle.py
 
 
 I'd like first of all to acknowledge [Martin Fenner](http://blog.martinfenner.org/about.html){:target="_blank"} for the method and the development.  
