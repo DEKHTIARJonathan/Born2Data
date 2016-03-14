@@ -9,7 +9,7 @@
     {% elif HEADER_COLOR %}
         <header class="intro-header" style="background-color: {{ HEADER_COLOR }}">
     {% else %}
-        <header class="intro-header" style="background-image: url('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/home-bg.jpg')">
+        <header class="intro-header" style="background-image: url('/{{ THEME_STATIC_DIR }}/images/home-bg.jpg')">
     {% endif %}
         <div class="container">
             <div class="row">
@@ -26,6 +26,6 @@
 {% block content %}
     <h1>Tags for {{ SITENAME }}</h1>
     {%- for tag, articles in tags|sort %}
-        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
+        <li><a href="/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
     {% endfor %}
 {% endblock content %}

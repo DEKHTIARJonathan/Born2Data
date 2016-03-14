@@ -1,6 +1,6 @@
 Title: How to deal with Word Files in Git Systems
 Date: 2016-02-26 10:20
-Category: Git, Word, Versioning, Agile
+Category: Versioning
 Tags: Git, Word, Versioning, Agile, DOC, DOCX
 Slug: word-files-with-git
 Author: Jonathan DEKHTIAR

@@ -35,7 +35,7 @@
             <meta name="twitter:image" content="{{ HEADER_COVER }}">
         {% else %}
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:image" content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
+            <meta name="twitter:image" content="/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
         {% endif %}
         <meta name="twitter:site" content="@{{ TWITTER_HANDLE }}" />
         <meta name="twitter:title" content="{{ article.title }}" />
@@ -47,11 +47,11 @@
             <meta name="twitter:description" content="{{ article.summary }}" />
         {% endif %}
         {% if article.header_cover %}
-            <meta name="twitter:image" content="{{ SITEURL }}/{{ article.header_cover }}">
+            <meta name="twitter:image" content="/{{ article.header_cover }}">
         {% elif HEADER_COVER %}
-            <meta name="twitter:image" content="{{ SITEURL }}/{{ HEADER_COVER }}">
+            <meta name="twitter:image" content="/{{ HEADER_COVER }}">
         {% else %}
-            <meta name="twitter:image" content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
+            <meta name="twitter:image" content="/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
         {% endif %}
     {% endif %}
 {% endblock %}
@@ -61,7 +61,7 @@
         {% for author in article.authors %}
             <meta property="article:author" content="{{ author }}" >
         {% endfor %}
-	<meta property="og:url" content="{{ SITEURL }}/{{ article.url }}">
+	<meta property="og:url" content="/{{ article.url }}">
 	<meta property="og:title" content="{{ article.title }}">
 	<meta property="article:published_time" content="{{ article.date }}">
         {% if description %}
@@ -76,14 +76,14 @@
             {% if article.og_image|lower|truncate(4, True, '') == "http" %}
                 <meta property="og:image" content="{{ article.og_image }}">
             {% else %}
-                <meta property="og:image" content="{{ SITEURL }}/{{ article.og_image }}">
+                <meta property="og:image" content="/{{ article.og_image }}">
             {% endif %}
         {% elif article.header_cover %}
-            <meta property="og:image" content="{{ SITEURL }}/{{ article.header_cover }}">
+            <meta property="og:image" content="/{{ article.header_cover }}">
         {% elif HEADER_COVER %}
-            <meta property="og:image" content="{{ SITEURL }}/{{ HEADER_COVER }}">
+            <meta property="og:image" content="/{{ HEADER_COVER }}">
         {% else %}
-            <meta property="og:image" content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
+            <meta property="og:image" content="/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
         {% endif %}
 {% endblock %}
 
@@ -96,7 +96,7 @@
     {% elif HEADER_COLOR %}
         <header class="intro-header" style="background-color: {{ HEADER_COLOR }}">
     {% else %}
-        <header class="intro-header" style="background-image: url('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg')">
+        <header class="intro-header" style="background-image: url('/{{ THEME_STATIC_DIR }}/images/post-bg.jpg')">
     {% endif %}
         <div class="container">
             <div class="row">
@@ -108,7 +108,7 @@
                         {% endif %}
                         <span class="meta">Posted by
                             {% for author in article.authors %}
-                                <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                                <a href="/{{ author.url }}">{{ author }}</a>
                             {% endfor %}
                              on {{ article.locale_date }}
                         </span>
@@ -132,7 +132,7 @@
 
     {% if article.tags %}
         <div class="tags">
-            <p>tags: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>, {% endfor %}</p>
+            <p>tags: {% for tag in article.tags %}<a href="/{{ tag.url }}">{{ tag | escape }}</a>, {% endfor %}</p>
         </div>
     {% endif %}
 
@@ -146,7 +146,7 @@
             <script type="text/javascript">
                 var disqus_shortname = '{{ DISQUS_SITENAME }}';
                 var disqus_identifier = '{{ article.url }}';
-                var disqus_url = '{{ SITEURL }}/{{ article.url }}';
+                var disqus_url = '/{{ article.url }}';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';

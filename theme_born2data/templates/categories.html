@@ -9,7 +9,7 @@
     {% elif HEADER_COLOR %}
         <header class="intro-header" style="background-color: {{ HEADER_COLOR }}">
     {% else %}
-        <header class="intro-header" style="background-image: url('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/home-bg.jpg')">
+        <header class="intro-header" style="background-image: url('/{{ THEME_STATIC_DIR }}/images/home-bg.jpg')">
     {% endif %}
         <div class="container">
             <div class="row">
@@ -26,7 +26,7 @@
 {% block content %}
     <ul>
     {% for category, articles in categories %}
-        <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a></li>
+        <li><a href="/{{ category.url }}">{{ category }}</a></li>
     {% endfor %}
     </ul>
 {% endblock content %}
