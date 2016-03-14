@@ -14,7 +14,7 @@ So let’s get to businesss:
 
 **Here are the steps you will need to follow :**
 
-1.  Install GIT, if it’s not done yet: [link2](https://git-scm.com/downloads){:target="_blank"}
+1.  Install GIT, if it’s not done yet: [link](https://git-scm.com/downloads){:target="_blank"}
 
 2.  Install RUBY:
 
