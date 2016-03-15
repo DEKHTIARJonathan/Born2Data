@@ -1,11 +1,15 @@
 Title: How to deal with Word Files in Git Systems
 Date: 2016-02-26 10:20
-Category: Versioning
+Category: Agile
 Tags: Git, Word, Versioning, Agile, DOC, DOCX
 Slug: word-files-with-git
 Author: Jonathan DEKHTIAR
 Headline: Setting up a diff tool to manipulate Word Files : Rakali.
 
+#How to deal with Word Files in Git Systems
+###Setting up a diff tool to manipulate Word Files : Rakali.
+
+***
 
 I'd like first of all to acknowledge [Martin Fenner](http://blog.martinfenner.org/about.html){:target="_blank"} for the method and the development.  
 You can find extended blog post about this here : [link](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/){:target="_blank"}

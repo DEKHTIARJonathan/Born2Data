@@ -11,6 +11,9 @@ DATE_FORMATS = {
 
 PATH = 'content'
 STATIC_PATHS = ['mail', 'images', 'files']
+ARTICLE_PATHS = ['articles']
+ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
+ARTICLE_URL = '{date:%Y}/{slug}.html'
 
 TIMEZONE = 'Europe/Paris'
 
