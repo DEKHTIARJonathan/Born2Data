@@ -13,9 +13,22 @@ Rapid API Prototyping with Bottle.py
 
 Python Tutorial: How to launch rapidly a REST API with Bottle.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Source File
+First of all, if you don't have `Python <http://www.python.org/>`_ or `PIP <https://pip.pypa.io/en/latest/installing/>`_ installed. Install them.
+
+
+
+Then let's install Bottle.py and Paste server:
+
+.. code-block:: shell
+
+   pip install bottle paste
+
 
 Download all sources: `API_files.zip <{API_files.zip}../../../files/api_files/api_files.zip>`_
+
+.. code-block:: shell
+
+   python server.py
 
 File: *server.py*
 
