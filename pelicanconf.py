@@ -10,7 +10,7 @@ DATE_FORMATS = {
 }
 
 PATH = 'content'
-STATIC_PATHS = ['mail', 'images']
+STATIC_PATHS = ['mail', 'images', 'files']
 
 TIMEZONE = 'Europe/Paris'
 

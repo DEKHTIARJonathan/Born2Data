@@ -1,0 +1,154 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>
+		</title>
+		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<style class="custom-css">
+			#wrap {
+				min-height: 100%;
+				height: auto;
+				/* Negative indent footer by its height */
+				margin: 0 auto -60px;
+				/* Pad bottom by footer height */
+				padding: 0 0 60px;
+			}
+			
+			#footer {
+				font-size: 18px;
+				bottom: 0;
+				padding-top: 20px;
+				height: 60px;
+				position: fixed;
+				width: 100%;
+				background-color: #DBDBDB;
+				
+			}
+		
+			#jumbo {
+				background-color: #DBDBDB;
+				color: #3F3F3F;
+				min-height: 290px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+			#jumbo p {
+			  font-size: 18px;
+			}
+			
+			#jumbo h1 {
+			  font-size: 25px;
+			}
+			
+			@media (min-width: 650px){
+				#jumbo h1 {
+				  font-size: 30px;
+				}
+			}
+			
+			@media (min-width: 740px){
+				#jumbo h1 {
+				  font-size: 35px;
+				}
+			}
+			
+			@media (min-width: 1024px){
+				#jumbo h1 {
+				  font-size: 50px;
+				}
+			}
+			
+			@media (min-width: 1220px){
+				#jumbo h1 {
+				  font-size: 60px;
+				}
+			}
+			
+			.panel-heading a:after {
+				font-family:'Glyphicons Halflings';
+				content:"\e114";
+				float: right;
+				color: grey;
+			}
+			.panel-heading a.collapsed:after {
+				content:"\e080";
+			}
+			
+			.container a{
+				text-decoration: None;
+			}
+			
+		</style>
+	</head>  
+	<body>
+		 <!-- Wrap all page content here -->
+		<div id="wrap">
+			<div id="jumbo" class="jumbotron">
+				<div class="container">
+					<h1>
+						API Welcome PAGE
+					</h1>
+					<br>
+					<p>
+						Here you will find the API - User Guide.
+					</p>
+				</div>
+			</div>
+			
+			<!--main-->
+			<div class="container">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default" id="panel1">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#collapseOne" href="#">Testing the API.</a>
+							</h4>
+						</div>
+						
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<b>Request : http://{ip-address}:{port}/action : Get or Post Requests Accepted</b></br>
+								<hr>
+								The <b>API output is a JSON-file</b> formated as following:<br><br>
+
+								<div>
+									<pre id="json-nmax">{"status": "Success"}</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/container-->
+		</div><!-- Wrap Div end -->
+		
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">Developped by <a href="http://www.jonathandekhtiar.eu">Jonathan DEKHTIAR</a></p>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script>
+			
+			var jsonStr = $("#json-nmax").text();
+			var jsonObj = JSON.parse(jsonStr);
+			var jsonPretty = JSON.stringify(jsonObj, null, '\t');
+			$("#json-nmax").text(jsonPretty);
+			
+			var jsonStr = $("#json-pmin").text();
+			var jsonObj = JSON.parse(jsonStr);
+			var jsonPretty = JSON.stringify(jsonObj, null, '\t');
+			$("#json-pmin").text(jsonPretty);
+			
+			var jsonStr = $("#json-nmax-pmin").text();
+			var jsonObj = JSON.parse(jsonStr);
+			var jsonPretty = JSON.stringify(jsonObj, null, '\t');
+			$("#json-nmax-pmin").text(jsonPretty);
+			
+		</script>
+	</body>
+</html>
