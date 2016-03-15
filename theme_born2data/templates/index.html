@@ -12,7 +12,7 @@
     {% endif %}
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-xs-12 col-lg-12">
 					<div class="site-heading">
                         <h1>{{ SITENAME }}</h1>
 						{% if SITESUBTITLE %}
@@ -33,15 +33,10 @@
                 <h2 class="post-title">
                     {{ article.title }}
                 </h2>
-				<h3 class="post-subtitle">
-					{% if SHOW_FULL_ARTICLE %}
-						{{article.content}}
-					{% elif article.has_summary %}
-						{{article.summary|striptags}}
-					{% elif article.summary %}
-						{{ article.summary|striptags|truncate(140) }}
-					{% endif %}
-				</h3>
+				{% if article.headline %}
+                        <h3 class="post-subtitle">{{ article.headline }}</h3>
+                {% endif %}
+				<hr style="margin-top: 0px;margin-bottom: 7px;">
             </a>
             <p class="post-meta">Posted by
                 {% for author in article.authors %}

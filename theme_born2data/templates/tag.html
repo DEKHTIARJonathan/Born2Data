@@ -1,6 +1,9 @@
 {% extends "index.html" %}
-{% block title %}{{ SITENAME }} - Tag {{ tag }}{% endblock %}
+
+{% block title %}{{ SITENAME }} - Tag: {{ tag }}{% endblock %}
+
 {% block header %}
+    <!-- Page Header -->
     {% if HEADER_COVER %}
         <header class="intro-header" style="background-image: url('{{ HEADER_COVER }}')">
     {% elif HEADER_COLOR %}
@@ -10,9 +13,9 @@
     {% endif %}
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-xs-12 col-lg-12">
                     <div class="page-heading">
-                        <h1>Tag {{ tag }}</h1>
+                        <h1>Tag: {{ tag }}</h1>
                     </div>
                 </div>
             </div>
