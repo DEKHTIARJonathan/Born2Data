@@ -14,15 +14,15 @@ Headline: Setting up a diff tool to manipulate Word Files : Rakali.
 I'd like first of all to acknowledge [Martin Fenner](http://blog.martinfenner.org/about.html){:target="\_blank"} for the method and the development.  
 You can find extended blog post about this here : [link](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/){:target="\_blank"}
 
-So let’s get to businesss !<br/><br/>
+So let’s get to businesss !
 
-### Prerequisites<br/><br/>
+### Prerequisites
 
 In order to be able to parse *doc* and *docx* file in Git you will need to install the following tools.
-<br/><br/>
+
 
 #### 1. If it’s not done yet, you should install **git**:
-Click on this link to download and install: [**git-scm.com**](https://git-scm.com/downloads){:target="\_blank"}<br/> <br/>
+Click on this link to download and install: [**git-scm.com**](https://git-scm.com/downloads){:target="\_blank"}
 
 #### 2. For the next phase of the tutorial, you will need to install **ruby**:
 
@@ -44,14 +44,14 @@ Click on this link to download and install: [**brew.sh**](http://brew.sh/){:targ
 ```shell
 brew install ruby
 ```
-<br/>
+
 
 #### 3.  Then install Rakali:
 You may find all the information you need on the official [Github Repository](https://github.com/rakali/rakali.rb){:target="\_blank"}
 ```bash
 gem install rakali
 ```
-<br/>
+
 #### 4.  Create two files in your git project’s root folder :
 
 ##### 4.1. Create, at the git project root folder, the file: **".gitattributes"**
@@ -72,5 +72,5 @@ prompt = false
 [alias]
 wdiff = diff --word-diff=color --unified=1
 ```
-<br/>
+
 #### 5.  Commit the two files and you’re done. Enjoy !
