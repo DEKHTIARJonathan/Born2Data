@@ -323,7 +323,7 @@ Once it is done, create the file **index.html** inside the folder *html*. It wil
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 		<script>
 
-			var jsonStr = $("#json-nmax").text();
+			var jsonStr = $("#json").text();
 			var jsonObj = JSON.parse(jsonStr);
 			var jsonPretty = JSON.stringify(jsonObj, null, '\t');
 			$("#json").text(jsonPretty);
