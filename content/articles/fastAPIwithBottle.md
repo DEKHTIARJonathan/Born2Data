@@ -34,10 +34,8 @@ You will also need to install Paste which is a multi-threaded webserver:
 pip install paste
 ```
 ##### C. API Testing Tool
-In order to test the API, we will need a tool able to lauch GET/POST/PUT requests.  
-If you don't have any tool able to perform such operations, you can install "PostMan" which runs on Google Chrome: [https://www.getpostman.com/](https://www.getpostman.com/){:target="\_blank"}
-
-<span id="apiLaunch">&nbsp;</span>
+In order to test the API, we will need a tool able to launch GET/POST/PUT requests.  
+If you don't have any tool able to perform such operations, you can install "PostMan" which runs on Google Chrome: [https://www.getpostman.com/](https://www.getpostman.com/){:target="\_blank"}<span id="apiLaunch">&nbsp;</span>
 
 ##### D. API launching
 To launch the API, just execute this simple command in the project directory:   
