@@ -17,7 +17,7 @@
     {% endif %}
 
     {% for author in article.authors %}
-        <meta name="author" content="{{ author }}">
+        <meta property="article:author" content="{{ SITEURL }}/{{ author.url }}">
     {% endfor %}
 
     {% for tag in article.tags %}

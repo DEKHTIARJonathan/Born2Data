@@ -6,13 +6,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="{{ AUTHOR }}">
-		
+
 		{% if GOOGLE_SITE_VERIFICATION %}
             <meta name="google-site-verification" content="{{ GOOGLE_SITE_VERIFICATION }}">
         {% endif %}
- 
+
 		<title>{% block title %}{{ SITENAME }}{% if SITESUBTITLE and SHOW_SITESUBTITLE_IN_HTML %} - {{ SITESUBTITLE }}{% endif %}{% endblock title %}</title>
 
 
@@ -54,13 +52,13 @@
 		<link href="/{{ THEME_STATIC_DIR }}/css/code_blocks/darkly.css" rel="stylesheet">
 	{% endif %}
 	<link href="/{{ THEME_STATIC_DIR }}/css/better_codeblock.css" rel="stylesheet">
-	
+
 
 	{% if CSS_OVERRIDE %}
 		<!-- CSS specified by the user -->
 		<link href="/{{ CSS_OVERRIDE }}" rel="stylesheet">
 	{% endif %}
-	
+
 	{% if FAVICON %}
 		<!-- FAVICON specified by the user -->
 		<link rel="icon" type="image/png" href="/{{ FAVICON }}" />
@@ -105,9 +103,9 @@
 </head>
 
 <body>
-	
-	
-	
+
+
+
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
