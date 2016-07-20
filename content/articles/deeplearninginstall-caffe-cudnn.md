@@ -28,7 +28,41 @@ sudo apt-get dist-upgrade
 
 ---
 ##### A. NVIDIA Drivers:
-First of all, if you don't have installed or updated the driver of your NVIDIA Graphic Card, please download and install the driver: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}
+
+Lets remove first everything that point to any existing nvidia installation:
+
+```bash
+sudo apt-get remove nvidia*
+sudo apt-get autoremove
+```
+
+Then let's intall the dependencies :
+
+```bash
+sudo apt-get install dkms build-essential linux-headers-generic
+```
+
+Then we will need to blacklist the "nouveau" driver:
+
+```bash
+sudo vi /etc/modprobe.d/blacklist-nouveau.conf
+```
+
+You will need to add the following lines:
+
+```text
+blacklist nouveau
+blacklist lbm-nouveau
+options nouveau modeset=0
+alias nouveau off
+alias lbm-nouveau off
+```
+
+Disable the Kernel nouveau by typing the following commands:
+echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
+sudo update-initramfs -u
+
+If you don't have installed or updated the driver of your NVIDIA Graphic Card, please download and install the driver: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}
 
 
 Execute the following commands to install the NVIDIA Drivers.
@@ -36,16 +70,68 @@ Execute the following commands to install the NVIDIA Drivers.
 ```bash
 wget http://us.download.nvidia.com/XFree86/Linux-x86_64/361.45.11/NVIDIA-Linux******************.run
 chmod +x NVIDIA-Linux******************.run
+```
+
+Let's install the dependencies:
+
+```bash
+sudo apt-add-repository ppa:ubuntu-x-swat/x-updates #if it fails, you may need to repeat the operation.
+sudo apt-get update
+sudo apt-get install nvidia-current
+sudo apt-get upgrade
+```
+Let's launch the NVIDIA Driver Installation:
+
+```bash
 sudo ./NVIDIA-Linux******************.run
 ```
 
-Let's check if everything is okay
+Follow the instructions displayed on screen.
 
+* You may have a warning "The distribution-provided pre-install script failed! Are you sure you want to continue ?" => **You can continue**.
+* Register the kernel module with DKMS => **YES !**
+* If you don't have 32bits compatibility you will get a warning => **OK !**
+* Run NVIDIA-Xconfig => **YES !**
+
+And restart
+```bash
+sudo reboot
+```
+
+You can test the installation is okay by executing :
 ```bash
 root@machine:~/$ ls -la /dev | grep nvidia
 crw-rw-rw-  1 root root    195, 255 mai   30 11:41 nvidiactl
 crw-rw-rw-  1 root root    247,   0 mai   30 11:41 nvidia-uvm
 crw-rw-rw-  1 root root    247,   1 mai   30 11:41 nvidia-uvm-tools
+```
+
+Or by executing: *(The output might be different from mine depending on your hardware, I have 3 GTX Titan X.)*
+```bash
+root@machine: nvidia-smi
+
++------------------------------------------------------+
+| NVIDIA-SMI 352.93     Driver Version: 352.93         |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX TIT...  Off  | 0000:05:00.0     Off |                  N/A |
+| 22%   59C    P0    74W / 250W |     23MiB / 12284MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX TIT...  Off  | 0000:06:00.0     Off |                  N/A |
+| 22%   60C    P0    72W / 250W |     23MiB / 12284MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  GeForce GTX TIT...  Off  | 0000:09:00.0     Off |                  N/A |
+|  0%   54C    P0    53W / 250W |     23MiB / 12284MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
 ```
 
 ##### B. Installing CUDA 7.5
@@ -69,14 +155,19 @@ sudo apt-get install cuda
 # setting the environment variables so CUDA will be found
 echo -e "\nexport PATH=/usr/local/cuda/bin:$PATH" >> .bashrc
 echo -e "\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64" >> .bashrc
+```
 
+Now close your shell or the SSH connection and re-open it.
+
+```bash
 # installing the samples and checking the GPU
 cuda-install-samples-7.5.sh ~/
 cd NVIDIA\_CUDA-7.5\_Samples/1\_Utilities/deviceQuery  
 make  
 ./deviceQuery
-
 ```
+
+If no error shows up, CUDA is successfully installed.
 
 ##### C. Installing CuDNN
 
@@ -84,15 +175,13 @@ To further speed up deep learning relevant calculations it is a good idea to set
 
 ```bash
 cd ~
-wget http://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/v5/prod/cudnn-8.0-linux-x64-v5.0-ga.tgz
-mv cudnn-8.0-linux-x64-v5.0-ga.tgz\?autho\=1466177979_8a7b847f301278c201008f528fbea244 cudnn-8.0-linux-x64-v5.0-ga.tgz
+wget http://developer.download.nvidia.com/*********************************************/cudnn-7.5-linux-x64-v5.0-ga.tgz
 
 # unpack the library
-gzip -d cudnn-7.5-linux-x64-v5.0-ga.tgz
-tar xf cudnn-7.5-linux-x64-v5.0-ga.tar
+tar -zxvf cudnn-7.5-linux-x64-v5.0-ga.tgz
 
-cp cuda/include/cudnn.h /usr/local/cuda-7.5/include
-cp cuda/lib64/libcudnn* /usr/local/cuda-7.5/lib64
+sudo cp cuda/include/cudnn.h /usr/local/cuda-7.5/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda-7.5/lib64
 ```
 
 
@@ -101,20 +190,6 @@ cp cuda/lib64/libcudnn* /usr/local/cuda-7.5/lib64
 Main source for this and the following step is the [readme of the DIGITS project](https://github.com/NVIDIA/DIGITS/blob/master/README.md){:target="\_blank"}.
 
 Run the following commands to get access to the required repositories:
-```bash
-CUDA_REPO_PKG=cuda-repo-ubuntu1404_7.5-18_amd64.deb &&
-    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG &&
-    sudo dpkg -i $CUDA_REPO_PKG
-
-ML_REPO_PKG=nvidia-machine-learning-repo_4.0-2_amd64.deb &&
-    wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64/$ML_REPO_PKG &&
-    sudo dpkg -i $ML_REPO_PKG
-```
-
-##### B. NVIDIA Repositories
-
-Run the following commands to add nvidia's repositories to your machine.
-
 ```bash
 CUDA_REPO_PKG=cuda-repo-ubuntu1404_7.5-18_amd64.deb &&
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG &&
