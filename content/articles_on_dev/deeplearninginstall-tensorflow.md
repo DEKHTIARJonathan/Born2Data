@@ -2,7 +2,7 @@ Title: Deep Learning Installation Tutorial - Part 3 - TensorFlow
 Date: 2016-05-29 10:12
 Category: Deep Learning
 Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, GPU
-Slug: deeplearning_install-part3
+Slug: deeplearning_install-partxx
 Author: Jonathan DEKHTIAR
 Headline: Deep Learning Tutorial: How to install TensorFlow
 

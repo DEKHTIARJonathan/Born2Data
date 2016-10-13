@@ -2,7 +2,7 @@ Title: Deep Learning Installation Tutorial - Part 2 - DIGITS
 Date: 2016-05-28 10:12
 Category: Deep Learning
 Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, GPU
-Slug: deeplearning_install-part2
+Slug: deeplearning_install-partx
 Author: Jonathan DEKHTIAR
 Headline: Deep Learning Tutorial: How to install DIGITS
 
