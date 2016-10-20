@@ -57,8 +57,8 @@ Don't forget to get your system up to date
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 ```
 
 ---
@@ -112,8 +112,8 @@ Let's install the dependencies:
 ```bash
 sudo apt-add-repository ppa:ubuntu-x-swat/x-updates #if it fails, you may need to repeat the operation.
 sudo apt-get update
-sudo apt-get install nvidia-current
-sudo apt-get upgrade
+sudo apt-get install nvidia-current -y
+sudo apt-get upgrade -y
 ```
 Let's launch the NVIDIA Driver Installation:
 
@@ -133,17 +133,7 @@ And restart
 sudo reboot
 ```
 
-You can test the installation is okay by executing :
-```bash
-root@machine: apt-show-versions cuda
-**cuda:amd64/unknown 7.5-18 uptodate**
-
-root@machine: cat /proc/driver/nvidia/version
-NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.99  Mon Jul  4 23:52:14 PDT 2016
-GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
-```
-
-Or by executing:
+You can test the installation is okay by executing :<br>
 *(The output might be different from mine depending on the version you installed and your hardware, I have 3 GTX Titan X.)*
 ```bash
 root@machine: nvidia-smi
@@ -193,6 +183,16 @@ sudo apt-get install cuda
 # setting the environment variables so CUDA will be found
 echo -e "\nexport PATH=/usr/local/cuda/bin:$PATH" >> .bashrc
 echo -e "\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64" >> .bashrc
+```
+
+You can test the installation is okay by executing :
+```bash
+root@machine: apt-show-versions cuda
+**cuda:amd64/unknown 7.5-18 uptodate**
+
+root@machine: cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.99  Mon Jul  4 23:52:14 PDT 2016
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
 ```
 
 Now close your shell or the SSH connection and re-open it.
