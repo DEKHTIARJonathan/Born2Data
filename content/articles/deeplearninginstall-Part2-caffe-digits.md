@@ -51,13 +51,15 @@ In this post, we will install:
 
 Main source for this and the following step is the [readme of the DIGITS project](https://github.com/NVIDIA/DIGITS/blob/master/README.md){:target="\_blank"}.
 
+If a 404 error shows up, please correct the file name according to this webpage : [NVIDIA Binaries](http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64){:target="\_blank"}
+
 Run the following commands to get access to the required repositories:
 ```bash
 CUDA_REPO_PKG=cuda-repo-ubuntu1404_7.5-18_amd64.deb &&
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG &&
     sudo dpkg -i $CUDA_REPO_PKG
 
-ML_REPO_PKG=nvidia-machine-learning-repo_4.0-2_amd64.deb &&
+ML_REPO_PKG=nvidia-machine-learning-repo-ubuntu1404_4.0-2_amd64.deb &&
     wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64/$ML_REPO_PKG &&
     sudo dpkg -i $ML_REPO_PKG
 ```
@@ -72,8 +74,8 @@ Run the following commands to install DIGITS
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install digits
+sudo apt-get upgrade -y 
+sudo apt-get install digits -y
 ```
 
 The installation could be pretty long (I had more than 600Mb of packages to download).
