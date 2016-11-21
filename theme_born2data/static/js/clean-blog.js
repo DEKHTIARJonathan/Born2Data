@@ -8,6 +8,11 @@
 
 $(function() {
 
+	function validateEmail(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
+	
     $("#contactFrom input,#contactForm textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
@@ -20,34 +25,89 @@ $(function() {
             var email = $("input#email").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
+			var subject = $("input#_subject").val();
+			var gotcha = $("input#_gotcha").val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "php/contact_me.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
+				url: "https://formspree.io/contact@born2data.com",
+				method: "POST",
+				data: {
+					name: name,
+					email: email,
+					phone: phone,
+					message: message,
+					_subject: subject,
+					_gotcha: gotcha
+				},
+				dataType: "json",
                 cache: false,
-                success: function() {
-                    // Success message
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                        .append('</div>');
+				beforeSend: function() {
+					if (name.length < 5){
+						$('#success').html("<div class='alert alert-danger'>");
+						$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+							.append("</button>");
+						$('#success > .alert-danger').append("Sorry, The Name should be longer than 5 characters !");
+						$('#success > .alert-danger').append('</div>');
+						return false;
+					}
 
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
-                },
+					if( !validateEmail(email) ){
+						$('#success').html("<div class='alert alert-danger'>");
+						$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+							.append("</button>");
+						$('#success > .alert-danger').append("Sorry, The Email Address is not valid !");
+						$('#success > .alert-danger').append('</div>');
+						return false;
+					}
+
+					if (message.length < 30){
+						$('#success').html("<div class='alert alert-danger'>");
+						$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+							.append("</button>");
+						$('#success > .alert-danger').append("Sorry, The Message should be longer than 30 characters !");
+						$('#success > .alert-danger').append('</div>');
+						return false;
+					}
+					
+					$('#success').html("<div class='alert alert-warning'>");
+					$('#success > .alert-warning').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+						.append("</button>");
+					$('#success > .alert-warning').append("Message is being sent ...");
+					$('#success > .alert-warning').append('</div>');
+
+					return true;
+
+				},
+				success: function (data) {
+					if (data.success == "email sent") {
+						$('#success').html("<div class='alert alert-success'>");
+						$('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+							.append("</button>");
+						$('#success > .alert-success')
+							.append("<strong>Your message has been sent. </strong>");
+						$('#success > .alert-success')
+							.append('</div>');
+
+						//clear all fields
+						$('#contactForm').trigger("reset");
+						$("#name").val("");
+						$("#email").val("")
+						$("#message").val("");
+						
+					} else {
+						$('#success').html("<div class='alert alert-danger'>");
+						$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+							.append("</button>");
+						$('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+						$('#success > .alert-danger').append('</div>');
+						//clear all fields
+						//$('#contactForm').trigger("reset");
+					}
+				},
                 error: function() {
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
@@ -56,7 +116,7 @@ $(function() {
                     $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
-                    $('#contactForm').trigger("reset");
+                    //$('#contactForm').trigger("reset");
                 },
             })
         },

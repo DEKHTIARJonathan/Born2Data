@@ -34,8 +34,8 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 # Feed generation is usually not desired when developing
 SITEURL = 'https://www.born2data.com'
 FEED_DOMAIN = "https://www.born2data.com"
-FEED_ALL_ATOM = 'feed.xml'
-FEED_ALL_RSS = None
+FEED_ALL_ATOM = 'feed_atom.xml'
+FEED_ALL_RSS = 'feed_rss.xml'
 CATEGORY_FEED_ATOM = None 
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
@@ -61,7 +61,7 @@ DISPLAY_PAGES_ON_MENU = False
 
 MENUITEMS = (
     ('HOME', '/'),
-    ('DATARADAR', 'https://www.dataradar.io'),
+    ('FeedCrunch.io', 'https://www.feedcrunch.io/@dataradar'),
     ('RESUME', 'https://www.jonathandekhtiar.eu'),
     ('RESEARCH', 'http://www.utc.fr/~jdekhtia/dev/'),
     ('CONTACT', '/pages/contact.html'),
@@ -71,8 +71,8 @@ MENUITEMS = (
 SOCIAL = (('twitter', 'https://twitter.com/born2data'),
           ('github', 'https://github.com/DEKHTIARJonathan'),
 		  ('linkedin', 'https://fr.linkedin.com/in/jonathandekhtiar'),
-		  ('rss', 'https://www.dataradar.io'),
-          ('envelope','mailto:contact@jonathandekhtiar.eu'))
+		  ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
+          ('envelope','mailto:contact@born2data.com'))
 
 DEFAULT_PAGINATION = 3
 

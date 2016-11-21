@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #404040;
 }
 p {
@@ -25,8 +25,14 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
+.h1, h1 {
+    font-size: 30px;
+}
+.h3, h3 {
+    font-size: 19px;
+}
 a {
-  color: #404040;
+  color: #337ab7;
 }
 a:hover,
 a:focus {
@@ -203,8 +209,9 @@ hr.small {
   color: white;
 }
 @media only screen and (min-width: 768px) {
+
   .intro-header .post-heading h1 {
-    font-size: 55px;
+    font-size: 45px;
   }
   .intro-header .post-heading .subheading {
     font-size: 30px;
@@ -219,7 +226,7 @@ hr.small {
   color: #0085a1;
 }
 .post-preview > a > .post-title {
-  font-size: 30px;
+  font-size: 24px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
@@ -230,7 +237,7 @@ hr.small {
 }
 .post-preview > .post-meta {
   color: #808080;
-  font-size: 18px;
+  font-size: 14.5px;
   font-style: italic;
   margin-top: 0;
 }
@@ -245,7 +252,7 @@ hr.small {
 }
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 36px;
+    font-size: 28px;
   }
 }
 .section-heading {
@@ -286,13 +293,14 @@ footer .copyright {
 .floating-label-form-group textarea {
   z-index: 1;
   position: relative;
-  padding-right: 0;
-  padding-left: 0;
-  border: none;
-  border-radius: 0;
-  font-size: 1.5em;
-  background: none;
-  box-shadow: none !important;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 10px;
+  border-width: thin;
+  border-color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  background: 0 0;
+  box-shadow: none!important;
   resize: none;
 }
 .floating-label-form-group label {
