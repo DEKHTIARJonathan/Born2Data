@@ -21,8 +21,11 @@ DEFAULT_LANG = u'en'
 
 THEME = "theme_born2data" 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ["better_codeblock_line_numbering"]
-
+PLUGINS = [
+	'better_codeblock_line_numbering',
+    'feed_summary',
+    ]
+	
 MD_EXTENSIONS = [
     'codehilite(css_class=highlight,linenums=False)',
     'extra'
@@ -41,6 +44,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None 
 
+FEED_USE_SUMMARY = True
+
 #Output settings
 DELETE_OUTPUT_DIRECTORY = True
 OUTPUT_RETENTION = [".git", "LICENSE", "README.md", ".htaccess", ".gitignore"]
@@ -53,7 +58,6 @@ TWITTER_HANDLE = "@born2data"
 FAVICON = "images/favicon.png"
 
 ADDTHIS_PUBID = "ra-56e6dd573663678e"
-
 
 # Menu
 DISPLAY_CATEGORIES_ON_MENU = False
