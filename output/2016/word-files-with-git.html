@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<title>How to deal with Word Files in Git Systems</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+	<!-- Code highlight color scheme -->
+		<link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+	<link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+		<!-- FAVICON specified by the user -->
+		<link rel="icon" type="image/png" href="/images/favicon.png" />
+
+	<!-- Custom Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+
+        <meta name="description" content="Setting up a diff tool to manipulate Word Files : Rakali.">
+
+        <meta property="article:author" content="https://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Git">
+        <meta name="tags" content="Word">
+        <meta name="tags" content="Versioning">
+        <meta name="tags" content="Agile">
+        <meta name="tags" content="DOC">
+        <meta name="tags" content="DOCX">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Born2Data">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+	<meta property="og:url" content="/2016/word-files-with-git.html">
+	<meta property="og:title" content="How to deal with Word Files in Git Systems">
+	<meta property="article:published_time" content="2016-02-26 10:20:00+01:00">
+            <meta property="og:description" content="Setting up a diff tool to manipulate Word Files : Rakali.">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="How to deal with Word Files in Git Systems" />
+            <meta name="twitter:description" content="Setting up a diff tool to manipulate Word Files : Rakali." />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="https://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="http://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                        <h1>How to deal with Word Files in Git Systems</h1>
+                        <h3 class="subheading">Setting up a diff tool to manipulate Word Files : Rakali.</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Friday, 2016 February 26
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Content -->
+    <article>
+        <h1>How to deal with Word Files in Git Systems</h1>
+<h3>Setting up a diff tool to manipulate Word Files : Rakali.</h3>
+<hr>
+<p>I'd like first of all to acknowledge <a href="http://blog.martinfenner.org/about.html" target="_blank">Martin Fenner</a> for the method and the development.<br>
+You can find extended blog post about this here : <a href="http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/" target="_blank">link</a></p>
+<p>So let’s get to businesss !</p>
+<h3>Prerequisites</h3>
+<p>In order to be able to parse <em>doc</em> and <em>docx</em> file in Git you will need to install the following tools.</p>
+<h4>1. If it’s not done yet, you should install <strong>git</strong>:</h4>
+<p>Click on this link to download and install: <a href="https://git-scm.com/downloads" target="_blank"><strong>git-scm.com</strong></a></p>
+<h4>2. For the next phase of the tutorial, you will need to install <strong>ruby</strong>:</h4>
+<h5>2.1. Debian or Ubuntu:</h5>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get install ruby-full</span>
+</pre></div>
+
+
+<h5>2.2. CentOS, Fedora, or RHEL:</h5>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo yum install ruby</span>
+</pre></div>
+
+
+<h5>2.3. Mac OS X :</h5>
+<h6>2.3.1 Install Homebrew:</h6>
+<p>Click on this link to download and install: <a href="http://brew.sh/" target="_blank"><strong>brew.sh</strong></a>    </p>
+<h6>2.3.2 Then Install Ruby:</h6>
+<div class="highlight"><pre><span class="code-line"><span></span>brew install ruby</span>
+</pre></div>
+
+
+<h4>3.  Then install Rakali:</h4>
+<p>You may find all the information you need on the official <a href="https://github.com/rakali/rakali.rb" target="_blank">Github Repository</a></p>
+<div class="highlight"><pre><span class="code-line"><span></span>gem install rakali</span>
+</pre></div>
+
+
+<h4>4.  Create two files in your git project’s root folder :</h4>
+<h5>4.1. Create, at the git project root folder, the file: <strong>".gitattributes"</strong></h5>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c"># .gitattributes file in root folder of your git project</span></span>
+<span class="code-line">*.docx <span class="nv">diff</span><span class="o">=</span>pandoc</span>
+<span class="code-line">*.doc <span class="nv">diff</span><span class="o">=</span>pandoc</span>
+</pre></div>
+
+
+<h5>4.2. Create, at the git project root folder, the file:  <strong>".gitconfig"</strong></h5>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c"># .gitconfig file in your home folder</span></span>
+<span class="code-line"><span class="o">[</span>diff <span class="s2">&quot;pandoc&quot;</span><span class="o">]</span> #we <span class="nb">declare</span> the diff tool</span>
+<span class="code-line"><span class="nv">textconv</span><span class="o">=</span>pandoc --to<span class="o">=</span>markdown</span>
+<span class="code-line"><span class="nv">prompt</span> <span class="o">=</span> false</span>
+<span class="code-line"><span class="o">[</span>alias<span class="o">]</span></span>
+<span class="code-line"><span class="nv">wdiff</span> <span class="o">=</span> diff --word-diff<span class="o">=</span>color --unified<span class="o">=</span><span class="m">1</span></span>
+</pre></div>
+
+
+<h4>5.  Commit the two files and you’re done. Enjoy !</h4>
+    </article>
+
+
+	<div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/agile.html">Agile</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/git.html">Git&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/word.html">Word&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/versioning.html">Versioning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/agile.html">Agile&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/doc.html">DOC&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/docx.html">DOCX&nbsp;</a></span> 	</div>
+
+<hr>
+<div class="sharing">
+        <!-- AddThis Button BEGIN -->
+		
+			<!-- Go to www.addthis.com/dashboard to customize your tools -->
+			<div class="addthis_native_toolbox"></div>
+
+			<!-- Go to www.addthis.com/dashboard to customize your tools -->
+			<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56e6dd573663678e"></script>
+
+
+			
+        <!-- AddThis Button END -->
+		
+</div>
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@born2data.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
