@@ -66,7 +66,7 @@ DISPLAY_PAGES_ON_MENU = False
 MENUITEMS = (
     ('HOME', '/'),
     ('FeedCrunch.io', 'https://www.feedcrunch.io/@dataradar'),
-    ('RESUME', 'https://www.jonathandekhtiar.eu'),
+    ('RESUME', 'http://www.jonathandekhtiar.eu'),
     ('RESEARCH', 'http://www.utc.fr/~jdekhtia/dev/'),
     ('CONTACT', '/pages/contact.html'),
 )
