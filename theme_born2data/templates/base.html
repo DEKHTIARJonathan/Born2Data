@@ -15,53 +15,53 @@
 
 
         {% if FEED_ALL_ATOM %}
-            <link href="/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+            <link href="{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
         {% endif %}
         {% if FEED_ALL_RSS %}
-            <link href="/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+            <link href="{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
         {% endif %}
         {% if FEED_ATOM %}
-            <link href="/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+            <link href="{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
         {% endif %}
         {% if FEED_RSS %}
-            <link href="/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+            <link href="{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
         {% endif %}
         {% if CATEGORY_FEED_ATOM and category %}
-            <link href="/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
+            <link href="{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
         {% endif %}
         {% if CATEGORY_FEED_RSS and category %}
-            <link href="/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
+            <link href="{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
         {% endif %}
         {% if TAG_FEED_ATOM and tag %}
-            <link href="/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
+            <link href="{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
         {% endif %}
         {% if TAG_FEED_RSS and tag %}
-            <link href="/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
+            <link href="{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
 
     <!-- Bootstrap Core CSS -->
-	<link href="/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="/{{ THEME_STATIC_DIR }}/css/clean-blog.min.css" rel="stylesheet">
+	<link href="{{ THEME_STATIC_DIR }}/css/clean-blog.min.css" rel="stylesheet">
 
 	<!-- Code highlight color scheme -->
 	{% if COLOR_SCHEME_CSS %}
-		<link href="/{{ THEME_STATIC_DIR }}/css/code_blocks/{{ COLOR_SCHEME_CSS }}" rel="stylesheet">
+		<link href="{ THEME_STATIC_DIR }}/css/code_blocks/{{ COLOR_SCHEME_CSS }}" rel="stylesheet">
 	{% else %}
-		<link href="/{{ THEME_STATIC_DIR }}/css/code_blocks/darkly.css" rel="stylesheet">
+		<link href="{{ THEME_STATIC_DIR }}/css/code_blocks/darkly.css" rel="stylesheet">
 	{% endif %}
-	<link href="/{{ THEME_STATIC_DIR }}/css/better_codeblock.css" rel="stylesheet">
+	<link href="{{ THEME_STATIC_DIR }}/css/better_codeblock.css" rel="stylesheet">
 
 
 	{% if CSS_OVERRIDE %}
 		<!-- CSS specified by the user -->
-		<link href="/{{ CSS_OVERRIDE }}" rel="stylesheet">
+		<link href="{{ CSS_OVERRIDE }}" rel="stylesheet">
 	{% endif %}
 
 	{% if FAVICON %}
 		<!-- FAVICON specified by the user -->
-		<link rel="icon" type="image/png" href="/{{ FAVICON }}" />
+		<link rel="icon" type="image/png" href="{{ FAVICON }}" />
 	{% endif %}
 
 	<!-- Custom Fonts -->
@@ -94,9 +94,9 @@
                 <meta name="twitter:description" content="View the blog." />
             {% endif %}
             {% if HEADER_COVER %}
-                <meta name="twitter:image" content="/{{ HEADER_COVER }}">
+                <meta name="twitter:image" content="{{ HEADER_COVER }}">
             {% else %}
-                <meta name="twitter:image" content="/{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
+                <meta name="twitter:image" content="{{ THEME_STATIC_DIR }}/images/post-bg.jpg">
             {% endif %}
         {% endif %}
     {% endblock twitter_card %}
@@ -129,12 +129,12 @@
 
                     {% if DISPLAY_PAGES_ON_MENU %}
                         {% for p in PAGES %}
-                            <li{% if p == page %} class="active"{% endif %}><a href="/{{ p.url }}">{{ p.title }}</a></li>
+                            <li{% if p == page %} class="active"{% endif %}><a href="{{ p.url }}">{{ p.title }}</a></li>
                         {% endfor %}
                     {% else %}
                         {% if DISPLAY_CATEGORIES_ON_MENU %}
                             {% for cat, null in categories %}
-                                <li{% if cat == category %} class="active"{% endif %}><a href="/{{ cat.url }}">{{ cat }}</a></li>
+                                <li{% if cat == category %} class="active"{% endif %}><a href="{{ cat.url }}">{{ cat }}</a></li>
                             {% endfor %}
                         {% endif %}
                     {% endif %}
@@ -189,14 +189,14 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/{{ THEME_STATIC_DIR }}/js/jquery.js"></script>
+    <script src="{{ THEME_STATIC_DIR }}/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+    <script src="{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
 
     {% if not DISABLE_CUSTOM_THEME_JAVASCRIPT %}
         <!-- Custom Theme JavaScript -->
-        <script src="/{{ THEME_STATIC_DIR }}/js/clean-blog.min.js"></script>
+        <script src="{{ THEME_STATIC_DIR }}/js/clean-blog.min.js"></script>
     {% endif %}
 
     {% include 'analytics.html' %}
