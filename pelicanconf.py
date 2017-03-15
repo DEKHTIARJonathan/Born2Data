@@ -48,7 +48,7 @@ FEED_USE_SUMMARY = True
 
 #Output settings
 DELETE_OUTPUT_DIRECTORY = True
-OUTPUT_RETENTION = [".git", "LICENSE", "README.md", ".htaccess", ".gitignore"]
+OUTPUT_RETENTION = ["CNAME"]
 OUTPUT_PATH = 'docs/'
 
 # Customization
