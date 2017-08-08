@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-lg-12">
                     <div class="post-heading">
-                        <h1>Rapid API Prototyping with Bottle.py</h1>
+                            <h1>Rapid API Prototyping with Bottle.py</h1>
                         <h3 class="subheading">Python Tutorial: How to launch rapidly a REST API with Bottle.py</h3>
                         <span class="meta">Posted by
                                 <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
@@ -130,17 +130,17 @@
             <div class="col-lg-12 col-md-12 col-xs-12">
     <!-- Post Content -->
     <article>
-        <h1>Rapid API Prototyping with Bottle.py</h1>
-<h3>Python Tutorial: How to launch rapidly a REST API with Bottle.py</h3>
+        <h1 id="rapid-api-prototyping-with-bottlepy">Rapid API Prototyping with Bottle.py</h1>
+<h3 id="python-tutorial-how-to-launch-rapidly-a-rest-api-with-bottlepy">Python Tutorial: How to launch rapidly a REST API with Bottle.py</h3>
 <hr>
-<h3>Prerequisites</h3>
+<h3 id="prerequisites">Prerequisites</h3>
 <p><em>All the sourcefiles used for this tutorial are available here: <a href="./../../files/api_files/api_files.zip" target="_blank">download link</a></em><br>
 <strong>Feel free to share and spread the word if you liked the article</strong></p>
 <hr>
-<h5>A. Python and PIP installation:</h5>
+<h5 id="a-python-and-pip-installation">A. Python and PIP installation:</h5>
 <p>First of all, if you don't have <a href="http://www.python.org/" target="_blank">Python</a> or
 <a href="https://pip.pypa.io/en/latest/installing/" target="_blank">PIP</a> installed. You will need to install beforehand.  </p>
-<h5>B. Bottle: Python Web Framework</h5>
+<h5 id="b-bottle-python-web-framework">B. Bottle: Python Web Framework</h5>
 <p>Then let's install <a href="http://bottlepy.org/" target="_blank">Bottlepy.org</a> which is the library we will use to design our REST API:</p>
 <div class="highlight"><pre><span class="code-line"><span></span>pip install --upgrade pip</span>
 <span class="code-line">pip install bottle</span>
@@ -152,17 +152,17 @@
 </pre></div>
 
 
-<h5>C. API Testing Tool</h5>
+<h5 id="c-api-testing-tool">C. API Testing Tool</h5>
 <p>In order to test the API, we will need a tool able to launch GET/POST/PUT requests.<br>
 If you don't have any tool able to perform such operations, you can install "PostMan" which runs on Google Chrome: <a href="https://www.getpostman.com/" target="_blank">https://www.getpostman.com/</a><span id="apiLaunch">&nbsp;</span></p>
-<h5>D. API launching</h5>
+<h5 id="d-api-launching">D. API launching</h5>
 <p>To launch the API, just execute this simple command in the project directory:   </p>
 <div class="highlight"><pre><span class="code-line"><span></span>python server.py</span>
 </pre></div>
 
 
-<h3>Let's build our first API !</h3>
-<h5>1. Configure your API settings</h5>
+<h3 id="lets-build-our-first-api">Let's build our first API !</h3>
+<h5 id="1-configure-your-api-settings">1. Configure your API settings</h5>
 <p>As I am use to running many API at the same time, I have the habit to create a <strong>config file</strong> that I write in the <em>XML</em> format. It's easy to read, easy to format, easy to parse in most languages.<br>
 I think it is a good practice, so here is how it works.</p>
 <p><strong>What are the settings we need for our API ?</strong>  </p>
@@ -213,7 +213,7 @@ I have written a small function to perform this task. It returns a dictionary wi
 </pre></div>
 
 
-<h5>2. Create the API launcher</h5>
+<h5 id="2-create-the-api-launcher">2. Create the API launcher</h5>
 <p>Before taking care of the API itself, let's build up the API launcher. Of course, it won't work until the file <strong>api.py</strong> isn't fully working.  </p>
 <p>The goal of this file is to load the configurations from <strong>conf.xml</strong> using the file just created: <strong>loadConf.py</strong>.<br>
 Once the settings are loaded, we instanciate an API declared in the file <strong>api.py</strong> (not created yet), and launch the API with the right settings.</p>
@@ -240,7 +240,7 @@ Once the settings are loaded, we instanciate an API declared in the file <strong
 </pre></div>
 
 
-<h5>3. Let's design the API !</h5>
+<h5 id="3-lets-design-the-api">3. Let's design the API !</h5>
 <p>So let's start with a minimalistic file, the strict minimum to start with !  </p>
 <p>We will create the API class, and take as input the API's settings. We will use them to launch an API with the desired settings.</p>
 <p><br/>
@@ -271,9 +271,9 @@ Once the settings are loaded, we instanciate an API declared in the file <strong
 <p><strong>Now, you can launch the API ! It works ! Click <a href="#apiLaunch">Here</a> if you don't remember how to launch the API.<br>
 Try going to <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a>, only if you develop locally and didn't changed the API Port</strong>  </p>
 <p>=&gt; If you see a <strong>404 Error</strong> ! Bingo, it's working bro !</p>
-<h5>4. Why do I see a 404 Error ? Help ! I need somebody ...</h5>
+<h5 id="4-why-do-i-see-a-404-error-help-i-need-somebody">4. Why do I see a 404 Error ? Help ! I need somebody ...</h5>
 <p>We create an API that just do nothing. No action is supposed to be perform, so whenever you ask anything, the API answers you back a <strong>404 Error</strong>.  </p>
-<h5>5. Serving a landing page with my API</h5>
+<h5 id="5-serving-a-landing-page-with-my-api">5. Serving a landing page with my API</h5>
 <p>Even if it's pretty weird to want a <strong>useful API</strong> and not just something running for the fun, I'll try to help you out with this goal.</p>
 <p>We will need to register some actions that the API will perform when it receives a request.</p>
 <p>First of, let's create a <strong>folder named "html"</strong> at the project root folder.<br>
@@ -468,7 +468,7 @@ Once it is done, create the file <strong>index.html</strong> inside the folder <
 Try going to <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a>, only if you develop locally and didn't changed the API Port.<br>
 <br/></p>
 <p><img alt="Image of homepage" src="./../../files/api_files/homepage.png"></p>
-<h5>6. Let's perform some real business with my API !</h5>
+<h5 id="6-lets-perform-some-real-business-with-my-api">6. Let's perform some real business with my API !</h5>
 <p>Let's change once again the file <strong>api.py</strong></p>
 <p><br/>
 <strong>File: <em>api.py</em> </strong> <strong>&nbsp;</strong>  </p>
@@ -526,7 +526,7 @@ Try going to <a href="http://localhost:8080/action" target="_blank">http://local
 </pre></div>
 
 
-<h5>7. Conclusion</h5>
+<h5 id="7-conclusion">7. Conclusion</h5>
 <p>Now you can declare new actions, and perform complex process outside or inside the API.<br>
 Have a look to the documentation if you have any question :  <a href="http://bottlepy.org/" target="_blank">Bottlepy.org</a>  </p>
 <p><strong>Please share the article if you liked it !</strong></p>

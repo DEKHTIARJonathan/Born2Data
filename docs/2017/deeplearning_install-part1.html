@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-		<title>Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN</title>
+		<title>Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA and cuDNN</title>
 
 
             <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
@@ -42,7 +42,7 @@
 
 
 
-        <meta name="description" content="How to install Nvidia Drivers, CUDA, CuDNN">
+        <meta name="description" content="How to install Nvidia Drivers, CUDA and CuDNN">
 
         <meta property="article:author" content="https://www.born2data.com/author/jonathan-dekhtiar.html">
 
@@ -55,23 +55,24 @@
         <meta name="tags" content="NVIDIA">
         <meta name="tags" content="CUDA">
         <meta name="tags" content="CuDNN">
+        <meta name="tags" content="Driver">
 
 	                <meta property="og:locale" content="">
 		<meta property="og:site_name" content="Born2Data">
 
 	<meta property="og:type" content="article">
             <meta property="article:author" content="Jonathan DEKHTIAR" >
-	<meta property="og:url" content="/2016/deeplearning_install-part1.html">
-	<meta property="og:title" content="Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN">
-	<meta property="article:published_time" content="2016-10-12 10:15:00+02:00">
-            <meta property="og:description" content="How to install Nvidia Drivers, CUDA, CuDNN">
+	<meta property="og:url" content="/2017/deeplearning_install-part1.html">
+	<meta property="og:title" content="Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA and cuDNN">
+	<meta property="article:published_time" content="2017-02-12 10:15:00+01:00">
+            <meta property="og:description" content="How to install Nvidia Drivers, CUDA and CuDNN">
 
             <meta property="og:image" content="/theme/images/post-bg.jpg">
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content="/theme/images/post-bg.jpg">
         <meta name="twitter:site" content="@@born2data" />
-        <meta name="twitter:title" content="Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN" />
-            <meta name="twitter:description" content="How to install Nvidia Drivers, CUDA, CuDNN" />
+        <meta name="twitter:title" content="Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA and cuDNN" />
+            <meta name="twitter:description" content="How to install Nvidia Drivers, CUDA and CuDNN" />
             <meta name="twitter:image" content="/theme/images/post-bg.jpg">
 </head>
 
@@ -116,11 +117,11 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-lg-12">
                     <div class="post-heading">
-                        <h1>Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN</h1>
-                        <h3 class="subheading">How to install Nvidia Drivers, CUDA, CuDNN</h3>
+                            <h1>Deep Learning Installation Tutorial - Part 1</h1>
+                        <h3 class="subheading">How to install Nvidia Drivers, CUDA and CuDNN</h3>
                         <span class="meta">Posted by
                                 <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
-                             on Wednesday, 2016 October 12
+                             on Sunday, 2017 February 12
                         </span>
                         
                     </div>
@@ -135,34 +136,55 @@
             <div class="col-lg-12 col-md-12 col-xs-12">
     <!-- Post Content -->
     <article>
-        <h1>Deep Learning Installation Tutorial - Index</h1>
-<p>Hello everyone, here is a tutorial to quickly install main Deep Learning libraries and set up a complete environment.</p>
+        <h1 id="deep-learning-installation-tutorial-index">Deep Learning Installation Tutorial - Index</h1>
+<p>Dear fellow deep learner, here is a tutorial to quickly install some of the major Deep Learning libraries and set up a complete development environment.</p>
 <ul>
-<li><a href="/2016/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA, CuDNN</a></li>
-<li><a href="/2016/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe and DIGITS</a></li>
-<li><a href="#"><strong>Part 3 :</strong> Installation - Tensorflow and Theano (coming soon)</a></li>
-<li><a href="#"><strong>Part 4 :</strong> Installation - Keras and Lasagne (coming soon)</a></li>
-<li><a href="#"><strong>Part 5 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
 </ul>
 <hr>
-<h1>Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN</h1>
-<p>There are a few major libraries for Deep Learning applications available – Caffe, Keras, TensorFlow, Theano, and Torch.
-These libraries use GPU Computation power to speed up training which can be very long on CPU (+/- 40days for a ConvNet for the ImageNet Dataset).</p>
-<p>NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only well and broadly supported hardware.</p>
+<h1 id="deep-learning-installation-tutorial-part-1-nvidia-drivers-cuda-cudnn">Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN</h1>
+<p>There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
+These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).</p>
+<p>NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.</p>
 <p>In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.</p>
 <p>A few useful links :</p>
 <ul>
+<li><strong>NVIDIA Drivers and Libraries:</strong><ul>
 <li><strong>CUDA :</strong> <a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a></li>
-<li><strong>CuDNN :</strong> <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a></li>
-<li><strong>Caffe :</strong> <a href="http://caffe.berkeleyvision.org/">http://caffe.berkeleyvision.org/</a></li>
-<li><strong>DIGITS :</strong> <a href="https://developer.nvidia.com/digits">https://developer.nvidia.com/digits</a></li>
-<li><strong>Tensorflow :</strong> <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></li>
-<li><strong>Theano :</strong> <a href="http://deeplearning.net/software/theano/index.html">http://deeplearning.net/software/theano/index.html</a></li>
-<li><strong>Keras :</strong> <a href="https://keras.io/">https://keras.io/</a></li>
-<li><strong>Lasagne :</strong> <a href="http://lasagne.readthedocs.io/en/latest/">http://lasagne.readthedocs.io/en/latest/</a></li>
-<li><strong>Docker :</strong> <a href="https://www.docker.com/">https://www.docker.com/</a></li>
-<li><strong>NVIDIA-DOCKER :</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></li>
+<li><strong>CuDNN :</strong> <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a><br><br></li>
 </ul>
+</li>
+<li><strong>Deep Learning Libraries and Frameworks:</strong><ul>
+<li><strong>Caffe:</strong> <a href="http://caffe.berkeleyvision.org">http://caffe.berkeleyvision.org</a></li>
+<li><strong>Caffe2:</strong> <a href="https://caffe2.ai">https://caffe2.ai</a></li>
+<li><strong>Microsoft Cognitive Toolkit:</strong> <a href="https://www.microsoft.com/en-us/cognitive-toolkit">https://www.microsoft.com/en-us/cognitive-toolkit</a></li>
+<li><strong>DeepLearning4J:</strong>  <a href="https://deeplearning4j.org">https://deeplearning4j.org</a></li>
+<li><strong>Keras:</strong> <a href="https://keras.io/">https://keras.io/</a></li>
+<li><strong>Lasagne:</strong> <a href="http://lasagne.readthedocs.io/en/latest">http://lasagne.readthedocs.io/en/latest</a></li>
+<li><strong>MxNet:</strong> <a href="http://mxnet.io">http://mxnet.io</a></li>
+<li><strong>PyTorch:</strong> <a href="http://pytorch.org/">http://pytorch.org/</a></li>
+<li><strong>Tensorflow:</strong> <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></li>
+<li><strong>Theano:</strong> <a href="http://deeplearning.net/software/theano">http://deeplearning.net/software/theano</a></li>
+<li><strong>Torch:</strong> <a href="http://torch.ch">http://torch.ch</a><br><br></li>
+</ul>
+</li>
+<li><strong>Development Environments:</strong><ul>
+<li><strong>Apache Singa:</strong> <a href="http://singa.apache.org">http://singa.apache.org</a></li>
+<li><strong>DeepForge:</strong> <a href="https://github.com/deepforge-dev/deepforge">https://github.com/deepforge-dev/deepforge</a></li>
+<li><strong>Digits:</strong> <a href="https://developer.nvidia.com/digits">https://developer.nvidia.com/digits</a></li>
+<li><strong>Polyaxon:</strong> <a href="https://github.com/polyaxon/polyaxon">https://github.com/polyaxon/polyaxon</a><br><br></li>
+</ul>
+</li>
+<li><strong>Virtualisation Platforms:</strong><ul>
+<li><strong>Docker:</strong> <a href="https://www.docker.com">https://www.docker.com</a></li>
+<li><strong>NVIDIA-DOCKER:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
+</ul>
+</li>
+</ul>
+<hr>
 <p>In this post, we will install drivers and dependencies for GPU Computation.</p>
 <ul>
 <li><strong>CUDA:</strong> "CUDA is a parallel computing platform and application programming interface (API) model created by Nvidia" (<a href="https://en.wikipedia.org/wiki/CUDA">Source</a>)</li>
@@ -170,10 +192,11 @@ These libraries use GPU Computation power to speed up training which can be very
 </ul>
 <p>A compilation of tools porvided by NVIDIA, very useful for Deep Learning but not only.</p>
 <hr>
-<h3>Prerequisites</h3>
+<h3 id="prerequisites">Prerequisites</h3>
 <p><em>This Tutorial has been tested and runned on Ubuntu 14.04 on the 30th May 2016 </em><br>
 <strong>Feel free to share and spread the word if you liked the article</strong></p>
-<p>Don't forget to get your system up to date</p>
+<p>In this tutorial, we will assume that you are using Ubuntu 14.04 or 16.04 (LTS versions).</p>
+<p>First of all, we need to be sure that the system your are using is up to date:</p>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get update</span>
 <span class="code-line">sudo apt-get upgrade -y</span>
 <span class="code-line">sudo apt-get dist-upgrade -y</span>
@@ -181,8 +204,8 @@ These libraries use GPU Computation power to speed up training which can be very
 
 
 <hr>
-<h5>A. NVIDIA Drivers:</h5>
-<p>Lets remove first everything that point to any existing nvidia installation:</p>
+<h3 id="a-nvidia-drivers">A. NVIDIA Drivers:</h3>
+<p>First of all, we will install the latest Nvidia drivers. In order to have a fresh-start, let us be sure that there exists to previous nvidia software on the machine:</p>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get remove nvidia*</span>
 <span class="code-line">sudo apt-get autoremove</span>
 </pre></div>
@@ -193,7 +216,7 @@ These libraries use GPU Computation power to speed up training which can be very
 </pre></div>
 
 
-<p>Then we will need to blacklist the "nouveau" driver:</p>
+<p>Then we will need to blacklist the "nouveau" driver (an open-source retro-engineered nvidia driver):</p>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo vi /etc/modprobe.d/blacklist-nouveau.conf</span>
 </pre></div>
 
@@ -207,12 +230,18 @@ These libraries use GPU Computation power to speed up training which can be very
 </pre></div>
 
 
-<p>Disable the Kernel nouveau by typing the following commands:
-echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
-sudo update-initramfs -u</p>
-<p>If you don't have installed or updated the driver of your NVIDIA Graphic Card, please download and install the driver: <a href="http://www.nvidia.com/Download/index.aspx" target="_blank">nvidia's website</a></p>
+<p><strong>Linux Newbie Advice:</strong>
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="height: 200px;"></center></p>
+<p>Disable the nouveau kernel by typing the following commands:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> options nouveau <span class="nv">modeset</span><span class="o">=</span><span class="m">0</span> <span class="p">|</span> sudo tee -a /etc/modprobe.d/nouveau-kms.conf</span>
+<span class="code-line">sudo update-initramfs -u</span>
+</pre></div>
+
+
+<p>Now, you need to search for the latest NVIDIA driver specific for your graphic card and your system. Please select <strong>Linux 64-bit</strong> for your operating system. You can find it on the official website: <a href="http://www.nvidia.com/Download/index.aspx" target="_blank">nvidia's website</a></p>
+<p><center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="height: 200px;"></center></p>
 <p>Execute the following commands to install the NVIDIA Drivers.</p>
-<div class="highlight"><pre><span class="code-line"><span></span>wget http://us.download.nvidia.com/XFree86/Linux-x86_64/361.45.11/NVIDIA-Linux******************.run</span>
+<div class="highlight"><pre><span class="code-line"><span></span>wget http://us.download.nvidia.com/**********/NVIDIA-Linux******************.run <span class="c1">## Copy here the link you have copied</span></span>
 <span class="code-line">chmod +x NVIDIA-Linux******************.run</span>
 </pre></div>
 
@@ -243,11 +272,11 @@ sudo update-initramfs -u</p>
 
 
 <p>You can test the installation is okay by executing :<br>
-<em>(The output might be different from mine depending on the version you installed and your hardware, I have 3 GTX Titan X.)</em></p>
+<em>Remark: The output might be different from mine depending on the version you installed and your hardware, I have 3 GTX Titan X.</em></p>
 <div class="highlight"><pre><span class="code-line"><span></span>root@machine: nvidia-smi</span>
 <span class="code-line"></span>
 <span class="code-line">+------------------------------------------------------+</span>
-<span class="code-line"><span class="p">|</span> NVIDIA-SMI <span class="m">352</span>.99    Driver Version: <span class="m">352</span>.99          <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span> NVIDIA-SMI ***.**    Driver Version: ***.**          <span class="p">|</span></span>
 <span class="code-line"><span class="p">|</span>-------------------------------+----------------------+----------------------+</span>
 <span class="code-line"><span class="p">|</span> GPU  Name        Persistence-M<span class="p">|</span> Bus-Id        Disp.A <span class="p">|</span> Volatile Uncorr. ECC <span class="p">|</span></span>
 <span class="code-line"><span class="p">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="p">|</span>         Memory-Usage <span class="p">|</span> GPU-Util  Compute M. <span class="p">|</span></span>
@@ -271,64 +300,81 @@ sudo update-initramfs -u</p>
 </pre></div>
 
 
-<h5>B. Installing CUDA 7.5</h5>
+<hr>
+<h3 id="b-installing-cuda">B. Installing CUDA</h3>
+<p>Nowadays, in July 2017, CUDA 8.0 and cuDNN 5.1 are the latest supported libraries, however it can rapidly change. You definitely should check if these information are still revelant at the time you are using this tutorial. The version of CUDA and cuDNN you need to choose mostly depends on the deep learning library you are planning to use. Check the official documentations for further details.</p>
+<p>I will assume that you need CUDA 8.0 and cuDNN 5.1 for this tutorial, feel free to adapt and explore.</p>
+<p>You will need to open the following webpage and copy the library download link: <a href="https://developer.nvidia.com/cuda-downloads">nvidia cuda download</a></p>
+<p><center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="height: 400px;"></center></p>
 <p>Main source for this step is <a href="http://markus.com/install-theano-on-aws/" target="_blank">Markus Beissinger’s blog post</a> on setting up Theano.</p>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get install -y gcc g++ gfortran build-essential <span class="se">\</span></span>
 <span class="code-line">  git wget linux-image-generic libopenblas-dev python-dev <span class="se">\</span></span>
 <span class="code-line">  python-pip python-nose python-numpy python-scipy</span>
 <span class="code-line"></span>
-<span class="code-line"><span class="c1"># downloading the (currently) most recent version of CUDA 7.5</span></span>
-<span class="code-line">sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb</span>
-<span class="code-line">wget -qO - http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/7fa2af80.pub <span class="p">|</span> sudo apt-key add -</span>
+<span class="code-line"><span class="c1"># downloading the (currently) most recent version of CUDA 8.0</span></span>
+<span class="code-line">sudo wget http://developer.download.nvidia.com/******/cuda-repo-ubuntu******.deb <span class="c1">#copy here the link obtained above</span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="c1"># installing CUDA</span></span>
-<span class="code-line">sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb</span>
+<span class="code-line"><span class="c1"># installing debian package for CUDA</span></span>
+<span class="code-line">sudo dpkg -i cuda-repo-ubuntu***************.deb</span>
 <span class="code-line"></span>
 <span class="code-line">sudo apt-get update</span>
 <span class="code-line">sudo apt-get install cuda</span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1"># setting the environment variables so CUDA will be found</span></span>
-<span class="code-line"><span class="nb">echo</span> -e <span class="s2">&quot;\nexport PATH=/usr/local/cuda/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span> &gt;&gt; .bashrc</span>
-<span class="code-line"><span class="nb">echo</span> -e <span class="s2">&quot;\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64&quot;</span> &gt;&gt; .bashrc</span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">&quot;\nexport PATH=/usr/local/cuda-8.0/bin</span><span class="si">${</span><span class="nv">PATH</span><span class="p">:+:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}}</span><span class="s2"> &quot;</span> &gt;&gt; .bashrc</span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">&quot;\nexport LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\${LD_LIBRARY_PATH:+:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">}&quot;</span> &gt;&gt; .bashrc</span>
 </pre></div>
 
 
 <p>You can test the installation is okay by executing :</p>
 <div class="highlight"><pre><span class="code-line"><span></span>root@machine: apt-show-versions cuda</span>
-<span class="code-line">**cuda:amd64/unknown <span class="m">7</span>.5-18 uptodate**</span>
+<span class="code-line">**cuda:amd64/unknown <span class="m">8</span>.0-** uptodate**</span>
 <span class="code-line"></span>
 <span class="code-line">root@machine: cat /proc/driver/nvidia/version</span>
-<span class="code-line">NVRM version: NVIDIA UNIX x86_64 Kernel Module  <span class="m">352</span>.99  Mon Jul  <span class="m">4</span> <span class="m">23</span>:52:14 PDT <span class="m">2016</span></span>
-<span class="code-line">GCC version:  gcc version <span class="m">4</span>.8.4 <span class="o">(</span>Ubuntu <span class="m">4</span>.8.4-2ubuntu1~14.04.3<span class="o">)</span></span>
+<span class="code-line">NVRM version: NVIDIA UNIX x86_64 Kernel Module  ***.**  ************************</span>
+<span class="code-line">GCC version:  gcc version *.*.* <span class="o">(</span>Ubuntu ****************<span class="o">)</span></span>
 </pre></div>
 
 
 <p>Now close your shell or the SSH connection and re-open it.</p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># installing the samples and checking the GPU</span></span>
-<span class="code-line">cuda-install-samples-7.5.sh ~/</span>
-<span class="code-line"><span class="nb">cd</span> NVIDIA<span class="se">\_</span>CUDA-7.5<span class="se">\_</span>Samples/1<span class="se">\_</span>Utilities/deviceQuery  </span>
-<span class="code-line">make  </span>
-<span class="code-line">./deviceQuery</span>
+<span class="code-line"><span class="nb">cd</span> /usr/local/cuda-8.0/samples/5_Simulations/nbody</span>
+<span class="code-line">sudo make</span>
+<span class="code-line">./nbody</span>
 </pre></div>
 
 
-<p>If no error shows up, CUDA is successfully installed.</p>
-<h5>C. Installing CuDNN</h5>
+<p>If successful, a new window will popup running n-body simulation.</p>
+<hr>
+<h3 id="c-installing-cudnn">C. Installing CuDNN</h3>
 <p>To further speed up deep learning relevant calculations it is a good idea to set up the cuDNN library. For that purpose you will have to get an NVIDIA developer account and join the CUDA registered developer program. The last step requires NVIDIA to unlock your account  and that might take one or two days. But you can get started also without cuDNN library. As soon as you have the okay from them – <a href="https://developer.nvidia.com/cuDNN/" target="_blank">download cuDNN</a> and upload it to your instance.</p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="nb">cd</span> ~</span>
-<span class="code-line">wget http://developer.download.nvidia.com/*********************************************/cudnn-7.5-linux-x64-v5.0-ga.tgz</span>
+<span class="code-line">wget http://developer.download.nvidia.com/*********************************************/cudnn-*.*-linux-x64-*******.tgz</span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1"># unpack the library</span></span>
-<span class="code-line">tar -zxvf cudnn-7.5-linux-x64-v5.0-ga.tgz</span>
+<span class="code-line">tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz</span>
 <span class="code-line"></span>
-<span class="code-line">sudo cp cuda/include/cudnn.h /usr/local/cuda-7.5/include</span>
-<span class="code-line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-7.5/lib64</span>
+<span class="code-line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include</span>
+<span class="code-line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64</span>
+<span class="code-line">sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*</span>
 </pre></div>
+
+
+<hr>
+<h3 id="d-conclusion">D. Conclusion</h3>
+<p>Now you have a fully set up instance with all the necessary libraries to install the required deep learning libraries.
+You can continue with the next steps:</p>
+<ul>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+</ul>
     </article>
 
 
 	<div>
-<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/deep-learning.html">Deep Learning</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/installation.html">Installation&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/gpu.html">GPU&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/nvidia.html">NVIDIA&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cuda.html">CUDA&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cudnn.html">CuDNN&nbsp;</a></span> 	</div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/deep-learning.html">Deep Learning</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/installation.html">Installation&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/gpu.html">GPU&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/nvidia.html">NVIDIA&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cuda.html">CUDA&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cudnn.html">CuDNN&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/driver.html">Driver&nbsp;</a></span> 	</div>
 
 <hr>
 <div class="sharing">

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<title>Deep Learning Installation Tutorial - Part 3 - CNTK, Keras, and PyTorch</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+	<!-- Code highlight color scheme -->
+		<link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+	<link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+		<!-- FAVICON specified by the user -->
+		<link rel="icon" type="image/png" href="/images/favicon.png" />
+
+	<!-- Custom Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+
+        <meta name="description" content="How to install CNTK, Keras, and PyTorch">
+
+        <meta property="article:author" content="https://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Deep Learning">
+        <meta name="tags" content="Python">
+        <meta name="tags" content="Tutorial">
+        <meta name="tags" content="Installation">
+        <meta name="tags" content="Machine Learning">
+        <meta name="tags" content="CNTK">
+        <meta name="tags" content="Keras">
+        <meta name="tags" content="PyTorch">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Born2Data">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+	<meta property="og:url" content="/2017/deeplearning_install-part3.html">
+	<meta property="og:title" content="Deep Learning Installation Tutorial - Part 3 - CNTK, Keras, and PyTorch">
+	<meta property="article:published_time" content="2017-08-08 10:15:00+02:00">
+            <meta property="og:description" content="How to install CNTK, Keras, and PyTorch">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="Deep Learning Installation Tutorial - Part 3 - CNTK, Keras, and PyTorch" />
+            <meta name="twitter:description" content="How to install CNTK, Keras, and PyTorch" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="http://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>Deep Learning Installation Tutorial - Part 3</h1>
+                        <h3 class="subheading">How to install CNTK, Keras, and PyTorch</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Tuesday, 2017 August 08
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Content -->
+    <article>
+        <h1 id="deep-learning-installation-tutorial-index">Deep Learning Installation Tutorial - Index</h1>
+<p>Dear fellow deep learner, here is a tutorial to quickly install some of the major Deep Learning libraries and set up a complete development environment.</p>
+<ul>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+</ul>
+<hr>
+<h1 id="deep-learning-installation-tutorial-part-3-cntk-keras-and-pytorch">Deep Learning Installation Tutorial - Part 3 - CNTK, Keras and PyTorch</h1>
+<p>There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
+These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).</p>
+<p>NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.</p>
+<p>In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.</p>
+<p>A few useful links :</p>
+<ul>
+<li><strong>NVIDIA Drivers and Libraries:</strong><ul>
+<li><strong>CUDA :</strong> <a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a></li>
+<li><strong>CuDNN :</strong> <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a><br><br></li>
+</ul>
+</li>
+<li><strong>Deep Learning Libraries and Frameworks:</strong><ul>
+<li><strong>Caffe:</strong> <a href="http://caffe.berkeleyvision.org">http://caffe.berkeleyvision.org</a></li>
+<li><strong>Caffe2:</strong> <a href="https://caffe2.ai">https://caffe2.ai</a></li>
+<li><strong>Microsoft Cognitive Toolkit:</strong> <a href="https://www.microsoft.com/en-us/cognitive-toolkit">https://www.microsoft.com/en-us/cognitive-toolkit</a></li>
+<li><strong>DeepLearning4J:</strong>  <a href="https://deeplearning4j.org">https://deeplearning4j.org</a></li>
+<li><strong>Keras:</strong> <a href="https://keras.io/">https://keras.io/</a></li>
+<li><strong>Lasagne:</strong> <a href="http://lasagne.readthedocs.io/en/latest">http://lasagne.readthedocs.io/en/latest</a></li>
+<li><strong>MxNet:</strong> <a href="http://mxnet.io">http://mxnet.io</a></li>
+<li><strong>PyTorch:</strong> <a href="http://pytorch.org/">http://pytorch.org/</a></li>
+<li><strong>Tensorflow:</strong> <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></li>
+<li><strong>Theano:</strong> <a href="http://deeplearning.net/software/theano">http://deeplearning.net/software/theano</a></li>
+<li><strong>Torch:</strong> <a href="http://torch.ch">http://torch.ch</a><br><br></li>
+</ul>
+</li>
+<li><strong>Development Environments:</strong><ul>
+<li><strong>Apache Singa:</strong> <a href="http://singa.apache.org">http://singa.apache.org</a></li>
+<li><strong>DeepForge:</strong> <a href="https://github.com/deepforge-dev/deepforge">https://github.com/deepforge-dev/deepforge</a></li>
+<li><strong>Digits:</strong> <a href="https://developer.nvidia.com/digits">https://developer.nvidia.com/digits</a></li>
+<li><strong>Polyaxon:</strong> <a href="https://github.com/polyaxon/polyaxon">https://github.com/polyaxon/polyaxon</a><br><br></li>
+</ul>
+</li>
+<li><strong>Virtualisation Platforms:</strong><ul>
+<li><strong>Docker:</strong> <a href="https://www.docker.com">https://www.docker.com</a></li>
+<li><strong>NVIDIA-DOCKER:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>In this post, we will install the following libraries:</p>
+<ul>
+<li><strong>CNTK:</strong> "The Microsoft Cognitive Toolkit (https://cntk.ai), is a unified deep-learning toolkit that describes neural networks as a series of computational steps via a directed graph." (<a href="https://github.com/Microsoft/cntk">Source</a>)</li>
+<li><strong>Keras:</strong> "Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research." (<a href="https://github.com/fchollet/keras">Source</a>)</li>
+<li><strong>PyTorch:</strong> "PyTorch is a Python package that provides Tensor computation (like NumPy) with strong GPU acceleration and Deep neural networks built on a tape-based autograd system" (<a href="https://github.com/pytorch/pytorch">Source</a>)</li>
+</ul>
+<hr>
+<h3 id="a-installing-cntk">A. Installing CNTK</h3>
+<p>The Microsoft Cognitive Toolkit - CNTK - is a unified deep-learning toolkit by Microsoft.</p>
+<p><strong>First, we need to install the dependencies:</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get install openmpi-bin</span>
+</pre></div>
+
+
+<p><strong>Then we can install the correct binaries:</strong></p>
+<p>In order to install the CNTK library, please pick the correct link corresponding to your situation (you can find the latest versions on the <a href="https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python">official website</a>)</p>
+<table class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th style="text-align:center">Python</th>
+            <th style="text-align:center">Flavor</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:center">2.7</td>
+            <td>CPU-Only</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp27-cp27mu-linux_x86_64.whl">
+                     https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp27-cp27mu-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>GPU</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp27-cp27mu-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp27-cp27mu-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">3.4</td>
+            <td>CPU-Only</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp34-cp34m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp34-cp34m-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>GPU</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp34-cp34m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp34-cp34m-linux_x86_64.whll
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">3.5</td>
+            <td>CPU-Only</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp35-cp35m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp35-cp35m-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>GPU</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">3.6</td>
+            <td>CPU-Only</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp36-cp36m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp36-cp36m-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>GPU</td>
+            <td>
+                <a href="https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl">
+                    https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Installing the chosen binary with pip:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install &lt;url&gt;</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install &lt;url&gt;</span>
+</pre></div>
+
+
+<p><strong>Now let us perform a small test:</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span>python</span>
+<span class="code-line">&gt;&gt;&gt; import cntk</span>
+<span class="code-line">&gt;&gt;&gt; cntk.__version__</span>
+<span class="code-line"><span class="s1">&#39;2.1&#39;</span></span>
+</pre></div>
+
+
+<hr>
+<h3 id="b-installing-keras">B. Installing Keras</h3>
+<p>Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research.</p>
+<p>It is also one of the easiest library to install:</p>
+<p><strong>Installation:</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install keras</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install keras</span>
+</pre></div>
+
+
+<p>Let us try the installation:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>python</span>
+<span class="code-line">&gt;&gt;&gt; import keras</span>
+<span class="code-line">&gt;&gt;&gt; print<span class="o">(</span>keras.__version__<span class="o">)</span></span>
+<span class="code-line"><span class="m">2</span>.0.6</span>
+<span class="code-line">&gt;&gt;&gt; print<span class="o">(</span>keras.backend.backend<span class="o">())</span></span>
+<span class="code-line"><span class="s1">&#39;tensorflow&#39;</span></span>
+</pre></div>
+
+
+<p><strong>Change the Keras Backend:</strong></p>
+<p>By default, Keras use Tensorflow as backend, if you prefer it can use CNTK or Theano.</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">set_keras_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">backend</span><span class="p">()</span> <span class="o">!=</span> <span class="n">backend</span><span class="p">:</span></span>
+<span class="code-line">        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KERAS_BACKEND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">backend</span></span>
+<span class="code-line">        <span class="nb">reload</span><span class="p">(</span><span class="n">K</span><span class="p">)</span></span>
+<span class="code-line">        <span class="k">assert</span> <span class="n">K</span><span class="o">.</span><span class="n">backend</span><span class="p">()</span> <span class="o">==</span> <span class="n">backend</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">set_keras_backend</span><span class="p">(</span><span class="s2">&quot;theano&quot;</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">set_keras_backend</span><span class="p">(</span><span class="s2">&quot;cntk&quot;</span><span class="p">)</span></span>
+</pre></div>
+
+
+<hr>
+<h3 id="c-installing-pytorch">C. Installing PyTorch</h3>
+<p>PyTorch is a deep learning framework that puts Python first.</p>
+<p>This library is also quite easy to install:</p>
+<p>I recommend using the official install command generator available on the <a href="http://pytorch.org/">official website</a>.</p>
+<p><center><img alt="pyTorch installation" src="/images/deeplearning_install-part3/pyTorch.png" style="height: 250px;"></center></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># Python 2.7</span></span>
+<span class="code-line">pip install http://download.pytorch.org/whl/cu80/torch-0.2.0.post1-cp27-cp27m-manylinux1_x86_64.whl</span>
+<span class="code-line">pip install torchvision</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># if the above command does not work, then you have python 2.7 UCS2, use this command</span></span>
+<span class="code-line">pip install http://download.pytorch.org/whl/cu80/torch-0.2.0.post1-cp27-cp27mu-manylinux1_x86_64.whl</span>
+<span class="code-line">pip install torchvision</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python 3.5</span></span>
+<span class="code-line">pip3 install http://download.pytorch.org/whl/cu80/torch-0.2.0.post1-cp35-cp35m-manylinux1_x86_64.whl</span>
+<span class="code-line">pip3 install torchvision</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python 3.6</span></span>
+<span class="code-line">pip3 install http://download.pytorch.org/whl/cu80/torch-0.2.0.post1-cp36-cp36m-manylinux1_x86_64.whl</span>
+<span class="code-line">pip3 install torchvision</span>
+</pre></div>
+
+
+<p>Let us try the installation:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>python</span>
+<span class="code-line">&gt;&gt;&gt; import torch</span>
+<span class="code-line">&gt;&gt;&gt; torch.manual_seed<span class="o">(</span><span class="m">1</span><span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">V_data</span> <span class="o">=</span> <span class="o">[</span><span class="m">1</span>., <span class="m">2</span>., <span class="m">3</span>.<span class="o">]</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">V</span> <span class="o">=</span> torch.Tensor<span class="o">(</span>V_data<span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; print<span class="o">(</span>V<span class="o">[</span><span class="m">0</span><span class="o">])</span></span>
+<span class="code-line"><span class="m">1</span>.0</span>
+</pre></div>
+
+
+<hr>
+<h3 id="d-conclusion">D. Conclusion</h3>
+<p>We have now installed CNTK, Keras and PyTorch. You can try to explore many of the available ressources online or keep installing the other libraries.</p>
+<ul>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+</ul>
+    </article>
+
+
+	<div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/deep-learning.html">Deep Learning</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/installation.html">Installation&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cntk.html">CNTK&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/keras.html">Keras&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/pytorch.html">PyTorch&nbsp;</a></span> 	</div>
+
+<hr>
+<div class="sharing">
+        <!-- AddThis Button BEGIN -->
+		
+			<!-- Go to www.addthis.com/dashboard to customize your tools -->
+			<div class="addthis_native_toolbox"></div>
+
+			<!-- Go to www.addthis.com/dashboard to customize your tools -->
+			<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56e6dd573663678e"></script>
+
+
+			
+        <!-- AddThis Button END -->
+		
+</div>
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@born2data.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

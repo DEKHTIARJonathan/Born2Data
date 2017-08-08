@@ -1,44 +1,59 @@
-Title: Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN
-Date: 2016-10-12 10:15
+Title: Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA and cuDNN
+HeadTitle: Deep Learning Installation Tutorial - Part 1
+Date: 2017-02-12 10:15
 Category: Deep Learning
-Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, GPU, NVIDIA, CUDA, CuDNN
+Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, GPU, NVIDIA, CUDA, CuDNN, Driver
 Slug: deeplearning_install-part1
 Author: Jonathan DEKHTIAR
-Headline: How to install Nvidia Drivers, CUDA, CuDNN
+Headline: How to install Nvidia Drivers, CUDA and CuDNN
 
 # Deep Learning Installation Tutorial - Index
 
-Hello everyone, here is a tutorial to quickly install main Deep Learning libraries and set up a complete environment.
+Dear fellow deep learner, here is a tutorial to quickly install some of the major Deep Learning libraries and set up a complete development environment.
 
-* [**Part 1 :** Installation - Nvidia Drivers, CUDA, CuDNN](/2016/deeplearning_install-part1.html)
-* [**Part 2 :** Installation - Caffe and DIGITS](/2016/deeplearning_install-part2.html)
-* [**Part 3 :** Installation - Tensorflow and Theano (coming soon)](#)
-* [**Part 4 :** Installation - Keras and Lasagne (coming soon)](#)
-* [**Part 5 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
+* [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
+* [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
+* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
 
 ---
 
 # Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN
 
-There are a few major libraries for Deep Learning applications available – Caffe, Keras, TensorFlow, Theano, and Torch.
-These libraries use GPU Computation power to speed up training which can be very long on CPU (+/- 40days for a ConvNet for the ImageNet Dataset).
+There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
+These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).
 
-NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only well and broadly supported hardware.
+NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
 
 In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.
 
 A few useful links :
 
-* **CUDA :** <https://developer.nvidia.com/cuda-zone>
-* **CuDNN :** <https://developer.nvidia.com/cudnn>
-* **Caffe :** <http://caffe.berkeleyvision.org/>
-* **DIGITS :** <https://developer.nvidia.com/digits>
-* **Tensorflow :** <https://www.tensorflow.org/>
-* **Theano :** <http://deeplearning.net/software/theano/index.html>
-* **Keras :** <https://keras.io/>
-* **Lasagne :** <http://lasagne.readthedocs.io/en/latest/>
-* **Docker :** <https://www.docker.com/>
-* **NVIDIA-DOCKER :** <https://github.com/NVIDIA/nvidia-docker>
+* **NVIDIA Drivers and Libraries:**
+    * **CUDA :** <https://developer.nvidia.com/cuda-zone>
+    * **CuDNN :** <https://developer.nvidia.com/cudnn><br><br>
+* **Deep Learning Libraries and Frameworks:**
+    * **Caffe:** <http://caffe.berkeleyvision.org>
+    * **Caffe2:** <https://caffe2.ai>
+    * **Microsoft Cognitive Toolkit:** <https://www.microsoft.com/en-us/cognitive-toolkit>
+    * **DeepLearning4J:**  <https://deeplearning4j.org>
+    * **Keras:** <https://keras.io/>
+    * **Lasagne:** <http://lasagne.readthedocs.io/en/latest>
+    * **MxNet:** <http://mxnet.io>
+    * **PyTorch:** <http://pytorch.org/>
+    * **Tensorflow:** <https://www.tensorflow.org/>
+    * **Theano:** <http://deeplearning.net/software/theano>
+    * **Torch:** <http://torch.ch><br><br>
+* **Development Environments:**
+    * **Apache Singa:** <http://singa.apache.org>
+    * **DeepForge:** <https://github.com/deepforge-dev/deepforge>
+    * **Digits:** <https://developer.nvidia.com/digits>
+    * **Polyaxon:** <https://github.com/polyaxon/polyaxon><br><br>
+* **Virtualisation Platforms:**
+    * **Docker:** <https://www.docker.com>
+    * **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker><br><br>
+
+---
 
 In this post, we will install drivers and dependencies for GPU Computation.
 
@@ -53,7 +68,9 @@ A compilation of tools porvided by NVIDIA, very useful for Deep Learning but not
 *This Tutorial has been tested and runned on Ubuntu 14.04 on the 30th May 2016 *  
 **Feel free to share and spread the word if you liked the article**
 
-Don't forget to get your system up to date
+In this tutorial, we will assume that you are using Ubuntu 14.04 or 16.04 (LTS versions).
+
+First of all, we need to be sure that the system your are using is up to date:
 
 ```bash
 sudo apt-get update
@@ -62,9 +79,9 @@ sudo apt-get dist-upgrade -y
 ```
 
 ---
-##### A. NVIDIA Drivers:
+### A. NVIDIA Drivers:
 
-Lets remove first everything that point to any existing nvidia installation:
+First of all, we will install the latest Nvidia drivers. In order to have a fresh-start, let us be sure that there exists to previous nvidia software on the machine:
 
 ```bash
 sudo apt-get remove nvidia*
@@ -77,7 +94,7 @@ Then let's intall the dependencies :
 sudo apt-get install dkms build-essential linux-headers-generic apt-show-versions
 ```
 
-Then we will need to blacklist the "nouveau" driver:
+Then we will need to blacklist the "nouveau" driver (an open-source retro-engineered nvidia driver):
 
 ```bash
 sudo vi /etc/modprobe.d/blacklist-nouveau.conf
@@ -93,17 +110,24 @@ alias nouveau off
 alias lbm-nouveau off
 ```
 
-Disable the Kernel nouveau by typing the following commands:
+**Linux Newbie Advice:**
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="height: 200px;"></center>
+
+Disable the nouveau kernel by typing the following commands:
+
+```bash
 echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
 sudo update-initramfs -u
+```
 
-If you don't have installed or updated the driver of your NVIDIA Graphic Card, please download and install the driver: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}
+Now, you need to search for the latest NVIDIA driver specific for your graphic card and your system. Please select **Linux 64-bit** for your operating system. You can find it on the official website: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}
 
+<center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="height: 200px;"></center>
 
 Execute the following commands to install the NVIDIA Drivers.
 
 ```bash
-wget http://us.download.nvidia.com/XFree86/Linux-x86_64/361.45.11/NVIDIA-Linux******************.run
+wget http://us.download.nvidia.com/**********/NVIDIA-Linux******************.run ## Copy here the link you have copied
 chmod +x NVIDIA-Linux******************.run
 ```
 
@@ -134,12 +158,12 @@ sudo reboot
 ```
 
 You can test the installation is okay by executing :<br>
-*(The output might be different from mine depending on the version you installed and your hardware, I have 3 GTX Titan X.)*
+*Remark: The output might be different from mine depending on the version you installed and your hardware, I have 3 GTX Titan X.*
 ```bash
 root@machine: nvidia-smi
 
 +------------------------------------------------------+
-| NVIDIA-SMI 352.99    Driver Version: 352.99          |
+| NVIDIA-SMI ***.**    Driver Version: ***.**          |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
@@ -162,7 +186,17 @@ root@machine: nvidia-smi
 +-----------------------------------------------------------------------------+
 ```
 
-##### B. Installing CUDA 7.5
+---
+
+### B. Installing CUDA
+
+Nowadays, in July 2017, CUDA 8.0 and cuDNN 5.1 are the latest supported libraries, however it can rapidly change. You definitely should check if these information are still revelant at the time you are using this tutorial. The version of CUDA and cuDNN you need to choose mostly depends on the deep learning library you are planning to use. Check the official documentations for further details.
+
+I will assume that you need CUDA 8.0 and cuDNN 5.1 for this tutorial, feel free to adapt and explore.
+
+You will need to open the following webpage and copy the library download link: [nvidia cuda download](https://developer.nvidia.com/cuda-downloads)
+
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="height: 400px;"></center>
 
 Main source for this step is [Markus Beissinger’s blog post](http://markus.com/install-theano-on-aws/){:target="\_blank"} on setting up Theano.
 
@@ -171,54 +205,67 @@ sudo apt-get install -y gcc g++ gfortran build-essential \
   git wget linux-image-generic libopenblas-dev python-dev \
   python-pip python-nose python-numpy python-scipy
 
-# downloading the (currently) most recent version of CUDA 7.5
-sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb
-wget -qO - http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/7fa2af80.pub | sudo apt-key add -
+# downloading the (currently) most recent version of CUDA 8.0
+sudo wget http://developer.download.nvidia.com/******/cuda-repo-ubuntu******.deb #copy here the link obtained above
 
-# installing CUDA
-sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
+# installing debian package for CUDA
+sudo dpkg -i cuda-repo-ubuntu***************.deb
 
 sudo apt-get update
 sudo apt-get install cuda
 
 # setting the environment variables so CUDA will be found
-echo -e "\nexport PATH=/usr/local/cuda/bin:$PATH" >> .bashrc
-echo -e "\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64" >> .bashrc
+echo -e "\nexport PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}} " >> .bashrc
+echo -e "\nexport LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> .bashrc
 ```
 
 You can test the installation is okay by executing :
 ```bash
 root@machine: apt-show-versions cuda
-**cuda:amd64/unknown 7.5-18 uptodate**
+**cuda:amd64/unknown 8.0-** uptodate**
 
 root@machine: cat /proc/driver/nvidia/version
-NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.99  Mon Jul  4 23:52:14 PDT 2016
-GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  ***.**  ************************
+GCC version:  gcc version *.*.* (Ubuntu ****************)
 ```
 
 Now close your shell or the SSH connection and re-open it.
 
 ```bash
 # installing the samples and checking the GPU
-cuda-install-samples-7.5.sh ~/
-cd NVIDIA\_CUDA-7.5\_Samples/1\_Utilities/deviceQuery  
-make  
-./deviceQuery
+cd /usr/local/cuda-8.0/samples/5_Simulations/nbody
+sudo make
+./nbody
 ```
 
-If no error shows up, CUDA is successfully installed.
+If successful, a new window will popup running n-body simulation.
 
-##### C. Installing CuDNN
+---
+
+### C. Installing CuDNN
 
 To further speed up deep learning relevant calculations it is a good idea to set up the cuDNN library. For that purpose you will have to get an NVIDIA developer account and join the CUDA registered developer program. The last step requires NVIDIA to unlock your account  and that might take one or two days. But you can get started also without cuDNN library. As soon as you have the okay from them – [download cuDNN](https://developer.nvidia.com/cuDNN/){:target="\_blank"} and upload it to your instance.
 
 ```bash
 cd ~
-wget http://developer.download.nvidia.com/*********************************************/cudnn-7.5-linux-x64-v5.0-ga.tgz
+wget http://developer.download.nvidia.com/*********************************************/cudnn-*.*-linux-x64-*******.tgz
 
 # unpack the library
-tar -zxvf cudnn-7.5-linux-x64-v5.0-ga.tgz
+tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz
 
-sudo cp cuda/include/cudnn.h /usr/local/cuda-7.5/include
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda-7.5/lib64
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
+
+---
+
+### D. Conclusion
+
+Now you have a fully set up instance with all the necessary libraries to install the required deep learning libraries.
+You can continue with the next steps:
+
+* [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
+* [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
+* [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
+* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)

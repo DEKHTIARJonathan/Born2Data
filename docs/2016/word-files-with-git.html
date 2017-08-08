@@ -52,6 +52,7 @@
         <meta name="tags" content="Agile">
         <meta name="tags" content="DOC">
         <meta name="tags" content="DOCX">
+        <meta name="tags" content="Office">
 
 	                <meta property="og:locale" content="">
 		<meta property="og:site_name" content="Born2Data">
@@ -113,7 +114,7 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-lg-12">
                     <div class="post-heading">
-                        <h1>How to deal with Word Files in Git Systems</h1>
+                            <h1>How to deal with Word Files in Git Systems</h1>
                         <h3 class="subheading">Setting up a diff tool to manipulate Word Files : Rakali.</h3>
                         <span class="meta">Posted by
                                 <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
@@ -132,50 +133,50 @@
             <div class="col-lg-12 col-md-12 col-xs-12">
     <!-- Post Content -->
     <article>
-        <h1>How to deal with Word Files in Git Systems</h1>
-<h3>Setting up a diff tool to manipulate Word Files : Rakali.</h3>
+        <h1 id="how-to-deal-with-word-files-in-git-systems">How to deal with Word Files in Git Systems</h1>
+<h3 id="setting-up-a-diff-tool-to-manipulate-word-files-rakali">Setting up a diff tool to manipulate Word Files : Rakali.</h3>
 <hr>
 <p>I'd like first of all to acknowledge <a href="http://blog.martinfenner.org/about.html" target="_blank">Martin Fenner</a> for the method and the development.<br>
 You can find extended blog post about this here : <a href="http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/" target="_blank">link</a></p>
 <p>So let’s get to businesss !</p>
-<h3>Prerequisites</h3>
+<h3 id="prerequisites">Prerequisites</h3>
 <p>In order to be able to parse <em>doc</em> and <em>docx</em> file in Git you will need to install the following tools.</p>
-<h4>1. If it’s not done yet, you should install <strong>git</strong>:</h4>
+<h4 id="1-if-its-not-done-yet-you-should-install-git">1. If it’s not done yet, you should install <strong>git</strong>:</h4>
 <p>Click on this link to download and install: <a href="https://git-scm.com/downloads" target="_blank"><strong>git-scm.com</strong></a></p>
-<h4>2. For the next phase of the tutorial, you will need to install <strong>ruby</strong>:</h4>
-<h5>2.1. Debian or Ubuntu:</h5>
+<h4 id="2-for-the-next-phase-of-the-tutorial-you-will-need-to-install-ruby">2. For the next phase of the tutorial, you will need to install <strong>ruby</strong>:</h4>
+<h5 id="21-debian-or-ubuntu">2.1. Debian or Ubuntu:</h5>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get install ruby-full</span>
 </pre></div>
 
 
-<h5>2.2. CentOS, Fedora, or RHEL:</h5>
+<h5 id="22-centos-fedora-or-rhel">2.2. CentOS, Fedora, or RHEL:</h5>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo yum install ruby</span>
 </pre></div>
 
 
-<h5>2.3. Mac OS X :</h5>
-<h6>2.3.1 Install Homebrew:</h6>
+<h5 id="23-mac-os-x">2.3. Mac OS X :</h5>
+<h6 id="231-install-homebrew">2.3.1 Install Homebrew:</h6>
 <p>Click on this link to download and install: <a href="http://brew.sh/" target="_blank"><strong>brew.sh</strong></a>    </p>
-<h6>2.3.2 Then Install Ruby:</h6>
+<h6 id="232-then-install-ruby">2.3.2 Then Install Ruby:</h6>
 <div class="highlight"><pre><span class="code-line"><span></span>brew install ruby</span>
 </pre></div>
 
 
-<h4>3.  Then install Rakali:</h4>
+<h4 id="3-then-install-rakali">3.  Then install Rakali:</h4>
 <p>You may find all the information you need on the official <a href="https://github.com/rakali/rakali.rb" target="_blank">Github Repository</a></p>
 <div class="highlight"><pre><span class="code-line"><span></span>gem install rakali</span>
 </pre></div>
 
 
-<h4>4.  Create two files in your git project’s root folder :</h4>
-<h5>4.1. Create, at the git project root folder, the file: <strong>".gitattributes"</strong></h5>
+<h4 id="4-create-two-files-in-your-git-projects-root-folder">4.  Create two files in your git project’s root folder :</h4>
+<h5 id="41-create-at-the-git-project-root-folder-the-file-gitattributes">4.1. Create, at the git project root folder, the file: <strong>".gitattributes"</strong></h5>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c"># .gitattributes file in root folder of your git project</span></span>
 <span class="code-line">*.docx <span class="nv">diff</span><span class="o">=</span>pandoc</span>
 <span class="code-line">*.doc <span class="nv">diff</span><span class="o">=</span>pandoc</span>
 </pre></div>
 
 
-<h5>4.2. Create, at the git project root folder, the file:  <strong>".gitconfig"</strong></h5>
+<h5 id="42-create-at-the-git-project-root-folder-the-file-gitconfig">4.2. Create, at the git project root folder, the file:  <strong>".gitconfig"</strong></h5>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c"># .gitconfig file in your home folder</span></span>
 <span class="code-line"><span class="o">[</span>diff <span class="s2">&quot;pandoc&quot;</span><span class="o">]</span> #we <span class="nb">declare</span> the diff tool</span>
 <span class="code-line"><span class="nv">textconv</span><span class="o">=</span>pandoc --to<span class="o">=</span>markdown</span>
@@ -185,12 +186,12 @@ You can find extended blog post about this here : <a href="http://blog.martinfen
 </pre></div>
 
 
-<h4>5.  Commit the two files and you’re done. Enjoy !</h4>
+<h4 id="5-commit-the-two-files-and-youre-done-enjoy">5.  Commit the two files and you’re done. Enjoy !</h4>
     </article>
 
 
 	<div>
-<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/agile.html">Agile</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/git.html">Git&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/word.html">Word&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/versioning.html">Versioning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/agile.html">Agile&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/doc.html">DOC&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/docx.html">DOCX&nbsp;</a></span> 	</div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/agile.html">Agile</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/git.html">Git&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/word.html">Word&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/versioning.html">Versioning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/agile.html">Agile&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/doc.html">DOC&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/docx.html">DOCX&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/office.html">Office&nbsp;</a></span> 	</div>
 
 <hr>
 <div class="sharing">

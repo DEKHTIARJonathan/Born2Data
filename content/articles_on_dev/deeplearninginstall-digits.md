@@ -18,8 +18,6 @@ Headline: Deep Learning Tutorial: How to install DIGITS
 **Feel free to share and spread the word if you liked the article**
 
 
-
-
 ---
 ##### A. NVIDIA Drivers:
 First of all, if you don't have installed or updated the driver of your NVIDIA Graphic Card, please download and install the driver: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}

@@ -1,200 +1,235 @@
-Title: Deep Learning Installation Tutorial - Part 2 - Caffe and DIGITS
-Date: 2016-10-13 10:15
+Title: Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Theano
+HeadTitle: Deep Learning Installation Tutorial - Part 2
+Date: 2017-05-13 10:15
 Category: Deep Learning
-Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, Caffe, DIGITS, NVIDIA
+Tags: Deep Learning, Python, Tutorial, Installation, Machine Learning, Caffe, TensorFlow, Theano, Tensor, NumPy
 Slug: deeplearning_install-part2
 Author: Jonathan DEKHTIAR
-Headline: How to install Caffe and DIGITS
+Headline: How to install Caffe, Tensorflow and Theano
 
 # Deep Learning Installation Tutorial - Index
 
-Hello everyone, here is a tutorial to quickly install main Deep Learning libraries and set up a complete environment.
+Dear fellow deep learner, here is a tutorial to quickly install some of the major Deep Learning libraries and set up a complete development environment.
 
-* [**Part 1 :** Installation - Nvidia Drivers, CUDA, CuDNN](/2016/deeplearning_install-part1.html)
-* [**Part 2 :** Installation - Caffe and DIGITS](/2016/deeplearning_install-part2.html)
-* [**Part 3 :** Installation - Tensorflow and Theano (coming soon)](#)
-* [**Part 4 :** Installation - Keras and Lasagne (coming soon)](#)
-* [**Part 5 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
+* [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
+* [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
+* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
 
 ---
 
-# Deep Learning Installation Tutorial - Part 2 - NVIDIA DIGITS & CAFFE
+# Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Keras
 
-There are a few major libraries for Deep Learning applications available – Caffe, Keras, TensorFlow, Theano, and Torch.
-These libraries use GPU Computation power to speed up training which can be very long on CPU (+/- 40days for a ConvNet for the ImageNet Dataset).
+There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
+These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).
 
-NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only well and broadly supported hardware.
+NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
 
 In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.
 
 A few useful links :
 
-* **CUDA:** <https://developer.nvidia.com/cuda-zone>
-* **CuDNN:** <https://developer.nvidia.com/cudnn>
-* **Caffe:** <http://caffe.berkeleyvision.org/>
-* **DIGITS:** <https://developer.nvidia.com/digits>
-* **Tensorflow:** <https://www.tensorflow.org/>
-* **Theano:** <http://deeplearning.net/software/theano/index.html>
-* **Keras:** <https://keras.io/>
-* **Lasagne:** <http://lasagne.readthedocs.io/en/latest/>
-* **Docker:** <https://www.docker.com/>
-* **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker>
+* **NVIDIA Drivers and Libraries:**
+    * **CUDA :** <https://developer.nvidia.com/cuda-zone>
+    * **CuDNN :** <https://developer.nvidia.com/cudnn><br><br>
+* **Deep Learning Libraries and Frameworks:**
+    * **Caffe:** <http://caffe.berkeleyvision.org>
+    * **Caffe2:** <https://caffe2.ai>
+    * **Microsoft Cognitive Toolkit:** <https://www.microsoft.com/en-us/cognitive-toolkit>
+    * **DeepLearning4J:**  <https://deeplearning4j.org>
+    * **Keras:** <https://keras.io/>
+    * **Lasagne:** <http://lasagne.readthedocs.io/en/latest>
+    * **MxNet:** <http://mxnet.io>
+    * **PyTorch:** <http://pytorch.org/>
+    * **Tensorflow:** <https://www.tensorflow.org/>
+    * **Theano:** <http://deeplearning.net/software/theano>
+    * **Torch:** <http://torch.ch><br><br>
+* **Development Environments:**
+    * **Apache Singa:** <http://singa.apache.org>
+    * **DeepForge:** <https://github.com/deepforge-dev/deepforge>
+    * **Digits:** <https://developer.nvidia.com/digits>
+    * **Polyaxon:** <https://github.com/polyaxon/polyaxon><br><br>
+* **Virtualisation Platforms:**
+    * **Docker:** <https://www.docker.com>
+    * **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker><br><br>
 
-In this post, we will install:
+---
+
+In this post, we will install the following libraries:
 
 * **Caffe:** "Caffe is a deep learning framework made with expression, speed, and modularity in mind." ([Source](http://caffe.berkeleyvision.org/))
-* **DIGITS:**
+* **Tensorflow:** "TensorFlow is an open source software library for numerical computation using data flow graphs." ([Source](http://deeplearning.net/software/theano/))
+* **Theano:** "Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently with a tight integration with NumPy" ([Source](http://deeplearning.net/software/theano/))
 
 ---
 
 ### A. Installing Caffe
 
-Main source for this and the following step is the [readme of the DIGITS project](https://github.com/NVIDIA/DIGITS/blob/master/README.md){:target="\_blank"}.
+Caffe is one of the main deep learning libraries for visual data analysis, and it was the first library I learned to train deep neural networks. Fast and reliable, working on android, I really appreciate using this library.
 
-If a 404 error shows up, please correct the file name according to this webpage : [NVIDIA Binaries](http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64){:target="\_blank"}
+In July 2017, Caffe is compiled to use Cuda Toolkit 8.0, cuDNN 5.1 and OpenCV 2 or 3.
 
-Run the following commands to get access to the required repositories:
-```bash
-CUDA_REPO_PKG=cuda-repo-ubuntu1404_7.5-18_amd64.deb &&
-    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG &&
-    sudo dpkg -i $CUDA_REPO_PKG
-
-ML_REPO_PKG=nvidia-machine-learning-repo-ubuntu1404_4.0-2_amd64.deb &&
-    wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64/$ML_REPO_PKG &&
-    sudo dpkg -i $ML_REPO_PKG
-```
-
----
-
-### B. Let's install DIGITS from package manager
-
-NVIDIA DIGITS is a web server providing a convenient web interface for training and testing Deep Neural Networks based on caffe. I intend to cover in a future article how to work with caffe. Here I will show you how to set up CUDA
-
-Run the following commands to install DIGITS
-
+First, we need to make sure the system is up to date:
 ```bash
 sudo apt-get update
-sudo apt-get upgrade -y 
-sudo apt-get install digits -y
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 ```
 
-The installation could be pretty long (I had more than 600Mb of packages to download).
-
-#### CUDA repository
-
-Get access to machine learning packages from NVIDIA by downloading and installing the cuda-repo-ubuntu1404 package (instructions above). You could also get this package by downloading the deb (network) installer from the CUDA downloads website. This provides access to the repository containing packages like cuda-toolkit-7-5 and cuda-toolkit-7-0, etc.
-
-#### Machine Learning repository
-
-Get access to machine learning packages from NVIDIA by downloading and installing the nvidia-machine-learning-repo package (instructions above). This provides access to the repository containing packages like digits, caffe-nv, torch, libcudnn4, etc.
-
-#### DIGITS Commands
-
-##### STOP SERVER
+Then, we want to install the dependencies:
 
 ```bash
-sudo stop nvidia-digits-server
+sudo apt-get install -y gcc g++ gfortran cmake build-essential linux-image-generic
+sudo apt-get install -y git wget pkg-config
+
+sudo apt-get install -y   
+sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler llibopencv-dev
+sudo apt-get install -y --no-install-recommends libboost-all-dev
+sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev libblas-dev libatlas-base-dev libopenblas-dev
+
+# (Python 2.7 development files)
+sudo apt-get install -y python-dev
+sudo apt-get install -y python-pip
+sudo apt-get install -y python-nose python-numpy python-scipy
+
+# (or, Python 3.5 development files)
+sudo apt-get install -y python3-dev
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python3-nose python3-numpy python3-scipy
 ```
 
-##### START SERVER
-
 ```bash
-sudo start nvidia-digits-server
+# Python2
+sudo pip install numpy scipy scikit-learn protobuf
+
+# Python3
+sudo pip3 install numpy scipy scikit-learn protobuf
 ```
 
-##### Troubleshooting
-
-If you have another server running on port 80 already, you may need to reconfigure DIGITS to use a different port.
-
+Then we need the Python Package **CUDAMat**:
 ```bash
-sudo dpkg-reconfigure digits
+git clone https://github.com/cudamat/cudamat
+cd cudamat
+
+# Python2
+python setup.py build
+sudo python setup.py install
+
+# Python3
+python3 setup.py build
+sudo python3 setup.py install
 ```
 
-To make other configuration changes, try this (you probably want to leave most options as "unset" or "default" by hitting ENTER repeatedly):
+**For AWS Users:** You will need to disable the camera driver or the computer will complain while working with images:
+```bash
+sudo ln /dev/null /dev/raw1394
+```
+
+**Now, we are ready to install Caffe:**
 
 ```bash
-cd /usr/share/digits
-# set new config
-sudo python -m digits.config.edit -v
-# restart server
-sudo stop nvidia-digits-server
-sudo start nvidia-digits-server
+cd ..
+git clone https://github.com/BVLC/caffe.git
+cd caffe
+cp Makefile.config.example Makefile.config
+make all
+make test
+make runtest
+make pycaffe
+```
+
+Let us check that the installation is correct:
+```bash
+make pycaffe
+```
+
+Now, we need to compile the pycaffe library:
+```bash
+echo -e "\nexport PYTHONPATH=/path/to/caffe/python:$PYTHONPATH" >> .bashrc
+```
+
+You can now test your caffe installation:
+
+```bash
+python
+>>> import caffe
 ```
 
 ---
 
-### C. Let's install DIGITS from sources
+### B. Installing TensorFlow
 
-#### Prerequisites
-Run the following commands to install Prerequisites
+TensorFlow is one of the most supported library for deep learning applications and research. A low-level library which is extremely flexible when you need to access low-level features and precisely your models.
 
+It is also one of the easiest library to install:
+
+**CPU-Only Installation:**
 ```bash
-sudo apt-get install python-dev python-pip graphviz -y
-sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler -y
-sudo apt-get install --no-install-recommends libboost-all-dev -y
-sudo apt-get install libatlas-base-dev -y
-sudo apt-get install python-dev -y
+# Python2
+sudo pip install tensorflow
+
+# Python3
+sudo pip3 install tensorflow
 ```
 
-#### Download DIGITS' Sources
-
+**GPU-Enabled Installation:**
 ```bash
-cd ~
-git clone https://github.com/NVIDIA/DIGITS.git digits
+# Python2
+sudo pip install tensorflow-gpu
+
+# Python3
+sudo pip3 install tensorflow-gpu
 ```
 
-#### Install DIGITS
-
+Let us try the installation:
 ```bash
-cd ~/digits
-sudo pip install -r requirements.txt
-sudo apt-get install python-pil python-numpy python-scipy python-protobuf python-gevent python-flask python-flaskext.wtf gunicorn python-h5py
-sudo apt-get install caffe-nv python-caffe-nv # or build from sources
-sudo apt-get install torch7-nv # or build from sources
+python
+>>> import tensorflow as tf
+>>> hello = tf.constant('Hello, TensorFlow!')
+>>> sess = tf.Session()
+>>> sess.run(hello)
+'Hello, TensorFlow!'
+>>> a = tf.constant(10)
+>>> b = tf.constant(32)
+>>> sess.run(a + b)
+42
 ```
 
-#### Development mode
+---
+
+### C. Installing Theano
+
+Theano is great library that allows you to manage your data in a very similar way that NumPy does, which is very pratical for long time python users.
+
+This library is also quite easy to install:
 
 ```bash
-./digits-devserver
+# Python2
+sudo pip install Theano
+
+# Python3
+sudo pip3 install Theano
 ```
 
-Starts a development server (werkzeug backend) at http://localhost:5000/.
-
+Let us try the installation:
 ```bash
-$ ./digits-devserver --help
-usage: digits-devserver [-h] [-p PORT] [-c] [-d] [--version]
-
-Run the DIGITS development server
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -p PORT, --port PORT  Port to run app on (default 5000)
-  -c, --config          Edit the application configuration
-  -d, --debug           Run the application in debug mode (reloads when the
-                        source changes and gives more detailed error messages)
-  --version             Print the version number and exit
+python
+>>> from theano import tensor as T, function, printing
+>>> x = T.dvector()
+>>> hello_world_op = printing.Print('hello world')
+>>> printed_x = hello_world_op(x)
+>>> f = function([x], printed_x)
+>>> r = f([1, 2, 3])
+hello world __str__ = [ 1.  2.  3.]
 ```
 
-#### Production mode
+---
 
-```bash
-./digits-server
-```
+### D. Conclusion
 
-Starts a production server (gunicorn backend) at http://localhost:34448.
+We have now installed Caffe, TensorFlow and Theano. You can try to explore many of the available ressources online or keep installing the other libraries.
 
-If you get any errors about an invalid configuration, use the development server first to set your configuration.
-
-If you have installed the nginx.site to /etc/nginx/sites-enabled/, then you can view your app at http://localhost/.
-
-#### Troubleshooting
-
-Most configuration options should have appropriate defaults. If you need to edit your configuration for some reason, try one of these commands:
-
-```bash
-# Set options before starting the server
-./digits-devserver --config
-# Advanced options
-python -m digits.config.edit --verbose
-```
+* [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
+* [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
+* [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
+* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)

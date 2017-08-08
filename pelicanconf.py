@@ -26,10 +26,14 @@ PLUGINS = [
     'feed_summary',
     ]
 	
-MD_EXTENSIONS = [
-    'codehilite(css_class=highlight,linenums=False)',
-    'extra'
-    ]
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.headerid': {},
+        'markdown.extensions.extra': {},
+    },
+    'output_format': 'html5',
+}
 	
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
