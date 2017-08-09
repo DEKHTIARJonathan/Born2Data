@@ -14,7 +14,7 @@ Hello everyone, here is a tutorial to quickly install main Deep Learning librari
 * [**Part 2 :** Installation - Caffe and DIGITS](/2016/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - Tensorflow and Theano (coming soon)](#)
 * [**Part 4 :** Installation - Keras and Lasagne (coming soon)](#)
-* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
 
 ---
 
@@ -38,7 +38,7 @@ A few useful links :
 * **Keras:** <https://keras.io/>
 * **Lasagne:** <http://lasagne.readthedocs.io/en/latest/>
 * **Docker:** <https://www.docker.com/>
-* **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker>
+* **Nvidia-Docker:** <https://github.com/NVIDIA/nvidia-docker>
 
 In this post, we will install:
 

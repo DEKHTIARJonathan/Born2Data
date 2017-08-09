@@ -142,7 +142,7 @@
 <li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
 <li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
 <li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
-<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - Docker for Deep Learning (coming soon)</a></li>
 </ul>
 <hr>
 <h1 id="deep-learning-installation-tutorial-part-1-nvidia-drivers-cuda-cudnn">Deep Learning Installation Tutorial - Part 1 - Nvidia Drivers, CUDA, CuDNN</h1>
@@ -180,7 +180,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 </li>
 <li><strong>Virtualisation Platforms:</strong><ul>
 <li><strong>Docker:</strong> <a href="https://www.docker.com">https://www.docker.com</a></li>
-<li><strong>NVIDIA-DOCKER:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
+<li><strong>Nvidia-Docker:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
 </ul>
 </li>
 </ul>
@@ -231,7 +231,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 
 
 <p><strong>Linux Newbie Advice:</strong>
-<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="height: 200px;"></center></p>
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="max-height: 200px;"></center></p>
 <p>Disable the nouveau kernel by typing the following commands:</p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> options nouveau <span class="nv">modeset</span><span class="o">=</span><span class="m">0</span> <span class="p">|</span> sudo tee -a /etc/modprobe.d/nouveau-kms.conf</span>
 <span class="code-line">sudo update-initramfs -u</span>
@@ -239,7 +239,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 
 
 <p>Now, you need to search for the latest NVIDIA driver specific for your graphic card and your system. Please select <strong>Linux 64-bit</strong> for your operating system. You can find it on the official website: <a href="http://www.nvidia.com/Download/index.aspx" target="_blank">nvidia's website</a></p>
-<p><center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="height: 200px;"></center></p>
+<p><center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="max-height: 200px;"></center></p>
 <p>Execute the following commands to install the NVIDIA Drivers.</p>
 <div class="highlight"><pre><span class="code-line"><span></span>wget http://us.download.nvidia.com/**********/NVIDIA-Linux******************.run <span class="c1">## Copy here the link you have copied</span></span>
 <span class="code-line">chmod +x NVIDIA-Linux******************.run</span>
@@ -305,7 +305,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 <p>Nowadays, in July 2017, CUDA 8.0 and cuDNN 5.1 are the latest supported libraries, however it can rapidly change. You definitely should check if these information are still revelant at the time you are using this tutorial. The version of CUDA and cuDNN you need to choose mostly depends on the deep learning library you are planning to use. Check the official documentations for further details.</p>
 <p>I will assume that you need CUDA 8.0 and cuDNN 5.1 for this tutorial, feel free to adapt and explore.</p>
 <p>You will need to open the following webpage and copy the library download link: <a href="https://developer.nvidia.com/cuda-downloads">nvidia cuda download</a></p>
-<p><center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="height: 400px;"></center></p>
+<p><center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="max-height: 400px;"></center></p>
 <p>Main source for this step is <a href="http://markus.com/install-theano-on-aws/" target="_blank">Markus Beissinger’s blog post</a> on setting up Theano.</p>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get install -y gcc g++ gfortran build-essential <span class="se">\</span></span>
 <span class="code-line">  git wget linux-image-generic libopenblas-dev python-dev <span class="se">\</span></span>
@@ -368,7 +368,7 @@ You can continue with the next steps:</p>
 <li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
 <li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
 <li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
-<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - Docker for Deep Learning (coming soon)</a></li>
 </ul>
     </article>
 

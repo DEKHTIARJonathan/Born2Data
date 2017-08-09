@@ -14,7 +14,7 @@ Dear fellow deep learner, here is a tutorial to quickly install some of the majo
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
 
 ---
 
@@ -51,7 +51,7 @@ A few useful links :
     * **Polyaxon:** <https://github.com/polyaxon/polyaxon><br><br>
 * **Virtualisation Platforms:**
     * **Docker:** <https://www.docker.com>
-    * **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker><br><br>
+    * **Nvidia-Docker:** <https://github.com/NVIDIA/nvidia-docker><br><br>
 
 ---
 
@@ -210,17 +210,18 @@ python
 By default, Keras use Tensorflow as backend, if you prefer it can use CNTK or Theano.
 
 ```python
+import os, importlib
 from keras import backend as K
-import os
 
 def set_keras_backend(backend):
 
     if K.backend() != backend:
         os.environ['KERAS_BACKEND'] = backend
-        reload(K)
+        importlib.reload(K)
         assert K.backend() == backend
 
 set_keras_backend("theano")
+set_keras_backend("tensorflow")
 set_keras_backend("cntk")
 ```
 
@@ -234,7 +235,7 @@ This library is also quite easy to install:
 
 I recommend using the official install command generator available on the [official website](http://pytorch.org/).
 
-<center><img alt="pyTorch installation" src="/images/deeplearning_install-part3/pyTorch.png" style="height: 250px;"></center>
+<center><img alt="pyTorch installation" src="/images/deeplearning_install-part3/pyTorch.png" style="max-height: 250px;"></center>
 
 ```bash
 # Python 2.7
@@ -274,4 +275,4 @@ We have now installed CNTK, Keras and PyTorch. You can try to explore many of th
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)

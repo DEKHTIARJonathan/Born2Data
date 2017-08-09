@@ -14,7 +14,7 @@ Dear fellow deep learner, here is a tutorial to quickly install some of the majo
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
 
 ---
 
@@ -51,7 +51,7 @@ A few useful links :
     * **Polyaxon:** <https://github.com/polyaxon/polyaxon><br><br>
 * **Virtualisation Platforms:**
     * **Docker:** <https://www.docker.com>
-    * **NVIDIA-DOCKER:** <https://github.com/NVIDIA/nvidia-docker><br><br>
+    * **Nvidia-Docker:** <https://github.com/NVIDIA/nvidia-docker><br><br>
 
 ---
 
@@ -111,7 +111,7 @@ alias lbm-nouveau off
 ```
 
 **Linux Newbie Advice:**
-<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="height: 200px;"></center>
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/vim_meme.png" style="max-height: 200px;"></center>
 
 Disable the nouveau kernel by typing the following commands:
 
@@ -122,7 +122,7 @@ sudo update-initramfs -u
 
 Now, you need to search for the latest NVIDIA driver specific for your graphic card and your system. Please select **Linux 64-bit** for your operating system. You can find it on the official website: [nvidia's website](http://www.nvidia.com/Download/index.aspx){:target="\_blank"}
 
-<center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="height: 200px;"></center>
+<center><img alt="nvidia_driver" src="/images/deeplearning_install-part1/nvidia_driver.png" style="max-height: 200px;"></center>
 
 Execute the following commands to install the NVIDIA Drivers.
 
@@ -196,7 +196,7 @@ I will assume that you need CUDA 8.0 and cuDNN 5.1 for this tutorial, feel free 
 
 You will need to open the following webpage and copy the library download link: [nvidia cuda download](https://developer.nvidia.com/cuda-downloads)
 
-<center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="height: 400px;"></center>
+<center><img alt="vim_meme" src="/images/deeplearning_install-part1/cuda_library.png" style="max-height: 400px;"></center>
 
 Main source for this step is [Markus Beissinger’s blog post](http://markus.com/install-theano-on-aws/){:target="\_blank"} on setting up Theano.
 
@@ -268,4 +268,4 @@ You can continue with the next steps:
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - (Nvidia) Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)

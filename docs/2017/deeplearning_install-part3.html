@@ -140,7 +140,7 @@
 <li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
 <li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
 <li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
-<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - Docker for Deep Learning (coming soon)</a></li>
 </ul>
 <hr>
 <h1 id="deep-learning-installation-tutorial-part-3-cntk-keras-and-pytorch">Deep Learning Installation Tutorial - Part 3 - CNTK, Keras and PyTorch</h1>
@@ -178,7 +178,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 </li>
 <li><strong>Virtualisation Platforms:</strong><ul>
 <li><strong>Docker:</strong> <a href="https://www.docker.com">https://www.docker.com</a></li>
-<li><strong>NVIDIA-DOCKER:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
+<li><strong>Nvidia-Docker:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
 </ul>
 </li>
 </ul>
@@ -325,17 +325,18 @@ These libraries use GPU computation power to speed up deep neural networks train
 
 <p><strong>Change the Keras Backend:</strong></p>
 <p>By default, Keras use Tensorflow as backend, if you prefer it can use CNTK or Theano.</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span></span>
-<span class="code-line"><span class="kn">import</span> <span class="nn">os</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">importlib</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="k">def</span> <span class="nf">set_keras_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span></span>
 <span class="code-line"></span>
 <span class="code-line">    <span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">backend</span><span class="p">()</span> <span class="o">!=</span> <span class="n">backend</span><span class="p">:</span></span>
 <span class="code-line">        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KERAS_BACKEND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">backend</span></span>
-<span class="code-line">        <span class="nb">reload</span><span class="p">(</span><span class="n">K</span><span class="p">)</span></span>
+<span class="code-line">        <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">K</span><span class="p">)</span></span>
 <span class="code-line">        <span class="k">assert</span> <span class="n">K</span><span class="o">.</span><span class="n">backend</span><span class="p">()</span> <span class="o">==</span> <span class="n">backend</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="n">set_keras_backend</span><span class="p">(</span><span class="s2">&quot;theano&quot;</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">set_keras_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span></span>
 <span class="code-line"><span class="n">set_keras_backend</span><span class="p">(</span><span class="s2">&quot;cntk&quot;</span><span class="p">)</span></span>
 </pre></div>
 
@@ -345,7 +346,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 <p>PyTorch is a deep learning framework that puts Python first.</p>
 <p>This library is also quite easy to install:</p>
 <p>I recommend using the official install command generator available on the <a href="http://pytorch.org/">official website</a>.</p>
-<p><center><img alt="pyTorch installation" src="/images/deeplearning_install-part3/pyTorch.png" style="height: 250px;"></center></p>
+<p><center><img alt="pyTorch installation" src="/images/deeplearning_install-part3/pyTorch.png" style="max-height: 250px;"></center></p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># Python 2.7</span></span>
 <span class="code-line">pip install http://download.pytorch.org/whl/cu80/torch-0.2.0.post1-cp27-cp27m-manylinux1_x86_64.whl</span>
 <span class="code-line">pip install torchvision</span>
@@ -382,7 +383,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 <li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
 <li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
 <li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
-<li><a href="#"><strong>Part 4 :</strong> Installation - (Nvidia) Docker for Deep Learning (coming soon)</a></li>
+<li><a href="#"><strong>Part 4 :</strong> Installation - Docker for Deep Learning (coming soon)</a></li>
 </ul>
     </article>
 
