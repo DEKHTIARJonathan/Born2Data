@@ -134,8 +134,8 @@ If you correctly see this message, everything is fine and you are ready to insta
 * `docker stop ALIAS` : Stop a container based on its alias (available through `docker ls`).
 * `docker rm CONTAINER_ID` : Delete a container based on its container_id (available through `docker ls`).
 * `docker rm ALIAS` : Delete a container based on its alias (available through `docker ls`).
-* `docker attach -it CONTAINER_ID bash` : Create an SSH session into a running container based on its container_id (available through `docker ls`).
-* `docker attach -it ALIAS bash` : Create an SSH session into a running container based on its alias (available through `docker ls`).
+* `docker exec -it CONTAINER_ID bash` : Create an SSH session into a running container based on its container_id (available through `docker ls`).
+* `docker exec -it ALIAS bash` : Create an SSH session into a running container based on its alias (available through `docker ls`).
 
 ---
 
