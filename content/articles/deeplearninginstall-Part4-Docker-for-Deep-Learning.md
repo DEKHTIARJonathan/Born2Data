@@ -185,7 +185,7 @@ We can now start using docker quickly deploy containers with all the necessary l
 <span></span>
 #### C.1 Docker ❤️ Nvidia Digits
 
-Nvidia a system called Digits to quickly prototype and launch deep learning models.
+Nvidia developed a system called Digits to quickly prototype and launch deep learning models.
 Of course, we can simply run this platform using nvidia-docker.
 
 ```bash
