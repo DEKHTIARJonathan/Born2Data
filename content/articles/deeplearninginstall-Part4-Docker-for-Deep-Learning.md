@@ -217,40 +217,30 @@ Open now : <https://server-ip:8888>
 <center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center>
 
 <span></span>
-#### C.2 Docker ❤️ Every Deep Learning Libraries
+#### C.2 Docker ❤️ Keras with Tensorflow, Theano and CNTK
 
-You don't know what to install but you would love to install something ? There's a container for this: **All-in-one Docker image for Deep Learning**
-
-The following has been installed:
-
-* Tensorflow
-* Caffe
-* Theano
-* Keras
-* Lasagne
-* Torch (includes nn, cutorch, cunn and cuDNN bindings)
-* iPython/Jupyter Notebook (including iTorch kernel)
-* Numpy, SciPy, Pandas, Scikit Learn, Matplotlib
-* A few common libraries used for deep learning
+You would like a more higher level API and want to use Tensorflow, Theano or CNTK seemlessly with Keras? The docker image I created will perfectly suit your needs.
 
 ```bash
-# We download the image from the Docker-Hub: https://hub.docker.com/r/gw000/keras/
-docker pull floydhub/dl-docker:gpu_temp
+# We download the image from the Docker-Hub: https://hub.docker.com/r/born2data/docker-keras-full
 
-# Run the image with port 7777 and 6000 open: 7777 => Jupyter Notebook and 6000 => TensorBoard.
-nvidia-docker run -d -p 7777:8888 -p 6000:6006 -v /datafolder/deep_learning/:/root/sharedfolder --name deeplearning_all_in_one floydhub/dl-docker:gpu_temp jupyter notebook
+# With GPU Support
+docker pull born2data/docker-keras-full:gpu
+nvidia-docker run -d -p 8001:8888 -p 6001:6006 -v /datafolder/keras:/srv born2data/docker-keras-full:gpu
 
-nvidia-docker run -it --rm -p 7894:8888 -p 6894:6006 -v /media/drive1/docker/DL_all_in_one/:/root/sharedfolder --name deeplearning_all_in_one floydhub/dl-docker:gpu_temp jupyter notebook
+# Without GPU Support, Only CPU
+docker pull born2data/docker-keras-full
+docker run -d -p 8001:8888 -p 6001:6006 -v /datafolder/keras:/srv born2data/docker-keras-full
 ```
 
-Open now : <https://server-ip:7777>
-<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center>
+Open now : <https://server-ip:8001>
+<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350;"></center>
 
 ---
 
 ### D. Conclusion
 
-We have now installed CNTK, Keras and PyTorch. You can try to explore many of the available ressources online or keep installing the other libraries.
+Docker is a really helpful tool, feel free to explore and install any container available on docker hub: <https://hub.docker.com/>
 
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)

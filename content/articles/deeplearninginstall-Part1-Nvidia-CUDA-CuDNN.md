@@ -14,7 +14,7 @@ Dear fellow deep learner, here is a tutorial to quickly install some of the majo
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning](/2017/deeplearning_install-part4.html)
 
 ---
 
@@ -268,4 +268,4 @@ You can continue with the next steps:
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA and CuDNN](/2017/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe, Tensorflow and Theano](/2017/deeplearning_install-part2.html)
 * [**Part 3 :** Installation - CNTK, Keras and PyTorch](/2017/deeplearning_install-part3.html)
-* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
+* [**Part 4 :** Installation - Docker for Deep Learning](/2017/deeplearning_install-part4.html)

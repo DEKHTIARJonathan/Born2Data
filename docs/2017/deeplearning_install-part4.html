@@ -331,35 +331,25 @@ Of course, we can simply run this platform using nvidia-docker.</p>
 <p>Open now : <a href="https://server-ip:8888">https://server-ip:8888</a>
 <center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center></p>
 <p><span></span></p>
-<h4 id="c2-docker-every-deep-learning-libraries">C.2 Docker ❤️ Every Deep Learning Libraries</h4>
-<p>You don't know what to install but you would love to install something ? There's a container for this: <strong>All-in-one Docker image for Deep Learning</strong></p>
-<p>The following has been installed:</p>
-<ul>
-<li>Tensorflow</li>
-<li>Caffe</li>
-<li>Theano</li>
-<li>Keras</li>
-<li>Lasagne</li>
-<li>Torch (includes nn, cutorch, cunn and cuDNN bindings)</li>
-<li>iPython/Jupyter Notebook (including iTorch kernel)</li>
-<li>Numpy, SciPy, Pandas, Scikit Learn, Matplotlib</li>
-<li>A few common libraries used for deep learning</li>
-</ul>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># We download the image from the Docker-Hub: https://hub.docker.com/r/gw000/keras/</span></span>
-<span class="code-line">docker pull floydhub/dl-docker:gpu_temp</span>
+<h4 id="c2-docker-keras-with-tensorflow-theano-and-cntk">C.2 Docker ❤️ Keras with Tensorflow, Theano and CNTK</h4>
+<p>You would like a more higher level API and want to use Tensorflow, Theano or CNTK seemlessly with Keras? The docker image I created will perfectly suit your needs.</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># We download the image from the Docker-Hub: https://hub.docker.com/r/born2data/docker-keras-full</span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="c1"># Run the image with port 7777 and 6000 open: 7777 =&gt; Jupyter Notebook and 6000 =&gt; TensorBoard.</span></span>
-<span class="code-line">nvidia-docker run -d -p <span class="m">7777</span>:8888 -p <span class="m">6000</span>:6006 -v /datafolder/deep_learning/:/root/sharedfolder --name deeplearning_all_in_one floydhub/dl-docker:gpu_temp jupyter notebook</span>
+<span class="code-line"><span class="c1"># With GPU Support</span></span>
+<span class="code-line">docker pull born2data/docker-keras-full:gpu</span>
+<span class="code-line">nvidia-docker run -d -p <span class="m">8001</span>:8888 -p <span class="m">6001</span>:6006 -v /datafolder/keras:/srv born2data/docker-keras-full:gpu</span>
 <span class="code-line"></span>
-<span class="code-line">nvidia-docker run -it --rm -p <span class="m">7894</span>:8888 -p <span class="m">6894</span>:6006 -v /media/drive1/docker/DL_all_in_one/:/root/sharedfolder --name deeplearning_all_in_one floydhub/dl-docker:gpu_temp jupyter notebook</span>
+<span class="code-line"><span class="c1"># Without GPU Support, Only CPU</span></span>
+<span class="code-line">docker pull born2data/docker-keras-full</span>
+<span class="code-line">docker run -d -p <span class="m">8001</span>:8888 -p <span class="m">6001</span>:6006 -v /datafolder/keras:/srv born2data/docker-keras-full</span>
 </pre></div>
 
 
-<p>Open now : <a href="https://server-ip:7777">https://server-ip:7777</a>
-<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center></p>
+<p>Open now : <a href="https://server-ip:8001">https://server-ip:8001</a>
+<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350;"></center></p>
 <hr>
 <h3 id="d-conclusion">D. Conclusion</h3>
-<p>We have now installed CNTK, Keras and PyTorch. You can try to explore many of the available ressources online or keep installing the other libraries.</p>
+<p>Docker is a really helpful tool, feel free to explore and install any container available on docker hub: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
 <ul>
 <li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
 <li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>

@@ -12,9 +12,9 @@ Hello everyone, here is a tutorial to quickly install main Deep Learning librari
 
 * [**Part 1 :** Installation - Nvidia Drivers, CUDA, CuDNN](/2016/deeplearning_install-part1.html)
 * [**Part 2 :** Installation - Caffe and DIGITS](/2016/deeplearning_install-part2.html)
-* [**Part 3 :** Installation - Tensorflow and Theano (coming soon)](#)
-* [**Part 4 :** Installation - Keras and Lasagne (coming soon)](#)
-* [**Part 4 :** Installation - Docker for Deep Learning (coming soon)](#)
+* [**Part 3 :** Installation - Tensorflow and Theano](#)
+* [**Part 4 :** Installation - Keras and Lasagne](#)
+* [**Part 4 :** Installation - Docker for Deep Learning](/2017/deeplearning_install-part4.html)
 
 ---
 
