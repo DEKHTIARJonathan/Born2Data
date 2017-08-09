@@ -44,7 +44,7 @@
 
         <meta name="description" content="How to install Docker for Deep Learning">
 
-        <meta property="article:author" content="https://www.born2data.com/author/jonathan-dekhtiar.html">
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
 
         <meta name="tags" content="Deep Learning">
         <meta name="tags" content="Python">
@@ -98,7 +98,7 @@
                         <li><a href="/">HOME</a></li>
                         <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
                         <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
-                        <li><a href="http://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
                         <li><a href="/pages/contact.html">CONTACT</a></li>
 
                 </ul>
@@ -119,7 +119,7 @@
                         <h3 class="subheading">How to install Docker for Deep Learning</h3>
                         <span class="meta">Posted by
                                 <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
-                             on Wednesday, 2017 August 09
+                             on Wed 09 August 2017
                         </span>
                         
                     </div>
@@ -260,12 +260,12 @@ These libraries use GPU computation power to speed up deep neural networks train
 <li><code>docker stop ALIAS</code> : Stop a container based on its alias (available through <code>docker ls</code>).</li>
 <li><code>docker rm CONTAINER_ID</code> : Delete a container based on its container_id (available through <code>docker ls</code>).</li>
 <li><code>docker rm ALIAS</code> : Delete a container based on its alias (available through <code>docker ls</code>).</li>
-<li><code>docker attach -it CONTAINER_ID bash</code> : Create an SSH session into a running container based on its container_id (available through <code>docker ls</code>).</li>
-<li><code>docker attach -it ALIAS bash</code> : Create an SSH session into a running container based on its alias (available through <code>docker ls</code>).</li>
+<li><code>docker exec -it CONTAINER_ID bash</code> : Create an SSH session into a running container based on its container_id (available through <code>docker ls</code>).</li>
+<li><code>docker exec -it ALIAS bash</code> : Create an SSH session into a running container based on its alias (available through <code>docker ls</code>).</li>
 </ul>
 <hr>
 <h3 id="b-installing-nvidia-docker">B. Installing Nvidia-Docker</h3>
-<p>Docker is up and running, and that's awesome! However, due to hardware-agnostic and platform-agnostic containers, it is possible to access the GPUs from inside a container. Which is, you must admit, a big lame for any deep learner. So Nvidia came up with a <em>plugin</em> designed to solve this problem: <strong>Nvidia-Docker</strong>.</p>
+<p>Docker is up and running, and that's awesome! However, due to the fact that containers are <em>hardware-agnostic and platform-agnostic</em>, it is impossible to access the GPUs from inside a container. Which is, you must admit, a big lame for any deep learner. So Nvidia came up with a <em>plugin</em> designed to solve this problem: <strong>Nvidia-Docker</strong>.</p>
 <p><strong>Installation:</strong></p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># Install nvidia-docker and nvidia-docker-plugin</span></span>
 <span class="code-line">wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb</span>
@@ -305,7 +305,7 @@ These libraries use GPU computation power to speed up deep neural networks train
 <h3 id="c-what-can-i-do-with-docker-and-nvidia-docker">C. What can I do with Docker and Nvidia-Docker?</h3>
 <p><span></span></p>
 <h4 id="c1-docker-nvidia-digits">C.1 Docker ❤️ Nvidia Digits</h4>
-<p>Nvidia a system called Digits to quickly prototype and launch deep learning models.
+<p>Nvidia developed a system called Digits to quickly prototype and launch deep learning models.
 Of course, we can simply run this platform using nvidia-docker.</p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># We download the image from the Docker-Hub: https://hub.docker.com/r/nvidia/digits/</span></span>
 <span class="code-line">docker pull nvidia/digits</span>
@@ -316,7 +316,7 @@ Of course, we can simply run this platform using nvidia-docker.</p>
 
 
 <p>Open now : <a href="https://server-ip:5678">https://server-ip:5678</a></p>
-<p><center><img alt="digits-docker" src="/images/deeplearning_install-part4/digits.png" style="max-height: 250px;"></center></p>
+<p><center><img alt="digits-docker" src="/images/deeplearning_install-part4/digits.png" style="max-height: 250px; max-width: 100%"></center></p>
 <p><span></span></p>
 <h4 id="c2-docker-tensorflow">C.2 Docker ❤️ Tensorflow</h4>
 <p>You want to run Tensorflow ? No problem, Docker can do this!</p>
@@ -329,7 +329,7 @@ Of course, we can simply run this platform using nvidia-docker.</p>
 
 
 <p>Open now : <a href="https://server-ip:8888">https://server-ip:8888</a>
-<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center></p>
+<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px; max-width: 100%"></center></p>
 <p><span></span></p>
 <h4 id="c2-docker-keras-with-tensorflow-theano-and-cntk">C.2 Docker ❤️ Keras with Tensorflow, Theano and CNTK</h4>
 <p>You would like a more higher level API and want to use Tensorflow, Theano or CNTK seemlessly with Keras? The docker image I created will perfectly suit your needs.</p>
@@ -346,7 +346,7 @@ Of course, we can simply run this platform using nvidia-docker.</p>
 
 
 <p>Open now : <a href="https://server-ip:8001">https://server-ip:8001</a>
-<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350;"></center></p>
+<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350px; max-width: 100%"></center></p>
 <hr>
 <h3 id="d-conclusion">D. Conclusion</h3>
 <p>Docker is a really helpful tool, feel free to explore and install any container available on docker hub: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
@@ -360,7 +360,7 @@ Of course, we can simply run this platform using nvidia-docker.</p>
 
 
 	<div>
-<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="https://www.born2data.com/category/deep-learning.html">Deep Learning</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/installation.html">Installation&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/cntk.html">CNTK&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/keras.html">Keras&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="https://www.born2data.com/tag/pytorch.html">PyTorch&nbsp;</a></span> 	</div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="http://www.born2data.com/category/deep-learning.html">Deep Learning</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/installation.html">Installation&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/cntk.html">CNTK&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/keras.html">Keras&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/pytorch.html">PyTorch&nbsp;</a></span> 	</div>
 
 <hr>
 <div class="sharing">

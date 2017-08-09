@@ -2,29 +2,31 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Jonathan DEKHTIAR'
-SITENAME = u'Born2Data'
-SITESUBTITLE = u'Tales of a Data Junkie' 
+import locale
+
+AUTHOR       = 'Jonathan DEKHTIAR'
+SITENAME     = 'Born2Data'
+SITESUBTITLE = 'Tales of a Data Junkie' 
+
+
+TIMEZONE     = 'Europe/Paris'
+DEFAULT_LANG = u'en_GB.utf8'
 DATE_FORMATS = {
     'en': ('usa','%A, %Y %B %d')
 }
 
-PATH = 'content'
-STATIC_PATHS = ['mail', 'images', 'files']
-ARTICLE_PATHS = ['articles']
+PATH            = 'content'
+STATIC_PATHS    = ['mail', 'images', 'files']
+ARTICLE_PATHS   = ['articles']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
-ARTICLE_URL = '{date:%Y}/{slug}.html'
-
-TIMEZONE = 'Europe/Paris'
-
-DEFAULT_LANG = u'en'
+ARTICLE_URL     = '{date:%Y}/{slug}.html'
 
 THEME = "theme_born2data" 
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
 	'better_codeblock_line_numbering',
     'feed_summary',
-    ]
+]
 	
 MARKDOWN = {
     'extension_configs': {
@@ -35,18 +37,28 @@ MARKDOWN = {
     'output_format': 'html5',
 }
 	
-ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
-ARTICLE_URL = '{date:%Y}/{slug}.html'
 
 # Feed generation is usually not desired when developing
-SITEURL = 'https://www.born2data.com'
-FEED_DOMAIN = "https://www.born2data.com"
-FEED_ALL_ATOM = 'feed_atom.xml'
-FEED_ALL_RSS = 'feed_rss.xml'
-CATEGORY_FEED_ATOM = None 
+SITEURL     = 'http://www.born2data.com'
+FEED_DOMAIN = "http://www.born2data.com"
+
+FEED_RSS              = None
+FEED_ATOM             = None
+
+FEED_ALL_ATOM         = 'feed_atom.xml'
+FEED_ALL_RSS          = 'feed_rss.xml'
+
+TAG_FEED_RSS          = None 
+TAG_FEED_ATOM         = None 
+
+CATEGORY_FEED_ATOM    = None 
+CATEGORY_FEED_RSS     = None
+
+TRANSLATION_FEED_RSS  = None
 TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None 
+
+AUTHOR_FEED_ATOM      = None
+AUTHOR_FEED_RSS       = None 
 
 FEED_USE_SUMMARY = True
 
@@ -71,7 +83,7 @@ MENUITEMS = (
     ('HOME', '/'),
     ('FeedCrunch.io', 'https://www.feedcrunch.io/@dataradar'),
     ('RESUME', 'http://www.jonathandekhtiar.eu'),
-    ('RESEARCH', 'http://www.utc.fr/~jdekhtia/dev/'),
+    ('RESEARCH', 'https://www.utc.fr/~jdekhtia/dev/'),
     ('CONTACT', '/pages/contact.html'),
 )
 
@@ -82,7 +94,10 @@ SOCIAL = (('twitter', 'https://twitter.com/born2data'),
 		  ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
           ('envelope','mailto:contact@born2data.com'))
 
-DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = 5
+
+# Do not publish articles set in the future
+WITH_FUTURE_DATES = False
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
