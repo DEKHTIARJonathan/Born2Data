@@ -198,7 +198,7 @@ nvidia-docker run -d -p 5678:5000 -v /datafolder/digits/data/:/data/ -v /datafol
 
 Open now : <https://server-ip:5678>
 
-<center><img alt="digits-docker" src="/images/deeplearning_install-part4/digits.png" style="max-height: 250px;"></center>
+<center><img alt="digits-docker" src="/images/deeplearning_install-part4/digits.png" style="max-height: 250px; max-width: 100%"></center>
 
 
 <span></span>
@@ -214,7 +214,7 @@ nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorflow/:/noteb
 ```
 
 Open now : <https://server-ip:8888>
-<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px;"></center>
+<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px; max-width: 100%"></center>
 
 <span></span>
 #### C.2 Docker ❤️ Keras with Tensorflow, Theano and CNTK
@@ -234,7 +234,7 @@ docker run -d -p 8001:8888 -p 6001:6006 -v /datafolder/keras:/srv born2data/dock
 ```
 
 Open now : <https://server-ip:8001>
-<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350;"></center>
+<center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350px; max-width: 100%"></center>
 
 ---
 
