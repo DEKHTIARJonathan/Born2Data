@@ -141,7 +141,7 @@ If you correctly see this message, everything is fine and you are ready to insta
 
 ### B. Installing Nvidia-Docker
 
-Docker is up and running, and that's awesome! However, due to hardware-agnostic and platform-agnostic containers, it is possible to access the GPUs from inside a container. Which is, you must admit, a big lame for any deep learner. So Nvidia came up with a *plugin* designed to solve this problem: **Nvidia-Docker**.
+Docker is up and running, and that's awesome! However, due to the fact that containers are *hardware-agnostic and platform-agnostic*, it is impossible to access the GPUs from inside a container. Which is, you must admit, a big lame for any deep learner. So Nvidia came up with a *plugin* designed to solve this problem: **Nvidia-Docker**.
 
 **Installation:**
 ```bash
