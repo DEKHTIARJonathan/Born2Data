@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-import locale
-
 AUTHOR       = 'Jonathan DEKHTIAR'
 SITENAME     = 'Born2Data'
 SITESUBTITLE = 'Tales of a Data Junkie' 
 
 
 TIMEZONE     = 'Europe/Paris'
-DEFAULT_LANG = u'en_GB.utf8'
-DATE_FORMATS = {
-    'en': ('usa','%A, %Y %B %d')
-}
+LOCALE       = (
+    'usa',    # On Windows
+    'en_US'   # On Unix/Linux
+)
+DEFAULT_LANG = u'en_US.utf8'
+DEFAULT_DATE_FORMAT = '%A, %Y %B %d'
 
 PATH            = 'content'
 STATIC_PATHS    = ['mail', 'images', 'files']
