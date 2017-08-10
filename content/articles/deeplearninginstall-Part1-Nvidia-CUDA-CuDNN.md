@@ -27,7 +27,7 @@ NVIDIA is definetely the brand to go for Deep Learning applications, and for now
 
 In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.
 
-A few useful links :
+A few useful links:
 
 * **NVIDIA Drivers and Libraries:**
     * **CUDA :** <https://developer.nvidia.com/cuda-zone>

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR       = 'Jonathan DEKHTIAR'
 SITENAME     = 'Born2Data'
-SITESUBTITLE = 'Tales of a Data Junkie' 
+SITESUBTITLE = 'Tales of a Data Junkie'
 
 
 TIMEZONE     = 'Europe/Paris'
@@ -21,13 +21,13 @@ ARTICLE_PATHS   = ['articles']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL     = '{date:%Y}/{slug}.html'
 
-THEME = "theme_born2data" 
+THEME = "theme_born2data"
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
 	'better_codeblock_line_numbering',
     'feed_summary',
 ]
-	
+
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
@@ -36,7 +36,6 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
-	
 
 # Feed generation is usually not desired when developing
 SITEURL     = 'http://www.born2data.com'
@@ -48,17 +47,17 @@ FEED_ATOM             = None
 FEED_ALL_ATOM         = 'feed_atom.xml'
 FEED_ALL_RSS          = 'feed_rss.xml'
 
-TAG_FEED_RSS          = None 
-TAG_FEED_ATOM         = None 
+TAG_FEED_RSS          = None
+TAG_FEED_ATOM         = None
 
-CATEGORY_FEED_ATOM    = None 
+CATEGORY_FEED_ATOM    = None
 CATEGORY_FEED_RSS     = None
 
 TRANSLATION_FEED_RSS  = None
 TRANSLATION_FEED_ATOM = None
 
 AUTHOR_FEED_ATOM      = None
-AUTHOR_FEED_RSS       = None 
+AUTHOR_FEED_RSS       = None
 
 FEED_USE_SUMMARY = True
 
@@ -92,7 +91,10 @@ SOCIAL = (('twitter', 'https://twitter.com/born2data'),
           ('github', 'https://github.com/DEKHTIARJonathan'),
 		  ('linkedin', 'https://fr.linkedin.com/in/jonathandekhtiar'),
 		  ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
-          ('envelope','mailto:contact@born2data.com'))
+          ('envelope','mailto:contact@born2data.com')
+)
+
+DISQUS_SITENAME = "born2data"
 
 DEFAULT_PAGINATION = 5
 
