@@ -87,14 +87,16 @@ MENUITEMS = (
 )
 
 # Social widget
-SOCIAL = (('twitter', 'https://twitter.com/born2data'),
-          ('github', 'https://github.com/DEKHTIARJonathan'),
-		  ('linkedin', 'https://fr.linkedin.com/in/jonathandekhtiar'),
-		  ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
-          ('envelope','mailto:contact@born2data.com')
+SOCIAL = (
+    ('twitter', 'https://twitter.com/born2data'),
+    ('github', 'https://github.com/DEKHTIARJonathan'),
+    ('linkedin', 'https://fr.linkedin.com/in/jonathandekhtiar'),
+    ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
+    ('envelope','mailto:contact@born2data.com')
 )
 
 DISQUS_SITENAME = "born2data"
+DISQUS_SHOW_COMMENTS_COUNT = False
 
 DEFAULT_PAGINATION = 5
 
