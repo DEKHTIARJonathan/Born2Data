@@ -26,6 +26,7 @@ PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
 	'better_codeblock_line_numbering',
     'feed_summary',
+    'render_math', # https://github.com/barrysteyn/pelican_plugin-render_math
 ]
 
 MARKDOWN = {
