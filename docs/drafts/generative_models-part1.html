@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<title>A Guide Through Generative Models - Part 1 - Bayesian Sampling</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+	<!-- Code highlight color scheme -->
+		<link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+	<link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+		<!-- FAVICON specified by the user -->
+		<link rel="icon" type="image/png" href="/images/favicon.png" />
+
+	<!-- Custom Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+
+        <meta name="description" content="How To Generate new Data with Bayesian Sampling">
+
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Deep Learning">
+        <meta name="tags" content="Python">
+        <meta name="tags" content="Tutorial">
+        <meta name="tags" content="Guide">
+        <meta name="tags" content="Machine Learning">
+        <meta name="tags" content="GAN">
+        <meta name="tags" content="VAE">
+        <meta name="tags" content="Bayesian">
+        <meta name="tags" content="Generative">
+
+	                <meta property="og:locale" content="usa">
+                <meta property="og:locale" content="en_US">
+		<meta property="og:site_name" content="Born2Data">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+	<meta property="og:url" content="/drafts/generative_models-part1.html">
+	<meta property="og:title" content="A Guide Through Generative Models - Part 1 - Bayesian Sampling">
+	<meta property="article:published_time" content="2017-09-24 12:00:00+02:00">
+            <meta property="og:description" content="How To Generate new Data with Bayesian Sampling">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="A Guide Through Generative Models - Part 1 - Bayesian Sampling" />
+            <meta name="twitter:description" content="How To Generate new Data with Bayesian Sampling" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>A Guide Through Generative Models - Part 1</h1>
+                        <h3 class="subheading">How To Generate new Data with Bayesian Sampling</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Sunday, 2017 September 24
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Content -->
+    <article>
+        <h1 id="a-guide-through-generative-models-index">A Guide Through Generative Models - Index</h1>
+<p>Dear fellow machine learner, in this serie, we are going to explore some Unsupervised Learning algorithm in the objective to design a generative system capable of reproducing new data not existing in the original dataset.</p>
+<ul>
+<li><strong>Part 1 :</strong> Bayesian Inference and Single Mode Learning - <em>This article</em></li>
+<li><a href="#Coming_Soon"><strong>Part 2 :</strong> Improving Bayesian Inference with Multi-Modes learning</a></li>
+<li><a href="#Coming_Soon"><strong>Part 3 :</strong> Variational AutoEncoders: Deep Learning with Bayes</a></li>
+<li><a href="#Coming_Soon"><strong>Part 4 :</strong> Generative Adversarial Neural Networks aka. GANs</a></li>
+</ul>
+<hr>
+<h1 id="1-rapid-overview-of-unsupervised-learning-and-generative-ai">1. Rapid Overview of Unsupervised Learning and Generative AI</h1>
+<h2 id="11-supervised-vs-unsupervised-learning">1.1 Supervised vs Unsupervised Learning</h2>
+<p>Most of the classical and widely-known techniques in Machine Learning fit in the realm of <strong>Supervised Learning</strong>. They usually pursue one of these two goals: classification (i.e. predicting a label/category) or regression (i.e. predicting the value of a given parameter). The key idea in <strong>Supervised Learning</strong> is that the machine learning model is <em>trained</em> to map some entries (i.e. data) with a specific output. We find in this area, objectives like <em>object classification</em>, <em>time series prediction</em>, etc.</p>
+<p>On the other hand, <strong>Unsupervised Learning</strong> does not focus on learning to map an input with an output, they mostly try to discover or learn the data distribution. Such an objective is used for data clustering and generative models.</p>
+<h2 id="12-generative-models-and-sampling-from-a-latent-space">1.2 Generative Models and sampling from a latent space</h2>
+<p>As stated before, with <em>Unsupervised Learning</em> we focus on learning a distribution, the distribution of the input data. This distribution can be used then be used to generate new data sample that comes from the same (or a similar-looking) data distribution.</p>
+<h4 id="how-a-distribution-can-allow-me-to-generate-data-samples">How a distribution can allow me to generate data samples ?</h4>
+<p>Let us consider a simple example with with a gaussian distribution defined as followed: <span class="math">\(x \sim \mathcal{N} (200, 40)\)</span>.
+The chart below will allow you to visualise its <em>probability density function</em> also called <em>pdf</em>.</p>
+<p><center><img alt="gaussian distribution" src="/images/generative_models-part1/gaussian_distribution.png" style="max-height: 250px;"></center></p>
+<p>Knowing this distribution, is there any way to generate a data point that follows the given distribution ?</p>
+<p><strong>Absolutely!</strong> And this is a very simple process:</p>
+<ol>
+<li>Randomly sample from the latent space with <span class="math">\(z \in [0, 1]\)</span>: <span class="math">\(random\_sample() = z\)</span>.</li>
+<li>Use the <em>percent point function</em> of the normal distribution which gives the following mapping: <span class="math">\(f: z \mapsto x\)</span></li>
+</ol>
+<p>Alright, let's try this in python now:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">generate_new_data</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">z</span><span class="p">,</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="c1"># ppf : Percent Point Function</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># ================= Sanity Checks =================</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">test1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span></span>
+<span class="code-line"><span class="n">test2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.3413</span><span class="p">))</span></span>
+<span class="code-line"><span class="n">test3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.3413</span> <span class="o">+</span> <span class="mf">0.1359</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 1 (should give: 200) = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">test1</span><span class="p">)</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Test 1 (should give: 200) = 200</span></span>
+<span class="code-line"><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 2 (should give: 200 + sigma = 240) = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">test2</span><span class="p">)</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Test 2 (should give: 200 + sigma = 240) = 240</span></span>
+<span class="code-line"><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 3 (should give: 200 + 2 * sigma = 280) = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">test3</span><span class="p">)</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Test 3 (should give: 200 + 2 * sigma = 280) = 280</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># ======== Let&#39;s sample 5 new data point ==========</span></span>
+<span class="code-line"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span></span>
+<span class="code-line">    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Latent Variable: z = </span><span class="si">%.3f</span><span class="s2"> =&gt; Result: x_new = </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">generate_new_data</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Latent Variable: z = 0.268 =&gt; Result: x_new = 175.35</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Latent Variable: z = 0.779 =&gt; Result: x_new = 230.87</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Latent Variable: z = 0.757 =&gt; Result: x_new = 227.93</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Latent Variable: z = 0.776 =&gt; Result: x_new = 230.39</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Latent Variable: z = 0.346 =&gt; Result: x_new = 184.14</span></span>
+</pre></div>
+
+
+<p>All of this can be done a bit more rapidly using only numpy (even if it is less comprehensive):</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span></span>
+<span class="code-line">    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Result: x_new = </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Result: x_new = 238.21</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Result: x_new = 199.43</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Result: x_new = 206.17</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Result: x_new = 153.71</span></span>
+<span class="code-line"><span class="c1"># &gt;&gt;&gt; Result: x_new = 242.44</span></span>
+</pre></div>
+
+
+<p>In summary, we sample <span class="math">\(z\)</span> from the latent space, and use the <em>ppf</em> function to transform the ramdomly chosen sample into actual target data similar to the dataset used to learn the distribution.</p>
+<h1 id="2-using-bayes-classifier-as-a-generative-model">2. Using Bayes Classifier as a Generative Model</h1>
+<p>The <em>Bayes Classifier</em> is maybe one of the most widely known Machine Learning model. However, it is more frequently used a <strong>classifier</strong>, and today this is not our focus.</p>
+<h4 id="alright-so-can-i-use-the-bayes-classifier-to-generate-new-data">Alright, so can I use the Bayes Classifier to generate new data ?</h4>
+<p>For the following we will use the following notations:</p>
+<ul>
+<li><span class="math">\(x\)</span>: the input data.</li>
+<li><span class="math">\(y\)</span>: the data label.</li>
+<li><span class="math">\(p(x|y)\)</span>: probability of x given its label y (general notation, apply to any value of y).</li>
+<li><span class="math">\(p(x|y=1)\)</span>: probability of x given its label y=1 (same as above, except this time we focus on the case y=1).</li>
+<li><span class="math">\(p(y|x)\)</span>: probability of y given a data point x.</li>
+</ul>
+<p>In the list above, you will recognise: <span class="math">\(p(y|x)\)</span> which is classical objective in classification, however this article focus on generating new data points. Thus, we will focus on the opposite objective: learning <span class="math">\(p(x|y)\)</span>. In short, the objective is to focus on learning for each <strong>class</strong> <span class="math">\(y_i\)</span> the following conditional probability: <span class="math">\(p(x|y)\)</span> rather than directly trying to model <span class="math">\(p(y|x)\)</span>.</p>
+<h2 id="21-overview-of-the-complete-process-from-a-theorical-perspective">2.1. Overview of the complete process from a theorical perspective</h2>
+<h3 id="211-training-the-bayes-classifier-to-learn-the-data-distribution">2.1.1. Training the Bayes Classifier to learn the data distribution</h3>
+<p>In order to learn the data distribution, we will need to fit as many Gaussians to the data than we have labels. The objective is to learn one <span class="math">\(p(x|y)\)</span> as a Gaussian for each label.</p>
+<p>In order to learn <span class="math">\(p(x|y)\)</span>, we will process as followed for each label <span class="math">\(y_i\)</span>:</p>
+<ol>
+<li>Find all the data points <span class="math">\(x_i\)</span> that belong to the class <span class="math">\(y_i\)</span>.</li>
+<li>Compute the following:<ol>
+<li><span class="math">\(\mu_{y_i}\)</span> = mean of those <span class="math">\(x_i\)</span>.</li>
+<li><span class="math">\(\sigma_{y_i}\)</span> = standard deviation of those <span class="math">\(x_i\)</span>.</li>
+</ol>
+</li>
+</ol>
+<h3 id="212-choosing-a-label-at-random-to-generate-with-the-learned-distribution-pxy-a-new-data-point">2.1.2. Choosing a label at random to generate with the learned distribution <span class="math">\(p(x|y)\)</span> a new data point.</h3>
+<p>In order to sample a new data point, we firstly need to choose from which label (i.e. <span class="math">\(y_i\)</span>) we want it to be generated.</p>
+<p><strong>Problem:</strong> What if the dataset is not <em>balanced</em> ? Example: we have <span class="math">\(40%\)</span> of data with the label 'A' and $60% with label 'B'?
+It seems obvious that we randomly pick a label, it will give us a biaised situation generating more data with label 'A' than it should have to.</p>
+<p><em>Solution:</em> Instead of randomly sampling from a uniform distribution, we can learn the distribution of <span class="math">\(y\)</span> and sample from it:
+</p>
+<div class="math">$$p(y == k) = \dfrac{\text{# of images of class k}}{\text{# total of images}}$$</div>
+<h3 id="213-a-label-y-k-has-been-randomly-sampled-now-lets-generate-a-new-data-point">2.1.3. A label <span class="math">\(y = k\)</span> has been randomly sampled, now let's generate a new data point.</h3>
+<p>Now to perform the final step, we can just sample from the Gaussian learned: <span class="math">\(x \sim \mathcal{N} (\mu_{y_i}, \sigma_{y_i})\)</span>.</p>
+<hr>
+<h3 id="d-conclusion">D. Conclusion</h3>
+<p>We have seen in this article how to generate new data samples, however they do not look very good. We will explore in the upcoming articles how to improve these results and obtain more realistic generated sampled.</p>
+<ul>
+<li><strong>Part 1 :</strong> Bayesian Inference and Single Mode Learning - <em>This article</em></li>
+<li><a href="#Coming_Soon"><strong>Part 2 :</strong> Improving Bayesian Inference with Multi-Modes learning</a></li>
+<li><a href="#Coming_Soon"><strong>Part 3 :</strong> Variational AutoEncoders: Deep Learning with Bayes</a></li>
+<li><a href="#Coming_Soon"><strong>Part 4 :</strong> Generative Adversarial Neural Networks aka. GANs</a></li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </article>
+
+
+	<div>
+<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="http://www.born2data.com/category/generative-model.html">Generative Model</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/guide.html">Guide&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/gan.html">GAN&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/vae.html">VAE&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/bayesian.html">Bayesian&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/generative.html">Generative&nbsp;</a></span> 	</div>
+
+    <hr>
+    <!--
+    -->
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@born2data.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+    <script id="dsq-count-scr" src="//born2data.disqus.com/count.js" async></script>
+</body>
+
+</html>
