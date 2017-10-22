@@ -26,7 +26,8 @@ PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
 	'better_codeblock_line_numbering',
     'feed_summary',
-    'render_math', # https://github.com/barrysteyn/pelican_plugin-render_math
+    'render_math',  # https://github.com/barrysteyn/pelican_plugin-render_math
+    'readtime',    # https://github.com/deepakrb/Pelican-Read-Time
 ]
 
 MARKDOWN = {
@@ -60,7 +61,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM      = None
 AUTHOR_FEED_RSS       = None
 
-FEED_USE_SUMMARY = True
+FEED_USE_SUMMARY      = True
 
 #Output settings
 DELETE_OUTPUT_DIRECTORY = True
@@ -106,3 +107,18 @@ WITH_FUTURE_DATES = False
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+# Settings for Read Time plugin
+READTIME_CONTENT_SUPPORT  = ["Article"]
+READTIME_LANGUAGE_SUPPORT = {
+    'default': {
+        'wpm': 120,
+        'min_singular': 'minute',
+        'min_plural': 'minutes'
+    },
+    'fr': {
+        'wpm': 140,
+        'min_singular': 'minute',
+        'min_plural': 'minutes'
+    }
+}
