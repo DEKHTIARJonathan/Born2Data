@@ -107,7 +107,7 @@ for _ in range(5):
 # >>> Result: x_new = 242.44
 ```
 
-In summary, we sample from a uniform distribution $z$ from the latent space, with $z \in [0, 1]$. Then we use the *ppf* 
+In summary, we have sampled uniformly $z$ from the latent space, with $z \in [0, 1]$. Then we use the *ppf* 
 function to transform the randomly chosen sample into actual target data similar to the dataset used to learn the 
 distribution.
 
@@ -124,23 +124,26 @@ For the following we will use the following notations:
 
 * $x$: the input data.
 * $y$: the data label.
-* $p(x|y)$: probability of x given its label y.
-* $p(x|y=1)$: probability of x knowing its label $y=1$ (same as above, except this time we focus on the case y=1).
-* $p(y|x)$: probability of y given a data point x => **Classification objective!**
+* $p(x|y)$: probability of x given its label y (i.e. knowing that the label of $x$ is $y$)
+* $p(x|y=1)$: probability of x given its label $y=1$ (i.e. knowing that the label of $x$ is $y = 1$.)
+* $p(y|x)$: probability of y given a data point x => *classification objective!*
 
-In the list above, you will recognise: $p(y|x)$ which is classical objective in classification, however this article 
-focus on generating new data points. Thus, we will focus on the opposite objective: learning $p(x|y)$. In short, the 
-objective is to focus on learning for each **class** $y_i$ the following conditional probability: $p(x|y)$ rather than 
-directly trying to model $p(y|x)$.
+In the list above, you will recognise $p(y|x)$ that one will focus to perform classification. However this article 
+focus on generative models, thus, we will focus on learning $p(x|y)$. In short, our objective will be to learn 
+**for each class $y_i$** the following conditional probability: $p(x|y == y_i)$.
 
 ### 2.1. Overview of the complete process from a theoretical perspective
-
+<span></span>
 #### 2.1.1. Training the Bayes Classifier to learn the data distribution
 
-In order to learn the data distribution, we will need to fit as many Gaussians to the data than we have labels. The 
-objective is to learn one $p(x|y)$ as a Gaussian for each label.
+**Disclaimer:** *In order to simplify the problem, we will consider, in this article, that all the data we have follow a 
+gaussian distribution. It would be wise to actually check this assumption or at least try other credible distributions
+in real situations.*
 
-In order to learn $p(x|y)$, we will process as followed for each label $y_i$:
+In order to learn the data distribution, our objective will be to fit a Gaussian to the data for each label and thus 
+to learn the distribution $p(x|y == y_i)$ as a Gaussian for each label noted $y_i$.
+
+In order to learn $p(x|y == y_i)$, we will process as followed for each label $y_i$:
 
 1. Find all the data points $x_i$ that belong to the class $y_i$.
 2. Compute the following:
@@ -178,8 +181,6 @@ As I want to keep it as easy as possible, let's use the version hosted on Kaggle
 
 We need to import all the libraries we will need...
 ```python
-from __future__ import print_function, division
-
 import os
 from builtins import range, input
 
@@ -190,9 +191,9 @@ from numpy.random import multivariate_normal as mvn
 import matplotlib.pyplot as plt
 ```
 
-Next step, we will define a function to load the data for us
+Next step, we will define a function to load the data for us:
 ```python
-def get_mnist(limit=None):
+def get_mnist():
     if not os.path.exists('data'):
         raise Exception("You must create a folder called 'data' in your working directory.")
 
@@ -204,16 +205,16 @@ def get_mnist(limit=None):
 
     print("Reading in and transforming data...")
 
+    # We use the pandas library to load the training data.
     df = pd.read_csv('data/train.csv')
     data = df.as_matrix()
-
+    
+    # We shuffle our dataset in order to be sure that the data comes in a random order
     np.random.shuffle(data)
 
+    # We create two variables X and Y containing the data (X) and the labels (Y)
     X = data[:, 1:] / 255.0 # pixels values are in [0, 255] => Normalize the data
-    Y = data[:, 0]
-
-    if limit is not None:
-        X, Y = X[:limit], Y[:limit]
+    Y = data[:, 0]          # the first column contains the labels
 
     print("Data Loading process is finished ...")
 
