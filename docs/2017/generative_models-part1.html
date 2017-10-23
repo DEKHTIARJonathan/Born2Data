@@ -7,38 +7,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-		<title>A Guide Through Generative Models - Part 1 - Bayesian Sampling</title>
+        <title>A Guide Through Generative Models - Part 1 - Bayesian Sampling</title>
 
 
             <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
             <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
 
     <!-- Bootstrap Core CSS -->
-	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
 
-	<!-- Code highlight color scheme -->
-		<link href="/theme/css/code_blocks/github.css" rel="stylesheet">
-	<link href="/theme/css/better_codeblock.css" rel="stylesheet">
+    <!-- Code highlight color scheme -->
+        <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+    <link href="/theme/css/better_codeblock.css" rel="stylesheet">
 
 
 
-		<!-- FAVICON specified by the user -->
-		<link rel="icon" type="image/png" href="/images/favicon.png" />
+        <!-- FAVICON specified by the user -->
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
 
-	<!-- Custom Fonts -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 
 
@@ -56,15 +56,15 @@
         <meta name="tags" content="Bayesian">
         <meta name="tags" content="Generative">
 
-	                <meta property="og:locale" content="usa">
+                    <meta property="og:locale" content="usa">
                 <meta property="og:locale" content="en_US">
-		<meta property="og:site_name" content="Born2Data">
+        <meta property="og:site_name" content="Born2Data">
 
-	<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
             <meta property="article:author" content="Jonathan DEKHTIAR" >
-	<meta property="og:url" content="/2017/generative_models-part1.html">
-	<meta property="og:title" content="A Guide Through Generative Models - Part 1 - Bayesian Sampling">
-	<meta property="article:published_time" content="2017-09-27 11:00:00+02:00">
+    <meta property="og:url" content="/2017/generative_models-part1.html">
+    <meta property="og:title" content="A Guide Through Generative Models - Part 1 - Bayesian Sampling">
+    <meta property="article:published_time" content="2017-09-27 11:00:00+02:00">
             <meta property="og:description" content="How To Generate new Data with Bayesian Sampling">
 
             <meta property="og:image" content="/theme/images/post-bg.jpg">
@@ -80,7 +80,7 @@
 
 
 
-	<!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -134,6 +134,37 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Sharing -->
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&url=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%20%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&u=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Google+" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
     <!-- Post Content -->
     <article>
         <h1 id="a-guide-through-generative-models-index">A Guide Through Generative Models - Index</h1>
@@ -494,61 +525,100 @@ It was really helpful and I am really thankful for the time you both have taken.
 </script>
     </article>
 
-
-	<div>
-<hr><b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="http://www.born2data.com/category/generative-model.html">Generative Model</a><br><br><b>Tags: </b><span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/guide.html">Guide&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/gan.html">GAN&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/vae.html">VAE&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/bayesian.html">Bayesian&nbsp;</a></span> <span class="tag"><i class="fa fa-tags"></i> <a href="http://www.born2data.com/tag/generative.html">Generative&nbsp;</a></span> 	</div>
+    <div>
+        <hr>
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="http://www.born2data.com/category/generative-model.html">Generative Model</a>
+            <br><br>
+            <b>Tags: </b>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/guide.html">Guide&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/gan.html">GAN&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/vae.html">VAE&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/bayesian.html">Bayesian&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/generative.html">Generative&nbsp;</a>
+                </span>
+    </div>
 
 <hr>
-<div class="sharing">
-        <!-- AddThis Button BEGIN -->
-		
-			<!-- Go to www.addthis.com/dashboard to customize your tools -->
-			<div class="addthis_native_toolbox"></div>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
 
-			<!-- Go to www.addthis.com/dashboard to customize your tools -->
-			<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56e6dd573663678e"></script>
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
 
+        <a href="https://twitter.com/intent/tweet?text=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&url=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
 
-			
-        <!-- AddThis Button END -->
-		
-</div>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%20%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&u=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on Google+" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
     <hr>
-    <!--
-        <div class="comments">
-            <h2>Comments !</h2>
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-                var disqus_shortname = 'born2data';
-                var disqus_identifier = '2017/generative_models-part1.html';
-                var disqus_url = '/2017/generative_models-part1.html';
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//born2data.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the comments.</noscript>
-        </div>
-    -->
-        <div class="comments">
-            <h2>Comments !</h2>
-            <div id="disqus_thread"></div>
-        </div>
-        <script>
-            var disqus_config = function () {
-                this.page.url        = 'http://www.born2data.com/2017/generative_models-part1.html';  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = '/2017/generative_models-part1.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
 
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://born2data.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <div class="comments">
+        <h2>Comments !</h2>
+        <div id="disqus_thread"></div>
+    </div>
+    <script>
+        var disqus_config = function () {
+            this.page.url        = 'http://www.born2data.com/2017/generative_models-part1.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '/2017/generative_models-part1.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://born2data.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 
             </div>
         </div>
@@ -595,7 +665,7 @@ It was really helpful and I am really thankful for the time you both have taken.
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:contact@born2data.com">
+                                <a href="mailto:contact@jonathandekhtiar.eu">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
