@@ -1,19 +1,30 @@
-{% if article.status != "draft" %}
+{% if article.share_post and article.status != 'draft' %}
 <hr>
-<div class="sharing">
-    {% if ADDTHIS_PUBID %}
-        <!-- AddThis Button BEGIN -->
-        
-            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-            <div class="addthis_native_toolbox"></div>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
 
-            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-            <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{ ADDTHIS_PUBID }}"></script>
+        <a href="{{article.share_post['facebook']}}" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/{{ THEME_STATIC_DIR }}/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
 
+        <a href="{{article.share_post['twitter']}}" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/{{ THEME_STATIC_DIR }}/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
 
-            
-        <!-- AddThis Button END -->
-        
-    {% endif %}
-</div>
+        <a href="{{article.share_post['linkedin']}}" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/{{ THEME_STATIC_DIR }}/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="{{article.share_post['hacker-news']}}" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/{{ THEME_STATIC_DIR }}/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="{{article.share_post['google-plus']}}" target="_blank" title="Share on Google+" style="text-decoration: none; padding-right: 15px;">
+            <img src="/{{ THEME_STATIC_DIR }}/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
 {% endif %}

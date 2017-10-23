@@ -1,0 +1,20 @@
+{% if article.category or article.tags %}
+    <div>
+        <hr>
+        {% if article.category %}
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+            <br><br>
+        {% endif %}
+        {% if article.tags %}
+            <b>Tags: </b>
+            {% for tag in article.tags %}
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}&nbsp;</a>
+                </span>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endif %}

@@ -25,6 +25,7 @@ THEME = "theme_born2data"
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
     'optimize_images',
+    'share_post',
     'better_codeblock_line_numbering',
     'feed_summary',
     'render_math',  # https://github.com/barrysteyn/pelican_plugin-render_math
@@ -75,8 +76,6 @@ COLOR_SCHEME_CSS = 'github.css'
 TWITTER_HANDLE = "@born2data"
 FAVICON = "images/favicon.png"
 
-ADDTHIS_PUBID = "ra-56e6dd573663678e"
-
 # Menu
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
@@ -95,7 +94,7 @@ SOCIAL = (
     ('github', 'https://github.com/DEKHTIARJonathan'),
     ('linkedin', 'https://fr.linkedin.com/in/jonathandekhtiar'),
     ('rss', 'https://www.feedcrunch.io/@dataradar/rss/'),
-    ('envelope','mailto:contact@born2data.com')
+    ('envelope','mailto:contact@jonathandekhtiar.eu')
 )
 
 DISQUS_SITENAME = "born2data"

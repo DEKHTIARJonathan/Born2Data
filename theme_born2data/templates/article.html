@@ -129,58 +129,20 @@
 {% endblock header %}
 
 {% block content %}
+    <!-- Post Sharing -->
+    {% include 'sharing.html' %}
+    <hr>
+
     <!-- Post Content -->
     <article>
         {{ article.content }}
     </article>
 
-
-    <div>
-        {% if article.category or article.tags %}<hr>{% endif %}
-        {% if article.category %}<b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a><br><br>{% endif %}
-        {% if article.tags %}<b>Tags: </b>{% for tag in article.tags %}<span class="tag"><i class="fa fa-tags"></i> <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}&nbsp;</a></span> {% endfor %}{% endif %}
-    </div>
+    {% include 'footer_tags_and_categories.html' %}
 
     {% include 'sharing.html' %}
     <hr>
-    <!--
-    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-        <div class="comments">
-            <h2>Comments !</h2>
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-                var disqus_shortname = '{{ DISQUS_SITENAME }}';
-                var disqus_identifier = '{{ article.url }}';
-                var disqus_url = '/{{ article.url }}';
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the comments.</noscript>
-        </div>
-    {% endif %}
-    -->
-    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-        <div class="comments">
-            <h2>Comments !</h2>
-            <div id="disqus_thread"></div>
-        </div>
-        <script>
-            var disqus_config = function () {
-                this.page.url        = '{{ SITEURL }}/{{ article.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = '/{{ article.url }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
 
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://born2data.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% include 'comments.html' %}
 
-    {% endif %}
 {% endblock content %}
