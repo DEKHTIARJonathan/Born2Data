@@ -56,14 +56,14 @@
     {% endif %}
 {% endblock %}
 {% block opengraph %}
-	{{ super() }}
-	<meta property="og:type" content="article">
+    {{ super() }}
+    <meta property="og:type" content="article">
         {% for author in article.authors %}
             <meta property="article:author" content="{{ author }}" >
         {% endfor %}
-	<meta property="og:url" content="/{{ article.url }}">
-	<meta property="og:title" content="{{ article.title }}">
-	<meta property="article:published_time" content="{{ article.date }}">
+    <meta property="og:url" content="/{{ article.url }}">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="article:published_time" content="{{ article.date }}">
         {% if description %}
             <meta property="og:description" content="{{ description }}">
         {% elif article.headline %}
@@ -135,11 +135,11 @@
     </article>
 
 
-	<div>
-		{% if article.category or article.tags %}<hr>{% endif %}
-		{% if article.category %}<b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a><br><br>{% endif %}
-		{% if article.tags %}<b>Tags: </b>{% for tag in article.tags %}<span class="tag"><i class="fa fa-tags"></i> <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}&nbsp;</a></span> {% endfor %}{% endif %}
-	</div>
+    <div>
+        {% if article.category or article.tags %}<hr>{% endif %}
+        {% if article.category %}<b>Category:</b> <i class="fa fa-folder"></i> <a class="folder" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a><br><br>{% endif %}
+        {% if article.tags %}<b>Tags: </b>{% for tag in article.tags %}<span class="tag"><i class="fa fa-tags"></i> <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}&nbsp;</a></span> {% endfor %}{% endif %}
+    </div>
 
     {% include 'sharing.html' %}
     <hr>

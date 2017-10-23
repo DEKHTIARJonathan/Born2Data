@@ -13,11 +13,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-lg-12">
-					<div class="site-heading">
+                    <div class="site-heading">
                         <h1>{{ SITENAME }}</h1>
-						{% if SITESUBTITLE %}
-							<hr class="small">
-							<span class="subheading">~ {{ SITESUBTITLE }} ~</span>
+                        {% if SITESUBTITLE %}
+                            <hr class="small">
+                            <span class="subheading">~ {{ SITESUBTITLE }} ~</span>
                         {% endif %}
                     </div>
                 </div>
@@ -33,13 +33,13 @@
                 <h2 class="post-title">
                     {{ article.title }}
                 </h2>
-				{% if article.headline %}
+                {% if article.headline %}
                         <h3 class="post-subtitle">{{ article.headline }}</h3>
                 {% endif %}
                 {% if article.readtime_string %}
                     <div style="display: inline">This article takes {{article.readtime_string}} to read.</div>
                 {% endif %}
-				<hr style="margin-top: 0px;margin-bottom: 7px;">
+                <hr style="margin-top: 0px;margin-bottom: 7px;">
             </a>
             <p class="post-meta">Posted by
                 {% for author in article.authors %}
@@ -49,7 +49,7 @@
             </p>
             {% include 'comments.html' %}
         </div>
-		<br>
+        <br>
     {% endfor %}
 
     {% include "pagination.html" %}

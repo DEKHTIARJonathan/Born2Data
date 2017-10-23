@@ -24,7 +24,8 @@ ARTICLE_URL     = '{date:%Y}/{slug}.html'
 THEME = "theme_born2data"
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
-	'better_codeblock_line_numbering',
+    'optimize_images',
+    'better_codeblock_line_numbering',
     'feed_summary',
     'render_math',  # https://github.com/barrysteyn/pelican_plugin-render_math
     'readtime',    # https://github.com/deepakrb/Pelican-Read-Time
