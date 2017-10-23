@@ -110,7 +110,7 @@ WITH_FUTURE_DATES = False
 
 # Settings for Read Time plugin
 READTIME_CONTENT_SUPPORT  = ["Article"]
-READTIME_LANGUAGE_SUPPORT = {
+READTIME_WPM = {
     'default': {
         'wpm': 120,
         'min_singular': 'minute',
