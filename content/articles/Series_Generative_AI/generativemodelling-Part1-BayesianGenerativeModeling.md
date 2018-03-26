@@ -9,7 +9,7 @@ Headline: How To Generate new Data with Bayesian Sampling
 
 # A Guide Through Generative Models - Index
 
-Dear fellow machine learner, this series of articles will explore some *Unsupervised Learning algorithms* with a focus 
+Dear fellow machine learner, this series of articles will explore some *Unsupervised Learning algorithms* with a focus
 on **generative systems** capable of reproducing new data not existing in the original dataset.
 
 * **Part 1 :** Bayesian Inference and Single Mode Learning - *This article*
@@ -23,27 +23,27 @@ on **generative systems** capable of reproducing new data not existing in the or
 
 ### 1.1 Supervised vs Unsupervised Learning
 
-Most of the classical and widely-known techniques in Machine Learning fit in the realm of **Supervised Learning**. 
-They usually pursue one of these two goals: classification (i.e. predicting a label/category) or regression (i.e. 
-predicting a numerical value). The key idea in **Supervised Learning** is that a model is *trained* to map some entries 
-(i.e. data) with some specific output(s). 
+Most of the classical and widely-known techniques in Machine Learning fit in the realm of **Supervised Learning**.
+They usually pursue one of these two goals: classification (i.e. predicting a label/category) or regression (i.e.
+predicting a numerical value). The key idea in **Supervised Learning** is that a model is *trained* to map some entries
+(i.e. data) with some specific output(s).
 
-In contrast, **Unsupervised Learning** does not focus on learning to map an input with an output. It is an objective 
-which mostly tries to discover or learn the data distribution. Therefore, **Unsupervised Learning** is mostly used to 
+In contrast, **Unsupervised Learning** does not focus on learning to map an input with an output. It is an objective
+which mostly tries to discover or learn the data distribution. Therefore, **Unsupervised Learning** is mostly used to
 perform **clustering** or **data generation**.
 
 ### 1.2 Generative Models and sampling from a latent space
 
-As stated before, *Unsupervised Learning* is strategy which focuses on learning a data-distribution, the distribution 
-of the input data. Once this step is achieved, the learnt distribution can be used to generate new samples that come 
+As stated before, *Unsupervised Learning* is strategy which focuses on learning a data-distribution, the distribution
+of the input data. Once this step is achieved, the learnt distribution can be used to generate new samples that come
 from the same (or a similar-looking) data distribution.
 
 #### 1.2.1 How can a distribution allow me to generate new data points ?
 
 **Let us consider this simple example:** <br>
-A gaussian distribution defined as followed: $x \sim \mathcal{N} (200, 40)$. The chart below will allow you to 
+A gaussian distribution defined as followed: $x \sim \mathcal{N} (200, 40)$. The chart below will allow you to
 visualise its *probability density function* also called *pdf*. This chart represents the probability that any point
-that comes from this distribution has a specific value. 
+that comes from this distribution has a specific value.
 
 *To Be Noted: A Gaussian Distribution is also called a **Normal distribution**.*
 
@@ -54,7 +54,7 @@ that comes from this distribution has a specific value.
 **Absolutely!** And this is a very simple process:
 
 1. Uniformly and randomly sample from $z$ the latent space, $z \in [0, 1]$.
-2. Use the *percent point function* (also called *ppf*) of the normal distribution which gives the following mapping: 
+2. Use the *percent point function* (also called *ppf*) of the normal distribution which gives the following mapping:
 $f: z \mapsto x$
 
 Alright, let's try this in python now:
@@ -107,15 +107,15 @@ for _ in range(5):
 # >>> Result: x_new = 242.44
 ```
 
-In summary, we have sampled uniformly $z$ from the latent space, with $z \in [0, 1]$. Then we use the *ppf* 
-function to transform the randomly chosen sample into actual target data similar to the dataset used to learn the 
+In summary, we have sampled uniformly $z$ from the latent space, with $z \in [0, 1]$. Then we use the *ppf*
+function to transform the randomly chosen sample into actual target data similar to the dataset used to learn the
 distribution.
 
 ##### Congratulation! You just have generate your first data sample from a learned distribution.
 
 ## 2. Using Bayes Classifier as a Generative Model
 
-The *Bayes Classifier* is maybe one of the most widely known Machine Learning model. However, it is more frequently 
+The *Bayes Classifier* is maybe one of the most widely known Machine Learning model. However, it is more frequently
 used as a **classifier**, and today this is not our focus.
 
 ##### Alright, so can I use the Bayes Classifier to generate new data ?
@@ -128,19 +128,19 @@ For the following we will use the following notations:
 * $p(x|y=1)$: probability of x given its label $y=1$ (i.e. knowing that the label of $x$ is $y = 1$.)
 * $p(y|x)$: probability of y given a data point x => *classification objective!*
 
-In the list above, you will recognise $p(y|x)$ that one will focus to perform classification. However this article 
-focus on generative models, thus, we will focus on learning $p(x|y)$. In short, our objective will be to learn 
+In the list above, you will recognise $p(y|x)$ that one will focus to perform classification. However this article
+focus on generative models, thus, we will focus on learning $p(x|y)$. In short, our objective will be to learn
 **for each class $y_i$** the following conditional probability: $p(x|y == y_i)$.
 
 ### 2.1. Overview of the complete process from a theoretical perspective
 <span></span>
 #### 2.1.1. Training the Bayes Classifier to learn the data distribution
 
-**Disclaimer:** *In order to simplify the problem, we will consider, in this article, that all the data we have follow a 
+**Disclaimer:** *In order to simplify the problem, we will consider, in this article, that all the data we have follow a
 gaussian distribution. It would be wise to actually check this assumption or at least try other credible distributions
 in real situations.*
 
-In order to learn the data distribution, our objective will be to fit a Gaussian to the data for each label and thus 
+In order to learn the data distribution, our objective will be to fit a Gaussian to the data for each label and thus
 to learn the distribution $p(x|y == y_i)$ as a Gaussian for each label noted $y_i$.
 
 In order to learn $p(x|y == y_i)$, we will process as followed for each label $y_i$:
@@ -155,7 +155,7 @@ In order to learn $p(x|y == y_i)$, we will process as followed for each label $y
 In order to sample a new data point, we firstly need to choose from which label (i.e. $y_i$) we want it to be generated.
 
 ##### _Problem:_ What if the dataset is *unbalanced* (i.e. $y_a$ is more frequent than $y_b$)?
-Example: we have $40%$ of data with the label 'A' and $60% with label 'B'? It seems obvious that we randomly pick a 
+Example: we have $40%$ of data with the label 'A' and $60% with label 'B'? It seems obvious that we randomly pick a
 label, it will give us a biaised situation generating more data with label 'A' than it should have to.
 
 *Solution:* Instead of randomly sampling from a uniform distribution, we can learn the distribution of $y$ and sample from it:
@@ -166,7 +166,7 @@ $$p(y == k) = \dfrac{\text{# of images of class k}}{\text{# total of images}}$$
 ##### First, you need to download the dataset: MNIST.
 As I want to keep it as easy as possible, let's use the version hosted on Kaggle:
 
-1. Download the file **train.csv** on the Kaggle website (an account required): https://www.kaggle.com/c/digit-recognizer/data
+1. Download the file **train.csv** on the Kaggle website (an account required): [https://www.kaggle.com/c/digit-recognizer/data](https://www.kaggle.com/c/digit-recognizer/data)
 2. Extract the file and place it in your project folder in the folder "data" => _myProject/data/train.csv_
 
 ##### Second, we will need the following libraries, make sure you have them installed.
@@ -208,7 +208,7 @@ def get_mnist():
     # We use the pandas library to load the training data.
     df = pd.read_csv('data/train.csv')
     data = df.as_matrix()
-    
+
     # We shuffle our dataset in order to be sure that the data comes in a random order
     np.random.shuffle(data)
 
@@ -256,7 +256,7 @@ class BayesClassifier:
 
 Last step, we will load the data and train the model. Expect it to last around 2-3 minutes.
 
-We will actually learn the **mean** and **covariance** of each class $y_i$. As we have 10 different digits, we will 
+We will actually learn the **mean** and **covariance** of each class $y_i$. As we have 10 different digits, we will
 repeat this process 10 times. At each time we will display the *mean image* and a *random sample* from this $y_i$.
 
 ```python
@@ -317,18 +317,18 @@ plt.rcParams["figure.figsize"] = fig_size
 
 ##### Congratulation! You did it! You finally trained your first generative model.
 
-There is no systematic way to judge on a scale generated data, however I think we can definetely think that the 
+There is no systematic way to judge on a scale generated data, however I think we can definetely think that the
 examples generated **looks** defintely like *handwritten digits* even if it doesn't really look like **genuine data**.
 
-In my opinion, we can say that the results are quite incredible for just an _incredibly simple_ model. To be honest, I 
+In my opinion, we can say that the results are quite incredible for just an _incredibly simple_ model. To be honest, I
 wouldn't have thought that BayesClassifier could give that (good) kind of results for a generative task.
 
 ---
 
 # D. Conclusion
 
-We have seen in this article how to generate new data samples, however they do not look very good. We will explore in 
-the upcoming articles how to improve these results and obtain more realistic generated sampled. One of the solution 
+We have seen in this article how to generate new data samples, however they do not look very good. We will explore in
+the upcoming articles how to improve these results and obtain more realistic generated sampled. One of the solution
 could be **multi-mode** learning with Gaussian Mixture Models, explored in Part 2 - **Stay Tuned!**
 
 * **Part 1 :** Bayesian Inference and Single Mode Learning - *This article*
@@ -339,7 +339,7 @@ could be **multi-mode** learning with Gaussian Mixture Models, explored in Part 
 <hr>
 
 ### Acknoledgment
-I would like to thank two friends for proof-reading and correcting my article: 
+I would like to thank two friends for proof-reading and correcting my article:
 [Gaetan Blondet](https://www.linkedin.com/in/ga%C3%ABtan-blondet-b2572224) and
 [Emeric Ostermeyer](https://www.linkedin.com/in/emericostermeyer/).<br>
 It was really helpful and I am really thankful for the time you both have taken. I owe you some drinks!

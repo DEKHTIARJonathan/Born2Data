@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>Born2Data</title><link>http://www.born2data.com/</link><description>Tales of a Data Junkie</description><lastBuildDate>Wed, 27 Sep 2017 11:00:00 +0200</lastBuildDate><item><title>A Guide Through Generative Models - Part 1 - Bayesian Sampling</title><link>http://www.born2data.com/2017/generative_models-part1.html</link><description>&lt;h1 id="a-guide-through-generative-models-index"&gt;A Guide Through Generative Models - Index&lt;/h1&gt;
-&lt;p&gt;Dear fellow machine learner, this series of articles will explore some &lt;em&gt;Unsupervised Learning algorithms&lt;/em&gt; with a focus 
+&lt;p&gt;Dear fellow machine learner, this series of articles will explore some &lt;em&gt;Unsupervised Learning algorithms&lt;/em&gt; with a focus
 on &lt;strong&gt;generative systems&lt;/strong&gt; capable of reproducing new data not existing in the original dataset.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Part 1 :&lt;/strong&gt; Bayesian Inference and Single Mode Learning - &lt;em&gt;This article&lt;/em&gt;&lt;/li&gt;

@@ -150,7 +150,7 @@
             <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%20%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
             <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
         </a>
 
@@ -168,7 +168,7 @@
     <!-- Post Content -->
     <article>
         <h1 id="a-guide-through-generative-models-index">A Guide Through Generative Models - Index</h1>
-<p>Dear fellow machine learner, this series of articles will explore some <em>Unsupervised Learning algorithms</em> with a focus 
+<p>Dear fellow machine learner, this series of articles will explore some <em>Unsupervised Learning algorithms</em> with a focus
 on <strong>generative systems</strong> capable of reproducing new data not existing in the original dataset.</p>
 <ul>
 <li><strong>Part 1 :</strong> Bayesian Inference and Single Mode Learning - <em>This article</em></li>
@@ -179,29 +179,29 @@ on <strong>generative systems</strong> capable of reproducing new data not exist
 <hr>
 <h2 id="1-rapid-overview-of-unsupervised-learning-and-generative-ai">1. Rapid Overview of Unsupervised Learning and Generative AI</h2>
 <h3 id="11-supervised-vs-unsupervised-learning">1.1 Supervised vs Unsupervised Learning</h3>
-<p>Most of the classical and widely-known techniques in Machine Learning fit in the realm of <strong>Supervised Learning</strong>. 
-They usually pursue one of these two goals: classification (i.e. predicting a label/category) or regression (i.e. 
-predicting a numerical value). The key idea in <strong>Supervised Learning</strong> is that a model is <em>trained</em> to map some entries 
-(i.e. data) with some specific output(s). </p>
-<p>In contrast, <strong>Unsupervised Learning</strong> does not focus on learning to map an input with an output. It is an objective 
-which mostly tries to discover or learn the data distribution. Therefore, <strong>Unsupervised Learning</strong> is mostly used to 
+<p>Most of the classical and widely-known techniques in Machine Learning fit in the realm of <strong>Supervised Learning</strong>.
+They usually pursue one of these two goals: classification (i.e. predicting a label/category) or regression (i.e.
+predicting a numerical value). The key idea in <strong>Supervised Learning</strong> is that a model is <em>trained</em> to map some entries
+(i.e. data) with some specific output(s).</p>
+<p>In contrast, <strong>Unsupervised Learning</strong> does not focus on learning to map an input with an output. It is an objective
+which mostly tries to discover or learn the data distribution. Therefore, <strong>Unsupervised Learning</strong> is mostly used to
 perform <strong>clustering</strong> or <strong>data generation</strong>.</p>
 <h3 id="12-generative-models-and-sampling-from-a-latent-space">1.2 Generative Models and sampling from a latent space</h3>
-<p>As stated before, <em>Unsupervised Learning</em> is strategy which focuses on learning a data-distribution, the distribution 
-of the input data. Once this step is achieved, the learnt distribution can be used to generate new samples that come 
+<p>As stated before, <em>Unsupervised Learning</em> is strategy which focuses on learning a data-distribution, the distribution
+of the input data. Once this step is achieved, the learnt distribution can be used to generate new samples that come
 from the same (or a similar-looking) data distribution.</p>
 <h4 id="121-how-can-a-distribution-allow-me-to-generate-new-data-points">1.2.1 How can a distribution allow me to generate new data points ?</h4>
 <p><strong>Let us consider this simple example:</strong> <br>
-A gaussian distribution defined as followed: <span class="math">\(x \sim \mathcal{N} (200, 40)\)</span>. The chart below will allow you to 
+A gaussian distribution defined as followed: <span class="math">\(x \sim \mathcal{N} (200, 40)\)</span>. The chart below will allow you to
 visualise its <em>probability density function</em> also called <em>pdf</em>. This chart represents the probability that any point
-that comes from this distribution has a specific value. </p>
+that comes from this distribution has a specific value.</p>
 <p><em>To Be Noted: A Gaussian Distribution is also called a <strong>Normal distribution</strong>.</em></p>
 <p><center><img alt="gaussian distribution" src="/images/generative_models-part1/gaussian_distribution.png" style="max-height: 250px;"></center></p>
 <h5 id="knowing-this-distribution-is-there-any-way-to-generate-a-data-point-that-follows-the-given-distribution">Knowing this distribution, is there any way to generate a data point that follows the given distribution ?</h5>
 <p><strong>Absolutely!</strong> And this is a very simple process:</p>
 <ol>
 <li>Uniformly and randomly sample from <span class="math">\(z\)</span> the latent space, <span class="math">\(z \in [0, 1]\)</span>.</li>
-<li>Use the <em>percent point function</em> (also called <em>ppf</em>) of the normal distribution which gives the following mapping: 
+<li>Use the <em>percent point function</em> (also called <em>ppf</em>) of the normal distribution which gives the following mapping:
 <span class="math">\(f: z \mapsto x\)</span></li>
 </ol>
 <p>Alright, let's try this in python now:</p>
@@ -252,12 +252,12 @@ that comes from this distribution has a specific value. </p>
 </pre></div>
 
 
-<p>In summary, we have sampled uniformly <span class="math">\(z\)</span> from the latent space, with <span class="math">\(z \in [0, 1]\)</span>. Then we use the <em>ppf</em> 
-function to transform the randomly chosen sample into actual target data similar to the dataset used to learn the 
+<p>In summary, we have sampled uniformly <span class="math">\(z\)</span> from the latent space, with <span class="math">\(z \in [0, 1]\)</span>. Then we use the <em>ppf</em>
+function to transform the randomly chosen sample into actual target data similar to the dataset used to learn the
 distribution.</p>
 <h5 id="congratulation-you-just-have-generate-your-first-data-sample-from-a-learned-distribution">Congratulation! You just have generate your first data sample from a learned distribution.</h5>
 <h2 id="2-using-bayes-classifier-as-a-generative-model">2. Using Bayes Classifier as a Generative Model</h2>
-<p>The <em>Bayes Classifier</em> is maybe one of the most widely known Machine Learning model. However, it is more frequently 
+<p>The <em>Bayes Classifier</em> is maybe one of the most widely known Machine Learning model. However, it is more frequently
 used as a <strong>classifier</strong>, and today this is not our focus.</p>
 <h5 id="alright-so-can-i-use-the-bayes-classifier-to-generate-new-data">Alright, so can I use the Bayes Classifier to generate new data ?</h5>
 <p>For the following we will use the following notations:</p>
@@ -268,16 +268,16 @@ used as a <strong>classifier</strong>, and today this is not our focus.</p>
 <li><span class="math">\(p(x|y=1)\)</span>: probability of x given its label <span class="math">\(y=1\)</span> (i.e. knowing that the label of <span class="math">\(x\)</span> is <span class="math">\(y = 1\)</span>.)</li>
 <li><span class="math">\(p(y|x)\)</span>: probability of y given a data point x =&gt; <em>classification objective!</em></li>
 </ul>
-<p>In the list above, you will recognise <span class="math">\(p(y|x)\)</span> that one will focus to perform classification. However this article 
-focus on generative models, thus, we will focus on learning <span class="math">\(p(x|y)\)</span>. In short, our objective will be to learn 
+<p>In the list above, you will recognise <span class="math">\(p(y|x)\)</span> that one will focus to perform classification. However this article
+focus on generative models, thus, we will focus on learning <span class="math">\(p(x|y)\)</span>. In short, our objective will be to learn
 <strong>for each class <span class="math">\(y_i\)</span></strong> the following conditional probability: <span class="math">\(p(x|y == y_i)\)</span>.</p>
 <h3 id="21-overview-of-the-complete-process-from-a-theoretical-perspective">2.1. Overview of the complete process from a theoretical perspective</h3>
 <p><span></span></p>
 <h4 id="211-training-the-bayes-classifier-to-learn-the-data-distribution">2.1.1. Training the Bayes Classifier to learn the data distribution</h4>
-<p><strong>Disclaimer:</strong> <em>In order to simplify the problem, we will consider, in this article, that all the data we have follow a 
+<p><strong>Disclaimer:</strong> <em>In order to simplify the problem, we will consider, in this article, that all the data we have follow a
 gaussian distribution. It would be wise to actually check this assumption or at least try other credible distributions
 in real situations.</em></p>
-<p>In order to learn the data distribution, our objective will be to fit a Gaussian to the data for each label and thus 
+<p>In order to learn the data distribution, our objective will be to fit a Gaussian to the data for each label and thus
 to learn the distribution <span class="math">\(p(x|y == y_i)\)</span> as a Gaussian for each label noted <span class="math">\(y_i\)</span>.</p>
 <p>In order to learn <span class="math">\(p(x|y == y_i)\)</span>, we will process as followed for each label <span class="math">\(y_i\)</span>:</p>
 <ol>
@@ -291,7 +291,7 @@ to learn the distribution <span class="math">\(p(x|y == y_i)\)</span> as a Gauss
 <h4 id="212-choosing-a-label-at-random-to-generate-with-the-learned-distribution-pxy-a-new-data-point">2.1.2. Choosing a label at random to generate with the learned distribution <span class="math">\(p(x|y)\)</span> a new data point.</h4>
 <p>In order to sample a new data point, we firstly need to choose from which label (i.e. <span class="math">\(y_i\)</span>) we want it to be generated.</p>
 <h5 id="problem-what-if-the-dataset-is-unbalanced-ie-y_a-is-more-frequent-than-y_b"><em>Problem:</em> What if the dataset is <em>unbalanced</em> (i.e. <span class="math">\(y_a\)</span> is more frequent than <span class="math">\(y_b\)</span>)?</h5>
-<p>Example: we have <span class="math">\(40%\)</span> of data with the label 'A' and $60% with label 'B'? It seems obvious that we randomly pick a 
+<p>Example: we have <span class="math">\(40%\)</span> of data with the label 'A' and $60% with label 'B'? It seems obvious that we randomly pick a
 label, it will give us a biaised situation generating more data with label 'A' than it should have to.</p>
 <p><em>Solution:</em> Instead of randomly sampling from a uniform distribution, we can learn the distribution of <span class="math">\(y\)</span> and sample from it:
 </p>
@@ -300,7 +300,7 @@ label, it will give us a biaised situation generating more data with label 'A' t
 <h5 id="first-you-need-to-download-the-dataset-mnist">First, you need to download the dataset: MNIST.</h5>
 <p>As I want to keep it as easy as possible, let's use the version hosted on Kaggle:</p>
 <ol>
-<li>Download the file <strong>train.csv</strong> on the Kaggle website (an account required): https://www.kaggle.com/c/digit-recognizer/data</li>
+<li>Download the file <strong>train.csv</strong> on the Kaggle website (an account required): <a href="https://www.kaggle.com/c/digit-recognizer/data">https://www.kaggle.com/c/digit-recognizer/data</a></li>
 <li>Extract the file and place it in your project folder in the folder "data" =&gt; <em>myProject/data/train.csv</em></li>
 </ol>
 <h5 id="second-we-will-need-the-following-libraries-make-sure-you-have-them-installed">Second, we will need the following libraries, make sure you have them installed.</h5>
@@ -387,7 +387,7 @@ label, it will give us a biaised situation generating more data with label 'A' t
 
 
 <p>Last step, we will load the data and train the model. Expect it to last around 2-3 minutes.</p>
-<p>We will actually learn the <strong>mean</strong> and <strong>covariance</strong> of each class <span class="math">\(y_i\)</span>. As we have 10 different digits, we will 
+<p>We will actually learn the <strong>mean</strong> and <strong>covariance</strong> of each class <span class="math">\(y_i\)</span>. As we have 10 different digits, we will
 repeat this process 10 times. At each time we will display the <em>mean image</em> and a <em>random sample</em> from this <span class="math">\(y_i\)</span>.</p>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">()</span></span>
 <span class="code-line"><span class="n">clf</span> <span class="o">=</span> <span class="n">BayesClassifier</span><span class="p">()</span></span>
@@ -444,14 +444,14 @@ It seems that the model did quite well his job, let us investigate how good is t
 <p><strong>Results:</strong>
 <center><img alt="testing results" src="/images/generative_models-part1/testing.png" style="max-height: 400px;"></center></p>
 <h5 id="congratulation-you-did-it-you-finally-trained-your-first-generative-model">Congratulation! You did it! You finally trained your first generative model.</h5>
-<p>There is no systematic way to judge on a scale generated data, however I think we can definetely think that the 
+<p>There is no systematic way to judge on a scale generated data, however I think we can definetely think that the
 examples generated <strong>looks</strong> defintely like <em>handwritten digits</em> even if it doesn't really look like <strong>genuine data</strong>.</p>
-<p>In my opinion, we can say that the results are quite incredible for just an <em>incredibly simple</em> model. To be honest, I 
+<p>In my opinion, we can say that the results are quite incredible for just an <em>incredibly simple</em> model. To be honest, I
 wouldn't have thought that BayesClassifier could give that (good) kind of results for a generative task.</p>
 <hr>
 <h1 id="d-conclusion">D. Conclusion</h1>
-<p>We have seen in this article how to generate new data samples, however they do not look very good. We will explore in 
-the upcoming articles how to improve these results and obtain more realistic generated sampled. One of the solution 
+<p>We have seen in this article how to generate new data samples, however they do not look very good. We will explore in
+the upcoming articles how to improve these results and obtain more realistic generated sampled. One of the solution
 could be <strong>multi-mode</strong> learning with Gaussian Mixture Models, explored in Part 2 - <strong>Stay Tuned!</strong></p>
 <ul>
 <li><strong>Part 1 :</strong> Bayesian Inference and Single Mode Learning - <em>This article</em></li>
@@ -462,7 +462,7 @@ could be <strong>multi-mode</strong> learning with Gaussian Mixture Models, expl
 <hr>
 
 <h3 id="acknoledgment">Acknoledgment</h3>
-<p>I would like to thank two friends for proof-reading and correcting my article: 
+<p>I would like to thank two friends for proof-reading and correcting my article:
 <a href="https://www.linkedin.com/in/ga%C3%ABtan-blondet-b2572224">Gaetan Blondet</a> and
 <a href="https://www.linkedin.com/in/emericostermeyer/">Emeric Ostermeyer</a>.<br>
 It was really helpful and I am really thankful for the time you both have taken. I owe you some drinks!</p>
@@ -585,7 +585,7 @@ It was really helpful and I am really thankful for the time you both have taken.
             <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%20%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/generative_models-part1.html&title=A%20Guide%20Through%20Generative%20Models%20-%20Part%201%20-%20Bayesian%20Sampling&summary=A%20Guide%20Through%20Generative%20Models%20-%20Index%0ADear%20fellow%20machine%20learner%2C%20this%20series%20of%20articles%20will%20explore%20some%20Unsupervised%20Learning%20algorithms%20with%20a%20focus%0Aon%20generative%20systems%20capable%20of%20reproducing%20new%20data%20not%20existing%20in%20the%20original%20dataset.%0A%0APart%201%20%3A%20Bayesian%20Inference%20and%20Single%20Mode%20Learning%20-%20This%20article%0APart%202%20%3A%20Improving%20%E2%80%A6&source=http%3A//www.born2data.com/2017/generative_models-part1.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
             <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
         </a>
 

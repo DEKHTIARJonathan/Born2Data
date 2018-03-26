@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Born2Data</title><link href="http://www.born2data.com/" rel="alternate"></link><link href="http://www.born2data.com/feed_atom.xml" rel="self"></link><id>http://www.born2data.com/</id><updated>2017-09-27T11:00:00+02:00</updated><entry><title>A Guide Through Generative Models - Part 1 - Bayesian Sampling</title><link href="http://www.born2data.com/2017/generative_models-part1.html" rel="alternate"></link><published>2017-09-27T11:00:00+02:00</published><updated>2017-09-27T11:00:00+02:00</updated><author><name>Jonathan DEKHTIAR</name></author><id>tag:www.born2data.com,2017-09-27:2017/generative_models-part1.html</id><summary type="html">&lt;h1 id="a-guide-through-generative-models-index"&gt;A Guide Through Generative Models - Index&lt;/h1&gt;
-&lt;p&gt;Dear fellow machine learner, this series of articles will explore some &lt;em&gt;Unsupervised Learning algorithms&lt;/em&gt; with a focus 
+&lt;p&gt;Dear fellow machine learner, this series of articles will explore some &lt;em&gt;Unsupervised Learning algorithms&lt;/em&gt; with a focus
 on &lt;strong&gt;generative systems&lt;/strong&gt; capable of reproducing new data not existing in the original dataset.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Part 1 :&lt;/strong&gt; Bayesian Inference and Single Mode Learning - &lt;em&gt;This article&lt;/em&gt;&lt;/li&gt;
