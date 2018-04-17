@@ -83,7 +83,7 @@ sudo apt-get install -y gcc g++ gfortran cmake build-essential linux-image-gener
 sudo apt-get install -y git wget pkg-config
 
 sudo apt-get install -y   
-sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler llibopencv-dev
+sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler libopencv-dev
 sudo apt-get install -y --no-install-recommends libboost-all-dev
 sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev libblas-dev libatlas-base-dev libopenblas-dev
 
