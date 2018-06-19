@@ -23,7 +23,7 @@ Dear fellow deep learner, here is a tutorial to quickly install some of the majo
 There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
 These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).
 
-NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
+NVIDIA is definitely the GPU brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
 
 In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.
 
@@ -42,6 +42,7 @@ A few useful links :
     * **MxNet:** <http://mxnet.io>
     * **PyTorch:** <http://pytorch.org/>
     * **Tensorflow:** <https://www.tensorflow.org/>
+    * **TensorLayer:** <http://tensorlayer.readthedocs.io/en/stable/>
     * **Theano:** <http://deeplearning.net/software/theano>
     * **Torch:** <http://torch.ch><br><br>
 * **Development Environments:**
@@ -182,7 +183,9 @@ We can now start using docker quickly deploy containers with all the necessary l
 ---
 
 ### C. What can I do with Docker and Nvidia-Docker?
+
 <span></span>
+
 #### C.1 Docker ❤️ Nvidia Digits
 
 Nvidia developed a system called Digits to quickly prototype and launch deep learning models.
@@ -192,49 +195,119 @@ Of course, we can simply run this platform using nvidia-docker.
 # We download the image from the Docker-Hub: https://hub.docker.com/r/nvidia/digits/
 docker pull nvidia/digits
 
-# Run DIGITS on host port 5678
-nvidia-docker run -d -p 5678:5000 -v /datafolder/digits/data/:/data/ -v /datafolder/digits/jobs/:/jobs --name digits nvidia/digits
+# Run DIGITS on host port 5000
+nvidia-docker run -d -p 5000:5000 -v /datafolder/digits/data/:/data/ -v /datafolder/digits/jobs/:/jobs --name digits nvidia/digits
 ```
 
-Open now : <https://server-ip:5678>
+Open now : <https://server-ip:5000>
 
 <center><img alt="digits-docker" src="/images/deeplearning_install-part4/digits.png" style="max-height: 250px; max-width: 100%"></center>
 
-
 <span></span>
+
 #### C.2 Docker ❤️ Tensorflow
 
 You want to run Tensorflow ? No problem, Docker can do this!
+
+##### With GPU Support Enabled
 ```bash
 # We download the image from the Docker-Hub: https://hub.docker.com/r/tensorflow/tensorflow/
 docker pull tensorflow/tensorflow:latest-gpu-py3
 
-# Run Tensorflow with port 8888 and 6006 open: 8888 => Jupyter Notebook and 6006 => TensorBoard.
-nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorflow/:/notebooks/sharedfolder -e PASSWORD=MY_CUSTOM_PASSWORD --name tensorflow tensorflow/tensorflow:latest-gpu-py3
+# Run Tensorflow with port 8888 and 6006 opened: 8888 => Jupyter Notebook and 6006 => TensorBoard.
+nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorflow_nb/:/notebooks/sharedfolder -e PASSWORD=MY_CUSTOM_PASSWORD --name tensorflow tensorflow/tensorflow:latest-gpu-py3
+```
+
+##### Without GPU Support Enabled, CPU only
+```bash
+# We download the image from the Docker-Hub: https://hub.docker.com/r/tensorflow/tensorflow/
+docker pull tensorflow/tensorflow:latest-py3
+
+# Run Tensorflow with port 8888 and 6006 opened: 8888 => Jupyter Notebook and 6006 => TensorBoard.
+nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorflow_nb/:/notebooks/sharedfolder -e PASSWORD=MY_CUSTOM_PASSWORD --name tensorflow tensorflow/tensorflow:latest-py3
 ```
 
 Open now : <https://server-ip:8888>
 <center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px; max-width: 100%"></center>
 
 <span></span>
-#### C.2 Docker ❤️ Keras with Tensorflow, Theano and CNTK
+
+#### C.3 Docker ❤️ TensorLayer
+
+Very interesting features can be added to Tensorflow using the library TensorLayer. The TensorLayer container is based on the official Tensorflow container and thus have the same arguments and structure.
+
+##### With GPU Support Enabled
+```bash
+# We download the image tensorlayer the Docker-Hub: https://hub.docker.com/r/tensorlayer/tensorlayer/
+docker pull tensorlayer/tensorlayer:latest-gpu-py3
+
+# Run TensorLayer with port 8888 and 6006 opened: 8888 => Jupyter Notebook and 6006 => TensorBoard.
+nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorlayer_nb/:/notebooks/sharedfolder -e PASSWORD=MY_CUSTOM_PASSWORD --name tensorlayer tensorlayer/tensorlayer:latest-gpu-py3
+```
+
+##### Without GPU Support Enabled, CPU only
+```bash
+# We download the image tensorlayer the Docker-Hub: https://hub.docker.com/r/tensorlayer/tensorlayer/
+docker pull tensorlayer/tensorlayer:latest-py3
+
+# Run TensorLayer with port 8888 and 6006 opened: 8888 => Jupyter Notebook and 6006 => TensorBoard.
+nvidia-docker run -d -p 6006:6006 -p 8888:8888 -v /datafolder/tensorlayer_nb/:/notebooks/sharedfolder -e PASSWORD=MY_CUSTOM_PASSWORD --name tensorlayer tensorlayer/tensorlayer:latest-py3
+```
+
+Open now : <https://server-ip:8888>
+
+<center><img alt="tensorflow-docker" src="/images/deeplearning_install-part4/tensorflow.png" style="max-height: 250px; max-width: 100%"></center>
+
+<span></span>
+
+#### C.4 Docker ❤️ Keras with Tensorflow, Theano and CNTK
 
 You would like a more higher level API and want to use Tensorflow, Theano or CNTK seemlessly with Keras? The docker image I created will perfectly suit your needs.
+
+##### With GPU Support Enabled
 
 ```bash
 # We download the image from the Docker-Hub: https://hub.docker.com/r/born2data/docker-keras-full
 
 # With GPU Support
 docker pull born2data/docker-keras-full:gpu
-nvidia-docker run -d -p 8001:8888 -p 6001:6006 -v /datafolder/keras:/srv born2data/docker-keras-full:gpu
-
-# Without GPU Support, Only CPU
-docker pull born2data/docker-keras-full
-docker run -d -p 8001:8888 -p 6001:6006 -v /datafolder/keras:/srv born2data/docker-keras-full
+nvidia-docker run -d -p 8888:8888 -p 6006:6006 -v /datafolder/keras:/srv born2data/docker-keras-full:gpu
 ```
 
-Open now : <https://server-ip:8001>
+##### Without GPU Support Enabled, CPU only
+
+```bash
+# We download the image from the Docker-Hub: https://hub.docker.com/r/born2data/docker-keras-full
+docker pull born2data/docker-keras-full
+docker run -d -p 8888:8888 -p 6006:6006 -v /datafolder/keras:/srv born2data/docker-keras-full
+```
+
+Open now : <https://server-ip:8888>
+
 <center><img alt="keras-docker" src="/images/deeplearning_install-part4/keras.png" style="max-height: 350px; max-width: 100%"></center>
+
+#### C.5 Docker ❤️ PyTorch
+
+You would like to use the Deep Learning Library PyTorch, Docker can also run this !
+
+##### With GPU Support Enabled
+
+```bash
+# We download the image from the Docker-Hub: https://hub.docker.com/r/born2data/docker-keras-full
+
+# With GPU Support
+docker pull born2data/pytorch
+nvidia-docker run -d -p 8888:8888 -e PASSWORD=MY_CUSTOM_PASSWORD -v /datafolder/pytorch:/workspace --name pytorch born2data/pytorch
+```
+
+##### Without GPU Support Enabled, CPU only
+
+```bash
+docker pull born2data/pytorch
+docker run -d -p 8888:8888 -e PASSWORD=MY_CUSTOM_PASSWORD -v /datafolder/pytorch:/workspace --name pytorch born2data/pytorch
+```
+
+Open now : <https://server-ip:8888>
 
 ---
 

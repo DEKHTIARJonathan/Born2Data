@@ -23,7 +23,7 @@ Dear fellow deep learner, here is a tutorial to quickly install some of the majo
 There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
 These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).
 
-NVIDIA is definetely the brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
+NVIDIA is definitely the GPU brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.
 
 In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.
 
@@ -42,6 +42,7 @@ A few useful links :
     * **MxNet:** <http://mxnet.io>
     * **PyTorch:** <http://pytorch.org/>
     * **Tensorflow:** <https://www.tensorflow.org/>
+    * **TensorLayer:** <http://tensorlayer.readthedocs.io/en/stable/>
     * **Theano:** <http://deeplearning.net/software/theano>
     * **Torch:** <http://torch.ch><br><br>
 * **Development Environments:**
