@@ -18,12 +18,14 @@ Aliquam laoreet, erat mollis ornare varius, risus ex scelerisque massa, porttito
 # B. Topics Index
 -----------------
 
-1. [Distributed Training and Inference](topics/distributed_computation)
-2. [Computer Vision](topics/computer_vision)
+1. [Computer Vision](topics/computer_vision)
+2. [Distributed Training and Inference](topics/distributed_computation)
 3. [Explainability](topics/explainability)
-4. [Generative Modeling](topics/generative)
-5. [Machine/Deep Learning Frameworks](topics/frameworks)
-6. [Natural Language Processing](topics/nlp)
-7. [Reduced Precision: Quantization and Binarization](topics/quantization_binarization)
-8. [Sparse Computation and Communication](topics/sparse_computation)
-9. [Visualisation](topics/visualisation)
+4. [Deep/Machine Learning and HPC Frameworks](topics/frameworks)
+5. [Generative Modeling](topics/generative)
+6. [Learning Theory](topics/learning_theory)
+7. [Natural Language Processing](topics/nlp)
+8. [Reduced Precision: Quantization and Binarization](topics/quantization_binarization)
+9. [Reinforcement Learning](topics/reinforcement_learning)
+10. [Sparse Computation and Communication](topics/sparse_computation)
+11. [Visualisation](topics/visualisation)
