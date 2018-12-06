@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>NeurIPS 2018 - Research Log</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Code highlight color scheme -->
+        <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+    <link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+        <!-- FAVICON specified by the user -->
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+        <meta name="description" content="A condensed research review of the talks and poster sessions I attended.">
+
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Deep Learning">
+        <meta name="tags" content="Research">
+        <meta name="tags" content="Statistics">
+        <meta name="tags" content="Computer Vision">
+        <meta name="tags" content="NLP">
+        <meta name="tags" content="NIPS">
+        <meta name="tags" content="NeurIPS">
+
+                    <meta property="og:locale" content="usa">
+                <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Born2Data">
+
+    <meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+    <meta property="og:url" content="/drafts/NeurIPS_2018/topics/2018_12_06-thu.html">
+    <meta property="og:title" content="NeurIPS 2018 - Research Log">
+    <meta property="article:published_time" content="2018-12-03 10:15:00+01:00">
+            <meta property="og:description" content="A condensed research review of the talks and poster sessions I attended.">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="NeurIPS 2018 - Research Log" />
+            <meta name="twitter:description" content="A condensed research review of the talks and poster sessions I attended." />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>NeurIPS 2018 - Research Log</h1>
+                        <h3 class="subheading">A condensed research review of the talks and poster sessions I attended.</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Monday, 2018 December 03
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Sharing -->
+    <hr>
+
+    <!-- Post Content -->
+    <article>
+        <h1 id="wednesday-05-december-2018">Wednesday 05 December 2018</h1>
+<hr>
+<h3 id="1-how-many-samples-are-needed-to-estimate-a-convolutional-neural-network">1. How many samples are needed to estimate a convolutional neural network ?</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="2-automatic-differentiation-in-machine-learning-where-we-are-and-where-we-should-be-going">2. Automatic differentiation in machine learning: where we are and where we should be going ?</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="3-realistic-evaluation-of-deep-semi-supervised-learning-algorithms">3. Realistic Evaluation of Deep Semi Supervised Learning Algorithms</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="4-generalisation-in-humans-and-deep-neural-networks">4. Generalisation in humans and deep neural networks</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="5-implicit-bias-of-gradient-descent-on-linear-convolutional-networks">5. Implicit Bias of Gradient Descent on Linear Convolutional Networks</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="6-visual-object-networks-image-generation-with-disentangled-3d-representations">6. Visual Object Networks: Image Generation with Disentangled 3D Representations</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="7-can-we-gain-more-from-orthogonality-regularizations-in-training-deep-convolutional-networks">7. Can we gain more from Orthogonality Regularizations in Training deep convolutional networks</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="8-discrimination-aware-channel-pruning-for-deep-neural-networks">8. Discrimination aware channel pruning for deep neural networks.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="9-communication-compression-for-decentralized-training">9. Communication Compression for decentralized training</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="10-fastgrnn-a-fast-accurate-stable-and-tiny-kilobyte-sized-recurrent-neural-network">10. FastGRNN: A fast, accurate, stable and tiny kilobyte sized recurrent neural network</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;
+Open source !</p>
+<hr>
+<h3 id="11-understqnding-batch-normalization">11. Understqnding Batch Normalization</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="12-automating-bayesian-optimization-with-bayesian-optimization">12. Automating Bayesian Optimization with Bayesian Optimization</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="13-bruno-a-deep-recurrent-model-for-exchangeable-data">13. BRUNO: A deep recurrent model for exchangeable data</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="14-reparametrization-gradient-for-non-differentiable-models">14. Reparametrization gradient for non differentiable models</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="15-flexible-and-accurate-inference-and-learning-for-deep-generative-models">15. Flexible and accurate inference and learning for deep Generative models</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="16-multi-value-rule-sets-for-interpretable-classification-with-feature-efficient-representations">16. Multi value rule sets for interpretable classification with feature efficient representations</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="17-multivariate-convolutional-sparse-coding-for-electromagnetic-brain-signals">17. Multivariate convolutional sparse coding for electromagnetic brain signals</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="18-why-is-my-classifier-discriminatory">18. Why is my classifier Discriminatory ?</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="19-learning-to-teach-with-dynamic-loss-functions">19. Learning to teach with dynamic loss functions</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="20-transfer-learning-with-neural-automl">20. Transfer learning with neural AutoML</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="21">21.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="22">22.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="23">23.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="24">24.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="25">25.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="26">26.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="27">27.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="28">28.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="29">29.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<h3 id="3">3.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<hr>
+<p>=====================================================================</p>
+<hr>
+<h3 id="666">666.</h3>
+<p><strong>Link to paper:</strong> &lt;&gt;</p>
+<p><strong>Blog Post:</strong> &lt;&gt;</p>
+<p><strong>Github Repo:</strong> &lt;&gt;</p>
+    </article>
+
+    <div>
+        <hr>
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="http://www.born2data.com/category/deep-learning.html">Deep Learning</a>
+            <br><br>
+            <b>Tags: </b>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/research.html">Research&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/statistics.html">Statistics&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/computer-vision.html">Computer Vision&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/nlp.html">NLP&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/nips.html">NIPS&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/neurips.html">NeurIPS&nbsp;</a>
+                </span>
+    </div>
+
+    <hr>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@jonathandekhtiar.eu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+    <script id="dsq-count-scr" src="//born2data.disqus.com/count.js" async></script>
+</body>
+
+</html>
