@@ -11,51 +11,55 @@ Status: draft
 # Workshop on Compact Deep Neural Networks with Industrial Applications
 -----------------------------------------------------------------------
 
-### 1.
+### 1. Adaptive Mixture of Low Rank Factorizations for Compact Neural Modeling
 
-**Link to paper:** <>
-
-----------------------
-
-### 2.
-
-**Link to paper:** <>
+**Link to paper:** <https://openreview.net/forum?id=B1eHgu-Fim>
 
 ----------------------
 
-### 3.
+### 2. Structured Pruning for Efficient ConvNets via Incremental Regularization
 
-**Link to paper:** <>
-
-----------------------
-
-### 4.
-
-**Link to paper:** <>
+**Link to paper:** <https://arxiv.org/abs/1811.08390>
 
 ----------------------
 
-### 5.
+### 3. Hybrid Pruning: Thinner Sparse Networks for Fast Inference on Edge Devices
 
-**Link to paper:** <>
-
-----------------------
-
-### 6.
-
-**Link to paper:** <>
+**Link to paper:** <https://arxiv.org/abs/1811.00482>
 
 ----------------------
 
-### 7.
+### 4. Pruning Neural Networks: is it time to nip it in the bud ?
 
-**Link to paper:** <>
+**Link to paper:** <https://arxiv.org/abs/1810.04622>
 
 ----------------------
 
-### 8.
+### 5. Compact and Computationally Efficient Representations of Deep Neural Networks
 
-**Link to paper:** <>
+**Link to paper:** <https://arxiv.org/abs/1805.10692>
+
+----------------------
+
+### 6. PocketFlow: An Automated Framework for Compressing and Accelerating Deep Neural Networks
+
+**Link to paper:** <https://openreview.net/forum?id=H1fWoYhdim>
+
+**Github Repository:** <https://github.com/Tencent/PocketFlow>
+
+----------------------
+
+### 7. Rethinking the value of network pruning
+
+**Link to paper:** <https://arxiv.org/abs/1810.05270>
+
+----------------------
+
+### 8. Targeted Dropout
+
+**Link to paper:** <https://openreview.net/forum?id=HkghWScuoQ>
+
+**Github Repository:** <https://github.com/for-ai/TD>
 
 ----------------------
 
@@ -185,7 +189,7 @@ Status: draft
 
 ----------------------
 
-### 30. 
+### 30.
 
 **Link to paper:** <>
 
