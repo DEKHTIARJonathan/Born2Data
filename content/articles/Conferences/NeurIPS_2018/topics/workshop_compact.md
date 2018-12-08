@@ -8,7 +8,7 @@ Author: Jonathan DEKHTIAR
 Headline: A condensed research review of the talks and poster sessions I attended.
 Status: draft
 
-# Workshop on Compact Deep Neural Networks with Industrial Applications
+# Workshop: Compact Deep Neural Networks with Industrial Applications
 -----------------------------------------------------------------------
 
 ### 1. Adaptive Mixture of Low Rank Factorizations for Compact Neural Modeling
