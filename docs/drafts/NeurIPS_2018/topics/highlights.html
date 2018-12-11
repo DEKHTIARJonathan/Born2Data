@@ -60,7 +60,7 @@
 
     <meta property="og:type" content="article">
             <meta property="article:author" content="Jonathan DEKHTIAR" >
-    <meta property="og:url" content="/drafts/NeurIPS_2018/topics/2018_12_04-tue.html">
+    <meta property="og:url" content="/drafts/NeurIPS_2018/topics/highlights.html">
     <meta property="og:title" content="NeurIPS 2018 - Research Log">
     <meta property="article:published_time" content="2018-12-03 10:15:00+01:00">
             <meta property="og:description" content="A condensed research review of the talks and poster sessions I attended.">
@@ -137,99 +137,8 @@
 
     <!-- Post Content -->
     <article>
-        <h1 id="tuesday-04-december-2018">Tuesday 04 December 2018</h1>
+        <h1 id="research-highlights">Research Highlights</h1>
 <hr>
-<h3 id="1-faster-neural-networks-straight-from-jpeg-uber-ai-labs">1. Faster Neural Networks Straight from JPEG - Uber AI Labs</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/CNN_from_JPEG">https://is.gd/CNN_from_JPEG</a>
-<!-- https://is.gd/stats.php?url=CNN_from_JPEG --></p>
-<p><strong>Useful code to reproduce:</strong> &lt;https://github.com/uber-research/jpeg2dct</p>
-<p>The core idea is pretty straightforward, instead of feeding a CNN Pixel values across
-the 3 RGB channels, the feed the network with the JPEGEncoded version of the image.</p>
-<p>This brings two interesting properties:</p>
-<p><strong>Computation Related:</strong> Save some data loading computation as we don't have to decode the image.</p>
-<p><strong>Memory related:</strong> The JPEG Encoded image is already a compressed representation of the image.
-Thus saving memory and which could also facilitate learning.</p>
-<p>This paper claims a <strong>77% speed increase on ResNet 50</strong> while keeping the same accuracy. It shall be crosschecked
-with efficient data loading pipeline such as DALI, probably we can expect a bit less, still it looks promising).</p>
-<p>One of the few concerns that might be raised with this paper is the following:</p>
-<ul>
-<li><strong>Data Augmentation:</strong> as it is impossible (to the best of my knowledge) to perform any data augmentation (crop, brightness, contrast, etc...).
-This enforce a quite inefficient pipeline at training: JPEG_Decode =&gt; Augment (possibly N times) =&gt; JPEG_Encode =&gt; Access to DCT coefficients.</li>
-</ul>
-<hr>
-<h3 id="2-an-intriguing-failing-of-convolutional-neural-networks-and-the-coordconv-solution-uber-ai-labs">2. An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution - Uber AI Labs</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1807.03247/">https://arxiv.org/abs/1807.03247/</a></p>
-<p><strong>Blog Post:</strong> <a href="https://eng.uber.com/coordconv/">https://eng.uber.com/coordconv/</a></p>
-<hr>
-<h3 id="3-which-neural-net-architectures-give-rise-to-exploding-and-vanishing-gradients">3. Which Neural Net Architectures Give Rise To Exploding and Vanishing Gradients?</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1801.03744/">https://arxiv.org/abs/1801.03744/</a></p>
-<hr>
-<h3 id="4-scalable-methods-for-8-bit-training-of-neural-networks">4. Scalable Methods for 8-bit Training of Neural Networks</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1805.11046">https://arxiv.org/abs/1805.11046</a></p>
-<p><strong>Blog Post:</strong> <a href="https://ai.intel.com/scalable-methods-for-8-bit-training-of-neural-networks-blog/">https://ai.intel.com/scalable-methods-for-8-bit-training-of-neural-networks-blog/</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/eladhoffer/quantized.pytorch">https://github.com/eladhoffer/quantized.pytorch</a></p>
-<hr>
-<h3 id="5-a-linear-speedup-analysis-of-distributed-deep-learning-with-sparse-and-quantized-communication">5. A Linear Speedup Analysis of Distributed Deep Learning with Sparse and Quantized Communication</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/quant_sparse_comm">https://is.gd/quant_sparse_comm</a>
-<!-- https://is.gd/stats.php?url=quant_sparse_comm --></p>
-<hr>
-<h3 id="6-batch-instance-normalization-for-adaptively-style-invariant-neural-networks">6. Batch-Instance Normalization for Adaptively Style-Invariant Neural Networks</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1805.07925">https://arxiv.org/abs/1805.07925</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/hyeonseob-nam/Batch-Instance-Normalization">https://github.com/hyeonseob-nam/Batch-Instance-Normalization</a></p>
-<hr>
-<h3 id="7-bml-a-high-performance-low-cost-gradient-synchronization-algorithm-for-dml-training">7. BML: A High-performance, Low-cost Gradient Synchronization Algorithm for DML Training</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/dml_training">https://is.gd/dml_training</a>
-<!-- https://is.gd/stats.php?url=dml_training --></p>
-<p><em>Need to test</em></p>
-<hr>
-<h3 id="8-channelnets-compact-and-efficient-convolutional-neural-networks-via-channel-wise-convolutions">8. ChannelNets: Compact and Efficient Convolutional Neural Networks via Channel-Wise Convolutions</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1809.01330">https://arxiv.org/abs/1809.01330</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/HongyangGao/ChannelNets">https://github.com/HongyangGao/ChannelNets</a></p>
-<hr>
-<h3 id="9-heterogeneous-bitwidth-binarization-in-convolutional-neural-networks">9. Heterogeneous Bitwidth Binarization in Convolutional Neural Networks</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1805.10368">https://arxiv.org/abs/1805.10368</a></p>
-<p><strong>Github Repo:</strong> <em>Coming soon in PyTorch</em></p>
-<hr>
-<h3 id="10-bayesian-distributed-stochastic-gradient-descent">10. Bayesian Distributed Stochastic Gradient Descent</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/bayes_dist_sgd">https://is.gd/bayes_dist_sgd</a>
-<!-- https://is.gd/stats.php?url=bayes_dist_sgd --></p>
-<hr>
-<h3 id="11-frequency-domain-dynamic-pruning-for-convolutional-neural-networks">11. Frequency-Domain Dynamic Pruning for Convolutional Neural Networks</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/freq_prune_CNN">https://is.gd/freq_prune_CNN</a>
-<!-- https://is.gd/stats.php?url=freq_prune_CNN --></p>
-<hr>
-<h3 id="12-kalman-normalization-normalizing-internal-representations-across-network-layers">12. Kalman Normalization: Normalizing Internal Representations Across Network Layers</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/kalman_norm">https://is.gd/kalman_norm</a>
-<!-- https://is.gd/stats.php?url=kalman_norm --></p>
-<p><strong>Related study:</strong> <a href="https://arxiv.org/abs/1802.03133">https://arxiv.org/abs/1802.03133</a></p>
-<hr>
-<h3 id="13-moonshine-distilling-with-cheap-convolutions">13. Moonshine: Distilling with Cheap Convolutions</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1711.02613">https://arxiv.org/abs/1711.02613</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/BayesWatch/pytorch-moonshine">https://github.com/BayesWatch/pytorch-moonshine</a></p>
-<hr>
-<h3 id="14-deep-neural-networks-with-box-convolutions">14. Deep Neural Networks with Box Convolutions</h3>
-<p><strong>Link to paper:</strong> <a href="https://is.gd/box_conv">https://is.gd/box_conv</a>
-<!-- https://is.gd/stats.php?url=box_conv --></p>
-<p><strong>Paper Summary (by 1st author):</strong> <a href="https://gist.github.com/shrubb/f131e99eb3352cdebe506d2ad988c1b7">https://gist.github.com/shrubb/f131e99eb3352cdebe506d2ad988c1b7</a></p>
-<hr>
-<h3 id="16-mesh-tensorflow-deep-learning-for-supercomputers">16. Mesh-TensorFlow: Deep Learning for Supercomputers</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1811.02084">https://arxiv.org/abs/1811.02084</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/tensorflow/mesh/tree/master/mesh_tensorflow">https://github.com/tensorflow/mesh/tree/master/mesh_tensorflow</a></p>
-<hr>
-<h3 id="17-visualizing-the-loss-landscape-of-neural-nets">17. Visualizing the Loss Landscape of Neural Nets</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a></p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/tomgoldstein/loss-landscape">https://github.com/tomgoldstein/loss-landscape</a></p>
-<hr>
-<h3 id="18-learning-overparameterized-neural-networks-via-stochastic-gradient-descent-on-structured-data">18. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1808.01204">https://arxiv.org/abs/1808.01204</a></p>
-<p><strong>Slides:</strong> <a href="https://is.gd/overpara_SGD">https://is.gd/overpara_SGD</a>
-<!-- https://is.gd/stats.php?url=overpara_SGD --></p>
-<hr>
-<h3 id="19-gradient-sparsification-for-communication-efficient-distributed-optimization">19. Gradient Sparsification for Communication-Efficient Distributed Optimization</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1710.09854">https://arxiv.org/abs/1710.09854</a></p>
-<hr>
-<h3 id="20-gradiveq-vector-quantization-for-bandwidth-efficient-gradient-aggregation-in-distributed-cnn-training">20. GradiVeQ: Vector Quantization for Bandwidth-Efficient Gradient Aggregation in Distributed CNN Training</h3>
-<p><strong>Link to paper:</strong> <a href="https://arxiv.org/abs/1811.03617">https://arxiv.org/abs/1811.03617</a></p>
     </article>
 
     <div>
