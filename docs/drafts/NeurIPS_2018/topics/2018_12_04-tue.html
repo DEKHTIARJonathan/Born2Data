@@ -140,21 +140,36 @@
         <h1 id="tuesday-04-december-2018">Tuesday 04 December 2018</h1>
 <hr>
 <h3 id="1-faster-neural-networks-straight-from-jpeg-uber-ai-labs">1. Faster Neural Networks Straight from JPEG - Uber AI Labs</h3>
+<ul>
+<li>
 <p><strong>Link to paper:</strong> <a href="https://is.gd/CNN_from_JPEG">https://is.gd/CNN_from_JPEG</a>
 <!-- https://is.gd/stats.php?url=CNN_from_JPEG --></p>
-<p><strong>Useful code to reproduce:</strong> &lt;https://github.com/uber-research/jpeg2dct</p>
-<p>The core idea is pretty straightforward, instead of feeding a CNN Pixel values across
-the 3 RGB channels, the feed the network with the JPEGEncoded version of the image.</p>
-<p>This brings two interesting properties:</p>
+</li>
+<li>
+<p><strong>Useful code to reproduce:</strong> <a href="https://github.com/uber-research/jpeg2dct">https://github.com/uber-research/jpeg2dct</a></p>
+</li>
+</ul>
+<p><strong>Core idea:</strong> instead of feeding pixel values in the CNN, they fed the DCT coefficients from the JPEG-encoded version of the image.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>
 <p><strong>Computation Related:</strong> Save some data loading computation as we don't have to decode the image.</p>
+</li>
+<li>
 <p><strong>Memory related:</strong> The JPEG Encoded image is already a compressed representation of the image.
 Thus saving memory and which could also facilitate learning.</p>
-<p>This paper claims a <strong>77% speed increase on ResNet 50</strong> while keeping the same accuracy. It shall be crosschecked
-with efficient data loading pipeline such as DALI, probably we can expect a bit less, still it looks promising).</p>
-<p>One of the few concerns that might be raised with this paper is the following:</p>
+</li>
+</ul>
+<p><strong>Claims a 77% speed increase on ResNet 50 while keeping the same accuracy.</strong>
+It shall be crosschecked with efficient data loading pipeline such as DALI, probably we can expect a bit less, still it looks promising).</p>
+<p><strong>Limitation:</strong></p>
 <ul>
-<li><strong>Data Augmentation:</strong> as it is impossible (to the best of my knowledge) to perform any data augmentation (crop, brightness, contrast, etc...).
-This enforce a quite inefficient pipeline at training: JPEG_Decode =&gt; Augment (possibly N times) =&gt; JPEG_Encode =&gt; Access to DCT coefficients.</li>
+<li><strong>Data Augmentation:</strong> as it is impossible (to the best of my knowledge) to perform any data augmentation (crop, brightness, contrast, etc...). This enforce a quite inefficient pipeline at training:<ol>
+<li>JPEG_Decode</li>
+<li>Augment (possibly N times)</li>
+<li>JPEG_Encode =&gt; Access to DCT coefficients.</li>
+</ol>
+</li>
 </ul>
 <hr>
 <h3 id="2-an-intriguing-failing-of-convolutional-neural-networks-and-the-coordconv-solution-uber-ai-labs">2. An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution - Uber AI Labs</h3>
