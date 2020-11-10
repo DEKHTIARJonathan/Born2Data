@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>How to deal with Word Files in Git Systems</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Code highlight color scheme -->
+        <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+    <link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+        <!-- FAVICON specified by the user -->
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+        <meta name="description" content="Setting up a diff tool to manipulate Word Files : Rakali.">
+
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Git">
+        <meta name="tags" content="Word">
+        <meta name="tags" content="Versioning">
+        <meta name="tags" content="Agile">
+        <meta name="tags" content="DOC">
+        <meta name="tags" content="DOCX">
+        <meta name="tags" content="Office">
+
+                    <meta property="og:locale" content="usa">
+                <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Born2Data">
+
+    <meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+    <meta property="og:url" content="/2016/word-files-with-git.html">
+    <meta property="og:title" content="How to deal with Word Files in Git Systems">
+    <meta property="article:published_time" content="2016-02-26 10:20:00+01:00">
+            <meta property="og:description" content="Setting up a diff tool to manipulate Word Files : Rakali.">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="How to deal with Word Files in Git Systems" />
+            <meta name="twitter:description" content="Setting up a diff tool to manipulate Word Files : Rakali." />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>How to deal with Word Files in Git Systems</h1>
+                        <h3 class="subheading">Setting up a diff tool to manipulate Word Files : Rakali.</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Friday, February 26, 2016
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Sharing -->
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&url=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2016/word-files-with-git.html&title=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&summary=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems%0ASetting%20up%20a%20diff%20tool%20to%20manipulate%20Word%20Files%20%3A%20Rakali.%0A%0AI%27d%20like%20first%20of%20all%20to%20acknowledge%20Martin%20Fenner%20for%20the%20method%20and%20the%20development.%0AYou%20can%20find%20extended%20blog%20post%20about%20this%20here%20%3A%20link%0ASo%20let%E2%80%99s%20get%20to%20businesss%20%E2%80%A6&source=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&u=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <!-- Post Content -->
+    <article>
+        <h1>How to deal with Word Files in Git Systems</h1>
+<h3>Setting up a diff tool to manipulate Word Files : Rakali.</h3>
+<hr>
+<p>I'd like first of all to acknowledge <a href="http://blog.martinfenner.org/about.html" target="_blank">Martin Fenner</a> for the method and the development.<br>
+You can find extended blog post about this here : <a href="http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/" target="_blank">link</a></p>
+<p>So let’s get to businesss !</p>
+<h3>Prerequisites</h3>
+<p>In order to be able to parse <em>doc</em> and <em>docx</em> file in Git you will need to install the following tools.</p>
+<h4>1. If it’s not done yet, you should install <strong>git</strong>:</h4>
+<p>Click on this link to download and install: <a href="https://git-scm.com/downloads" target="_blank"><strong>git-scm.com</strong></a></p>
+<h4>2. For the next phase of the tutorial, you will need to install <strong>ruby</strong>:</h4>
+<h5>2.1. Debian or Ubuntu:</h5>
+<div class="highlight"><pre><code><span class="code-line">sudo apt-get install ruby-full</span>
+</code></pre></div>
+
+
+<h5>2.2. CentOS, Fedora, or RHEL:</h5>
+<div class="highlight"><pre><code><span class="code-line">sudo yum install ruby</span>
+</code></pre></div>
+
+
+<h5>2.3. Mac OS X :</h5>
+<h6>2.3.1 Install Homebrew:</h6>
+<p>Click on this link to download and install: <a href="http://brew.sh/" target="_blank"><strong>brew.sh</strong></a>    </p>
+<h6>2.3.2 Then Install Ruby:</h6>
+<div class="highlight"><pre><code><span class="code-line">brew install ruby</span>
+</code></pre></div>
+
+
+<h4>3.  Then install Rakali:</h4>
+<p>You may find all the information you need on the official <a href="https://github.com/rakali/rakali.rb" target="_blank">Github Repository</a></p>
+<div class="highlight"><pre><code><span class="code-line">gem install rakali</span>
+</code></pre></div>
+
+
+<h4>4.  Create two files in your git project’s root folder :</h4>
+<h5>4.1. Create, at the git project root folder, the file: <strong>".gitattributes"</strong></h5>
+<div class="highlight"><pre><code><span class="code-line"><span class="c"># .gitattributes file in root folder of your git project</span></span>
+<span class="code-line">*.docx <span class="nv">diff</span><span class="o">=</span>pandoc</span>
+<span class="code-line">*.doc <span class="nv">diff</span><span class="o">=</span>pandoc</span>
+</code></pre></div>
+
+
+<h5>4.2. Create, at the git project root folder, the file:  <strong>".gitconfig"</strong></h5>
+<div class="highlight"><pre><code><span class="code-line"><span class="c"># .gitconfig file in your home folder</span></span>
+<span class="code-line"><span class="o">[</span>diff <span class="s2">&quot;pandoc&quot;</span><span class="o">]</span> #we <span class="nb">declare</span> the diff tool</span>
+<span class="code-line"><span class="nv">textconv</span><span class="o">=</span>pandoc --to<span class="o">=</span>markdown</span>
+<span class="code-line"><span class="nv">prompt</span> <span class="o">=</span> false</span>
+<span class="code-line"><span class="o">[</span>alias<span class="o">]</span></span>
+<span class="code-line"><span class="nv">wdiff</span> <span class="o">=</span> diff --word-diff<span class="o">=</span>color --unified<span class="o">=</span><span class="m">1</span></span>
+</code></pre></div>
+
+
+<h4>5.  Commit the two files and you’re done. Enjoy !</h4>
+    </article>
+
+    <div>
+        <hr>
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="http://www.born2data.com/category/agile.html">Agile</a>
+            <br><br>
+            <b>Tags: </b>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/git.html">Git&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/word.html">Word&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/versioning.html">Versioning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/agile.html">Agile&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/doc.html">DOC&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/docx.html">DOCX&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/office.html">Office&nbsp;</a>
+                </span>
+    </div>
+
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&url=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2016/word-files-with-git.html&title=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&summary=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems%0ASetting%20up%20a%20diff%20tool%20to%20manipulate%20Word%20Files%20%3A%20Rakali.%0A%0AI%27d%20like%20first%20of%20all%20to%20acknowledge%20Martin%20Fenner%20for%20the%20method%20and%20the%20development.%0AYou%20can%20find%20extended%20blog%20post%20about%20this%20here%20%3A%20link%0ASo%20let%E2%80%99s%20get%20to%20businesss%20%E2%80%A6&source=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=How%20to%20deal%20with%20Word%20Files%20in%20Git%20Systems&u=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2016/word-files-with-git.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <div class="comments">
+        <h2>Comments !</h2>
+        <div id="disqus_thread"></div>
+    </div>
+    <script>
+        var disqus_config = function () {
+            this.page.url        = 'http://www.born2data.com/2016/word-files-with-git.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '/2016/word-files-with-git.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://born2data.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@jonathandekhtiar.eu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+    <script id="dsq-count-scr" src="//born2data.disqus.com/count.js" async></script>
+</body>
+
+</html>

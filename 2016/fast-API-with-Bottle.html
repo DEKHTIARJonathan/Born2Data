@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Rapid API Prototyping with Bottle.py</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Code highlight color scheme -->
+        <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+    <link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+        <!-- FAVICON specified by the user -->
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+        <meta name="description" content="Python Tutorial: How to launch rapidly a REST API with Bottle.py">
+
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Python">
+        <meta name="tags" content="API">
+        <meta name="tags" content="REST">
+        <meta name="tags" content="Bottle.py">
+
+                    <meta property="og:locale" content="usa">
+                <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Born2Data">
+
+    <meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+    <meta property="og:url" content="/2016/fast-API-with-Bottle.html">
+    <meta property="og:title" content="Rapid API Prototyping with Bottle.py">
+    <meta property="article:published_time" content="2016-03-14 17:12:00+01:00">
+            <meta property="og:description" content="Python Tutorial: How to launch rapidly a REST API with Bottle.py">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="Rapid API Prototyping with Bottle.py" />
+            <meta name="twitter:description" content="Python Tutorial: How to launch rapidly a REST API with Bottle.py" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>Rapid API Prototyping with Bottle.py</h1>
+                        <h3 class="subheading">Python Tutorial: How to launch rapidly a REST API with Bottle.py</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Monday, March 14, 2016
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Sharing -->
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=Rapid%20API%20Prototyping%20with%20Bottle.py&url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html&title=Rapid%20API%20Prototyping%20with%20Bottle.py&summary=Rapid%20API%20Prototyping%20with%20Bottle.py%0APython%20Tutorial%3A%20How%20to%20launch%20rapidly%20a%20REST%20API%20with%20Bottle.py%0A%0APrerequisites%0AAll%20the%20sourcefiles%20used%20for%20this%20tutorial%20are%20available%20here%3A%20download%20link%0AFeel%20free%20to%20share%20and%20spread%20the%20word%20if%20you%20liked%20the%20article%0A%0AA.%20Python%20and%20PIP%20installation%3A%0AFirst%20%E2%80%A6&source=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=Rapid%20API%20Prototyping%20with%20Bottle.py&u=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <!-- Post Content -->
+    <article>
+        <h1>Rapid API Prototyping with Bottle.py</h1>
+<h3>Python Tutorial: How to launch rapidly a REST API with Bottle.py</h3>
+<hr>
+<h3>Prerequisites</h3>
+<p><em>All the sourcefiles used for this tutorial are available here: <a href="./../../files/api_files/api_files.zip" target="_blank">download link</a></em><br>
+<strong>Feel free to share and spread the word if you liked the article</strong></p>
+<hr>
+<h5>A. Python and PIP installation:</h5>
+<p>First of all, if you don't have <a href="http://www.python.org/" target="_blank">Python</a> or
+<a href="https://pip.pypa.io/en/latest/installing/" target="_blank">PIP</a> installed. You will need to install beforehand.  </p>
+<h5>B. Bottle: Python Web Framework</h5>
+<p>Then let's install <a href="http://bottlepy.org/" target="_blank">Bottlepy.org</a> which is the library we will use to design our REST API:</p>
+<div class="highlight"><pre><code><span class="code-line">pip install --upgrade pip</span>
+<span class="code-line">pip install bottle</span>
+</code></pre></div>
+
+
+<p>You will also need to install Paste which is a multi-threaded webserver:</p>
+<div class="highlight"><pre><code><span class="code-line">pip install paste</span>
+</code></pre></div>
+
+
+<h5>C. API Testing Tool</h5>
+<p>In order to test the API, we will need a tool able to launch GET/POST/PUT requests.<br>
+If you don't have any tool able to perform such operations, you can install "PostMan" which runs on Google Chrome: <a href="https://www.getpostman.com/" target="_blank">https://www.getpostman.com/</a><span id="apiLaunch">&nbsp;</span></p>
+<h5>D. API launching</h5>
+<p>To launch the API, just execute this simple command in the project directory:   </p>
+<div class="highlight"><pre><code><span class="code-line">python server.py</span>
+</code></pre></div>
+
+
+<h3>Let's build our first API !</h3>
+<h5>1. Configure your API settings</h5>
+<p>As I am use to running many API at the same time, I have the habit to create a <strong>config file</strong> that I write in the <em>XML</em> format. It's easy to read, easy to format, easy to parse in most languages.<br>
+I think it is a good practice, so here is how it works.</p>
+<p><strong>What are the settings we need for our API ?</strong>  </p>
+<ul>
+<li><strong>API Port:</strong> On which port runs the API.  </li>
+<li><strong>Local API:</strong> A boolean to set the API local to the computer or public.  </li>
+<li><strong>IP address:</strong> Used especially if you run APIs on different servers, for now just let the value <em>"127.0.0.1"</em>  </li>
+<li><strong>API Name:</strong> Used to identify which settings the API needs to retrieve.  </li>
+</ul>
+<p><br/>
+<strong>File: <em>conf.xml</em> </strong> <strong>&nbsp;</strong></p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c">&lt;!-- ################################# Config File ################################ --&gt;</span></span>
+<span class="code-line"><span class="nt">&lt;config&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="nt">&lt;APIserver</span> <span class="na">serverName=</span><span class="s">&quot;serverAPI&quot;</span> <span class="na">local=</span><span class="s">&quot;false&quot;</span>  <span class="na">ip=</span><span class="s">&quot;127.0.0.1&quot;</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span><span class="nt">/&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nt">&lt;/config&gt;</span></span>
+</code></pre></div>
+
+
+<p><br/>
+Now that we have our configuration file written, <strong>how to read it with Python ?</strong><br>
+I have written a small function to perform this task. It returns a dictionary with the name of the servers as <strong>key</strong></p>
+<p><br/>
+<strong>File: <em>loadConf.py</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1">################################# Import Libraries ################################</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os.path</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">XML</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">loadAPIConf</span><span class="p">(</span><span class="n">confPath</span> <span class="o">=</span> <span class="s1">&#39;conf.xml&#39;</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">configurations</span> <span class="o">=</span> <span class="n">XML</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">confPath</span><span class="p">)</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">servers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">for</span> <span class="n">serv</span> <span class="ow">in</span> <span class="n">configurations</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;APIserver&#39;</span><span class="p">):</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="n">serverName</span> <span class="o">=</span> <span class="n">serv</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;serverName&#39;</span><span class="p">]</span></span>
+<span class="code-line">        <span class="n">serverPort</span> <span class="o">=</span> <span class="n">serv</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">]</span></span>
+<span class="code-line">        <span class="n">serverIP</span> <span class="o">=</span> <span class="n">serv</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;ip&#39;</span><span class="p">]</span></span>
+<span class="code-line">        <span class="n">serverLocal</span> <span class="o">=</span> <span class="n">serv</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;local&#39;</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="n">servers</span><span class="p">[</span><span class="n">serverName</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ip&#39;</span><span class="p">:</span><span class="n">serverIP</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">serverPort</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">:</span><span class="n">str2bool</span><span class="p">(</span><span class="n">serverLocal</span><span class="p">)}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">servers</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">str2bool</span><span class="p">(</span><span class="n">v</span><span class="p">):</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">v</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span></span>
+</code></pre></div>
+
+
+<h5>2. Create the API launcher</h5>
+<p>Before taking care of the API itself, let's build up the API launcher. Of course, it won't work until the file <strong>api.py</strong> isn't fully working.  </p>
+<p>The goal of this file is to load the configurations from <strong>conf.xml</strong> using the file just created: <strong>loadConf.py</strong>.<br>
+Once the settings are loaded, we instanciate an API declared in the file <strong>api.py</strong> (not created yet), and launch the API with the right settings.</p>
+<p><br/>
+<strong>File: <em>server.py</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1">################################# Import Libraries ##########################################</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="nn">sys</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">loadConf</span> <span class="kn">import</span> <span class="n">loadAPIConf</span> <span class="c1">#We load the function created in the file : loadConf.py</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">api</span> <span class="c1">#Don&#39;t worry about this line yet</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#############################################################################################</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">configAPI</span> <span class="o">=</span> <span class="n">loadAPIConf</span><span class="p">()</span> <span class="c1">#We launch the function created in the file : loadConf.py</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#For usability purpose, we create an easier-to-use variable containing the API settings.</span></span>
+<span class="code-line"><span class="n">serverAPI</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">configAPI</span><span class="p">[</span><span class="s1">&#39;serverAPI&#39;</span><span class="p">][</span><span class="s1">&#39;port&#39;</span><span class="p">],</span> <span class="s1">&#39;local&#39;</span><span class="p">:</span><span class="n">configAPI</span><span class="p">[</span><span class="s1">&#39;serverAPI&#39;</span><span class="p">][</span><span class="s1">&#39;local&#39;</span><span class="p">]}</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#We instanciate the api object declared in the file api.py</span></span>
+<span class="code-line"><span class="n">api</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">serverAPI</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">],</span> <span class="n">serverAPI</span><span class="p">[</span><span class="s1">&#39;local&#39;</span><span class="p">])</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#we launch the api, and that&#39;s it !</span></span>
+<span class="code-line"><span class="n">api</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></span>
+</code></pre></div>
+
+
+<h5>3. Let's design the API !</h5>
+<p>So let's start with a minimalistic file, the strict minimum to start with !  </p>
+<p>We will create the API class, and take as input the API's settings. We will use them to launch an API with the desired settings.</p>
+<p><br/>
+<strong>File: <em>api.py</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1">################################# Import Libraries ################################</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os.path</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">static_file</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">Bottle</span><span class="p">,</span> <span class="n">template</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span><span class="p">,</span> <span class="n">loads</span><span class="p">,</span> <span class="n">load</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#################################### WebService Route / #####################################</span></span>
+<span class="code-line"><span class="k">class</span> <span class="nc">API</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">local</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">Bottle</span><span class="p">()</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_local</span> <span class="o">=</span> <span class="n">local</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">port</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="k">if</span> <span class="n">local</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span></span>
+<span class="code-line">        <span class="k">else</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span></span>
+</code></pre></div>
+
+
+<p><strong>Now, you can launch the API ! It works ! Click <a href="#apiLaunch">Here</a> if you don't remember how to launch the API.<br>
+Try going to <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a>, only if you develop locally and didn't changed the API Port</strong>  </p>
+<p>=&gt; If you see a <strong>404 Error</strong> ! Bingo, it's working bro !</p>
+<h5>4. Why do I see a 404 Error ? Help ! I need somebody ...</h5>
+<p>We create an API that just do nothing. No action is supposed to be perform, so whenever you ask anything, the API answers you back a <strong>404 Error</strong>.  </p>
+<h5>5. Serving a landing page with my API</h5>
+<p>Even if it's pretty weird to want a <strong>useful API</strong> and not just something running for the fun, I'll try to help you out with this goal.</p>
+<p>We will need to register some actions that the API will perform when it receives a request.</p>
+<p>First of, let's create a <strong>folder named "html"</strong> at the project root folder.<br>
+Once it is done, create the file <strong>index.html</strong> inside the folder <em>html</em>. It will be used as our API home page, it can host the documentation for example.</p>
+<p><br/>
+<strong>File: <em>index.html</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;author&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">style</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;custom-css&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">#</span><span class="nn">wrap</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">height</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span></span>
+<span class="code-line">                <span class="c">/* Negative indent footer by its height */</span></span>
+<span class="code-line">                <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span> <span class="mi">-60</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="c">/* Pad bottom by footer height */</span></span>
+<span class="code-line">                <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">#</span><span class="nn">footer</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">padding-top</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">height</span><span class="p">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">background-color</span><span class="p">:</span> <span class="mh">#DBDBDB</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">#</span><span class="nn">jumbo</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="k">background-color</span><span class="p">:</span> <span class="mh">#DBDBDB</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">color</span><span class="p">:</span> <span class="mh">#3F3F3F</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">min-height</span><span class="p">:</span> <span class="mi">290</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">padding-top</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line">            <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">p</span> <span class="p">{</span></span>
+<span class="code-line">              <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">h1</span> <span class="p">{</span></span>
+<span class="code-line">              <span class="k">font-size</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">650px</span><span class="o">)</span><span class="p">{</span></span>
+<span class="code-line">                <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">h1</span> <span class="p">{</span></span>
+<span class="code-line">                  <span class="k">font-size</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="p">}</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">740px</span><span class="o">)</span><span class="p">{</span></span>
+<span class="code-line">                <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">h1</span> <span class="p">{</span></span>
+<span class="code-line">                  <span class="k">font-size</span><span class="p">:</span> <span class="mi">35</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="p">}</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">1024px</span><span class="o">)</span><span class="p">{</span></span>
+<span class="code-line">                <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">h1</span> <span class="p">{</span></span>
+<span class="code-line">                  <span class="k">font-size</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="p">}</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">1220px</span><span class="o">)</span><span class="p">{</span></span>
+<span class="code-line">                <span class="p">#</span><span class="nn">jumbo</span> <span class="nt">h1</span> <span class="p">{</span></span>
+<span class="code-line">                  <span class="k">font-size</span><span class="p">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span></span>
+<span class="code-line">                <span class="p">}</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">.</span><span class="nc">panel-heading</span> <span class="nt">a</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="k">font-family</span><span class="p">:</span><span class="s1">&#39;Glyphicons Halflings&#39;</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">content</span><span class="p">:</span><span class="s2">&quot;\e114&quot;</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">float</span><span class="p">:</span> <span class="kc">right</span><span class="p">;</span></span>
+<span class="code-line">                <span class="k">color</span><span class="p">:</span> <span class="kc">grey</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line">            <span class="p">.</span><span class="nc">panel-heading</span> <span class="nt">a</span><span class="p">.</span><span class="nc">collapsed</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="k">content</span><span class="p">:</span><span class="s2">&quot;\e080&quot;</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="p">.</span><span class="nc">container</span> <span class="nt">a</span><span class="p">{</span></span>
+<span class="code-line">                <span class="k">text-decoration</span><span class="p">:</span> <span class="n">None</span><span class="p">;</span></span>
+<span class="code-line">            <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></span>
+<span class="code-line">    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>  </span>
+<span class="code-line">    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span></span>
+<span class="code-line">         <span class="c">&lt;!-- Wrap all page content here --&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;wrap&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;jumbo&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jumbotron&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></span>
+<span class="code-line">                        API Welcome PAGE</span>
+<span class="code-line">                    <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span></span>
+<span class="code-line">                    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span></span>
+<span class="code-line">                    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span></span>
+<span class="code-line">                        Here you will find the API - User Guide.</span>
+<span class="code-line">                    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></span>
+<span class="code-line">                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="c">&lt;!--main--&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel-group&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;accordion&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel panel-default&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;panel1&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel-heading&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                            <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel-title&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#collapseOne&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Testing the API.<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></span>
+<span class="code-line">                            <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span></span>
+<span class="code-line">                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;collapseOne&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel-collapse collapse in&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;panel-body&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Request : http://{ip-address}:{port}/action : Get or Post Requests Accepted<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">br</span><span class="p">&gt;</span></span>
+<span class="code-line">                                <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span></span>
+<span class="code-line">                                The <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>API output is a JSON-file<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> formated as following:<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">                                <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">                                    <span class="p">&lt;</span><span class="nt">pre</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;json&quot;</span><span class="p">&gt;</span>{&quot;status&quot;: &quot;Success&quot;}<span class="p">&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span></span>
+<span class="code-line">                                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">                            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span><span class="c">&lt;!--/container--&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span><span class="c">&lt;!-- Wrap Div end --&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span></span>
+<span class="code-line">                <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;muted credit&quot;</span><span class="p">&gt;</span>Developped by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://www.jonathandekhtiar.eu&quot;</span><span class="p">&gt;</span>Jonathan DEKHTIAR<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></span>
+<span class="code-line">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<span class="code-line">        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">            <span class="kd">var</span> <span class="nx">jsonStr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#json&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span></span>
+<span class="code-line">            <span class="kd">var</span> <span class="nx">jsonObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">);</span></span>
+<span class="code-line">            <span class="kd">var</span> <span class="nx">jsonPretty</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonObj</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;\t&#39;</span><span class="p">);</span></span>
+<span class="code-line">            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#json&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">jsonPretty</span><span class="p">);</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<span class="code-line">    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></span>
+<span class="code-line"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span>
+</code></pre></div>
+
+
+<p>Once you have created the file, let's redesign the API to serve this static html.</p>
+<p><br/>
+<strong>File: <em>api.py</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1">################################# Import Libraries ###################################################</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os.path</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">static_file</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">Bottle</span><span class="p">,</span> <span class="n">template</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span><span class="p">,</span> <span class="n">loads</span><span class="p">,</span> <span class="n">load</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#################################### WebService Route / ##############################################</span></span>
+<span class="code-line"><span class="k">class</span> <span class="nc">API</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">local</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">Bottle</span><span class="p">()</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_route</span><span class="p">()</span> <span class="c1"># During initialisation we launch the _route() method to register the routes enabled</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_local</span> <span class="o">=</span> <span class="n">local</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">port</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="k">if</span> <span class="n">local</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span></span>
+<span class="code-line">        <span class="k">else</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_route</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">hook</span><span class="p">(</span><span class="s1">&#39;before_request&#39;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_strip_path</span><span class="p">)</span> <span class="c1"># Needed to prevent errors.</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_homepage</span><span class="p">)</span> <span class="c1"># We tell to the API to listen on &quot;/&quot; and execute the action &quot;_homepage()&quot; when &quot;/&quot; is called</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_strip_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_homepage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="k">return</span> <span class="n">static_file</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">html&#39;</span><span class="p">)</span> <span class="c1"># We return the &quot;index.html&quot; file as a static file.</span></span>
+</code></pre></div>
+
+
+<p>Now, you can launch the API and you will see our "index.html ! Click <a href="#apiLaunch">Here</a> if you don't remember how to launch the API.<br>
+Try going to <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a>, only if you develop locally and didn't changed the API Port.<br>
+<br/></p>
+<p><img alt="Image of homepage" src="./../../files/api_files/homepage.png"></p>
+<h5>6. Let's perform some real business with my API !</h5>
+<p>Let's change once again the file <strong>api.py</strong></p>
+<p><br/>
+<strong>File: <em>api.py</em> </strong> <strong>&nbsp;</strong>  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1">################################# Import Libraries ###################################################</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">os.path</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">static_file</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">Bottle</span><span class="p">,</span> <span class="n">template</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span><span class="p">,</span> <span class="n">loads</span><span class="p">,</span> <span class="n">load</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#################################### WebService Route / ##############################################</span></span>
+<span class="code-line"><span class="k">class</span> <span class="nc">API</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">local</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">Bottle</span><span class="p">()</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_route</span><span class="p">()</span> <span class="c1"># During initialisation we launch the _route() method to register the routes enabled</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_local</span> <span class="o">=</span> <span class="n">local</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">port</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="k">if</span> <span class="n">local</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span></span>
+<span class="code-line">        <span class="k">else</span><span class="p">:</span></span>
+<span class="code-line">            <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_route</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">hook</span><span class="p">(</span><span class="s1">&#39;before_request&#39;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_strip_path</span><span class="p">)</span> <span class="c1"># Needed to prevent errors.</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_homepage</span><span class="p">)</span> <span class="c1"># We tell to the API to listen on &quot;/&quot; and execute the action &quot;_homepage()&quot; when &quot;/&quot; is called</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="c1"># We tell the API to execute _doAction() when a POST Request is perform on &quot;/action&quot;</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/action&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_doAction</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="c1"># We tell the API to execute _doAction() when a GET Request is perform on &quot;/action&quot;</span></span>
+<span class="code-line">        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/action&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_doAction</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_strip_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_homepage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="k">return</span> <span class="n">static_file</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">html&#39;</span><span class="p">)</span> <span class="c1"># We return the &quot;index.html&quot; file as a static file.</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">_doAction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></span>
+<span class="code-line">        <span class="n">rv</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">}</span> <span class="c1"># We create a dictionary with the key &quot;status&quot; = &quot;success&quot;</span></span>
+<span class="code-line">        <span class="n">response</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s1">&#39;application/json&#39;</span> <span class="c1"># we set the correct &quot;response.content_type&quot; to &quot;json&quot; format, because &quot;json&quot; is nice and cool !</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="k">return</span> <span class="n">dumps</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span> <span class="c1"># We dump the dictionary into json file and return it.</span></span>
+</code></pre></div>
+
+
+<p>Now, you can launch again the API! Click <a href="#apiLaunch">Here</a> if you don't remember how to launch it.<br>
+Try going to <a href="http://localhost:8080/action" target="_blank">http://localhost:8080/action</a>, only if you develop locally and didn't changed the API Port.<br>
+<br/></p>
+<p>You should now see some json:  </p>
+<div class="highlight"><pre><code><span class="code-line"><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span><span class="p">}</span></span>
+</code></pre></div>
+
+
+<h5>7. Conclusion</h5>
+<p>Now you can declare new actions, and perform complex process outside or inside the API.<br>
+Have a look to the documentation if you have any question :  <a href="http://bottlepy.org/" target="_blank">Bottlepy.org</a>  </p>
+<p><strong>Please share the article if you liked it !</strong></p>
+<p><a href="https://www.jonathandekhtiar.eu/" target="_blank">Jonathan DEKHTIAR</a> - <a href="https://twitter.com/born2data" target="_blank">@Born2Data</a></p>
+    </article>
+
+    <div>
+        <hr>
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="http://www.born2data.com/category/python.html">Python</a>
+            <br><br>
+            <b>Tags: </b>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/api.html">API&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/rest.html">REST&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/bottlepy.html">Bottle.py&nbsp;</a>
+                </span>
+    </div>
+
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=Rapid%20API%20Prototyping%20with%20Bottle.py&url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html&title=Rapid%20API%20Prototyping%20with%20Bottle.py&summary=Rapid%20API%20Prototyping%20with%20Bottle.py%0APython%20Tutorial%3A%20How%20to%20launch%20rapidly%20a%20REST%20API%20with%20Bottle.py%0A%0APrerequisites%0AAll%20the%20sourcefiles%20used%20for%20this%20tutorial%20are%20available%20here%3A%20download%20link%0AFeel%20free%20to%20share%20and%20spread%20the%20word%20if%20you%20liked%20the%20article%0A%0AA.%20Python%20and%20PIP%20installation%3A%0AFirst%20%E2%80%A6&source=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=Rapid%20API%20Prototyping%20with%20Bottle.py&u=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2016/fast-API-with-Bottle.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <div class="comments">
+        <h2>Comments !</h2>
+        <div id="disqus_thread"></div>
+    </div>
+    <script>
+        var disqus_config = function () {
+            this.page.url        = 'http://www.born2data.com/2016/fast-API-with-Bottle.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '/2016/fast-API-with-Bottle.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://born2data.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@jonathandekhtiar.eu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+    <script id="dsq-count-scr" src="//born2data.disqus.com/count.js" async></script>
+</body>
+
+</html>

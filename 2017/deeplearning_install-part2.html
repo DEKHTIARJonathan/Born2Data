@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Theano</title>
+
+
+            <link href="/feed_atom.xml" type="application/atom+xml" rel="alternate" title="Born2Data Full Atom Feed" />
+            <link href="/feed_rss.xml" type="application/rss+xml" rel="alternate" title="Born2Data Full RSS Feed" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Code highlight color scheme -->
+        <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+    <link href="/theme/css/better_codeblock.css" rel="stylesheet">
+
+
+
+        <!-- FAVICON specified by the user -->
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+        <meta name="description" content="How to install Caffe, Tensorflow and Theano">
+
+        <meta property="article:author" content="http://www.born2data.com/author/jonathan-dekhtiar.html">
+
+        <meta name="tags" content="Deep Learning">
+        <meta name="tags" content="Python">
+        <meta name="tags" content="Tutorial">
+        <meta name="tags" content="Installation">
+        <meta name="tags" content="Machine Learning">
+        <meta name="tags" content="Caffe">
+        <meta name="tags" content="TensorFlow">
+        <meta name="tags" content="Theano">
+        <meta name="tags" content="Tensor">
+        <meta name="tags" content="NumPy">
+
+                    <meta property="og:locale" content="usa">
+                <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Born2Data">
+
+    <meta property="og:type" content="article">
+            <meta property="article:author" content="Jonathan DEKHTIAR" >
+    <meta property="og:url" content="/2017/deeplearning_install-part2.html">
+    <meta property="og:title" content="Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Theano">
+    <meta property="article:published_time" content="2017-05-13 10:15:00+02:00">
+            <meta property="og:description" content="How to install Caffe, Tensorflow and Theano">
+
+            <meta property="og:image" content="/theme/images/post-bg.jpg">
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+        <meta name="twitter:site" content="@@born2data" />
+        <meta name="twitter:title" content="Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Theano" />
+            <meta name="twitter:description" content="How to install Caffe, Tensorflow and Theano" />
+            <meta name="twitter:image" content="/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Born2Data</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="https://www.feedcrunch.io/@dataradar">FeedCrunch.io</a></li>
+                        <li><a href="http://www.jonathandekhtiar.eu">RESUME</a></li>
+                        <li><a href="https://www.utc.fr/~jdekhtia/dev/">RESEARCH</a></li>
+                        <li><a href="/pages/contact.html">CONTACT</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-lg-12">
+                    <div class="post-heading">
+                            <h1>Deep Learning Installation Tutorial - Part 2</h1>
+                        <h3 class="subheading">How to install Caffe, Tensorflow and Theano</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/jonathan-dekhtiar.html">Jonathan DEKHTIAR</a>
+                             on Saturday, May 13, 2017
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+    <!-- Post Sharing -->
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html&title=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&summary=Deep%20Learning%20Installation%20Tutorial%20-%20Index%0ADear%20fellow%20deep%20learner%2C%20here%20is%20a%20tutorial%20to%20quickly%20install%20some%20of%20the%20major%20Deep%20Learning%20libraries%20and%20set%20up%20a%20complete%20development%20environment.%0A%0APart%201%20%3A%20Installation%20-%20Nvidia%20Drivers%2C%20CUDA%20and%20CuDNN%0APart%202%20%3A%20Installation%20-%20Caffe%2C%20Tensorflow%20and%20Theano%0APart%203%20%3A%20Installation%20-%20CNTK%2C%20Keras%20%E2%80%A6&source=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&u=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <!-- Post Content -->
+    <article>
+        <h1>Deep Learning Installation Tutorial - Index</h1>
+<p>Dear fellow deep learner, here is a tutorial to quickly install some of the major Deep Learning libraries and set up a complete development environment.</p>
+<ul>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="/2017/deeplearning_install-part4.html"><strong>Part 4 :</strong> Installation - Docker for Deep Learning</a></li>
+</ul>
+<hr>
+<h1>Deep Learning Installation Tutorial - Part 2 - Caffe, Tensorflow and Keras</h1>
+<p>There are a few major libraries available for Deep Learning development and research – Caffe, Keras, TensorFlow, Theano, and Torch, MxNet, etc.
+These libraries use GPU computation power to speed up deep neural networks training which can be very long on CPU (+/- 40 days for a standard convolutional neural network for the ImageNet Dataset).</p>
+<p>NVIDIA is definitely the GPU brand to go for Deep Learning applications, and for now, the only brand broadly supported by deep learning libraries.</p>
+<p>In these Tutorials, we will explore how to install and set up an environment to run Deep Learning tasks.</p>
+<p>A few useful links :</p>
+<ul>
+<li><strong>NVIDIA Drivers and Libraries:</strong><ul>
+<li><strong>CUDA :</strong> <a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a></li>
+<li><strong>CuDNN :</strong> <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a><br><br></li>
+</ul>
+</li>
+<li><strong>Deep Learning Libraries and Frameworks:</strong><ul>
+<li><strong>Caffe:</strong> <a href="http://caffe.berkeleyvision.org">http://caffe.berkeleyvision.org</a></li>
+<li><strong>Caffe2:</strong> <a href="https://caffe2.ai">https://caffe2.ai</a></li>
+<li><strong>Microsoft Cognitive Toolkit:</strong> <a href="https://www.microsoft.com/en-us/cognitive-toolkit">https://www.microsoft.com/en-us/cognitive-toolkit</a></li>
+<li><strong>DeepLearning4J:</strong>  <a href="https://deeplearning4j.org">https://deeplearning4j.org</a></li>
+<li><strong>Keras:</strong> <a href="https://keras.io/">https://keras.io/</a></li>
+<li><strong>Lasagne:</strong> <a href="http://lasagne.readthedocs.io/en/latest">http://lasagne.readthedocs.io/en/latest</a></li>
+<li><strong>MxNet:</strong> <a href="http://mxnet.io">http://mxnet.io</a></li>
+<li><strong>PyTorch:</strong> <a href="http://pytorch.org/">http://pytorch.org/</a></li>
+<li><strong>Tensorflow:</strong> <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></li>
+<li><strong>TensorLayer:</strong> <a href="http://tensorlayer.readthedocs.io/en/stable/">http://tensorlayer.readthedocs.io/en/stable/</a></li>
+<li><strong>Theano:</strong> <a href="http://deeplearning.net/software/theano">http://deeplearning.net/software/theano</a></li>
+<li><strong>Torch:</strong> <a href="http://torch.ch">http://torch.ch</a><br><br></li>
+</ul>
+</li>
+<li><strong>Development Environments:</strong><ul>
+<li><strong>Apache Singa:</strong> <a href="http://singa.apache.org">http://singa.apache.org</a></li>
+<li><strong>DeepForge:</strong> <a href="https://github.com/deepforge-dev/deepforge">https://github.com/deepforge-dev/deepforge</a></li>
+<li><strong>Digits:</strong> <a href="https://developer.nvidia.com/digits">https://developer.nvidia.com/digits</a></li>
+<li><strong>Polyaxon:</strong> <a href="https://github.com/polyaxon/polyaxon">https://github.com/polyaxon/polyaxon</a><br><br></li>
+</ul>
+</li>
+<li><strong>Virtualisation Platforms:</strong><ul>
+<li><strong>Docker:</strong> <a href="https://www.docker.com">https://www.docker.com</a></li>
+<li><strong>Nvidia-Docker:</strong> <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a><br><br></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>In this post, we will install the following libraries:</p>
+<ul>
+<li><strong>Caffe:</strong> "Caffe is a deep learning framework made with expression, speed, and modularity in mind." (<a href="http://caffe.berkeleyvision.org/">Source</a>)</li>
+<li><strong>Tensorflow:</strong> "TensorFlow is an open source software library for numerical computation using data flow graphs." (<a href="http://deeplearning.net/software/theano/">Source</a>)</li>
+<li><strong>Theano:</strong> "Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently with a tight integration with NumPy" (<a href="http://deeplearning.net/software/theano/">Source</a>)</li>
+</ul>
+<hr>
+<h3>A. Installing Caffe</h3>
+<p>Caffe is one of the main deep learning libraries for visual data analysis, and it was the first library I learned to train deep neural networks. Fast and reliable, working on android, I really appreciate using this library.</p>
+<p>In July 2017, Caffe is compiled to use Cuda Toolkit 8.0, cuDNN 5.1 and OpenCV 2 or 3.</p>
+<p>First, we need to make sure the system is up to date:</p>
+<div class="highlight"><pre><code><span class="code-line">sudo apt-get update</span>
+<span class="code-line">sudo apt-get upgrade -y</span>
+<span class="code-line">sudo apt-get dist-upgrade -y</span>
+</code></pre></div>
+
+
+<p>Then, we want to install the dependencies:</p>
+<div class="highlight"><pre><code><span class="code-line">sudo apt-get install -y gcc g++ gfortran cmake build-essential linux-image-generic</span>
+<span class="code-line">sudo apt-get install -y git wget pkg-config</span>
+<span class="code-line"></span>
+<span class="code-line">sudo apt-get install -y   </span>
+<span class="code-line">sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler libopencv-dev</span>
+<span class="code-line">sudo apt-get install -y --no-install-recommends libboost-all-dev</span>
+<span class="code-line">sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev libblas-dev libatlas-base-dev libopenblas-dev</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># (Python 2.7 development files)</span></span>
+<span class="code-line">sudo apt-get install -y python-dev</span>
+<span class="code-line">sudo apt-get install -y python-pip</span>
+<span class="code-line">sudo apt-get install -y python-nose python-numpy python-scipy</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># (or, Python 3.5 development files)</span></span>
+<span class="code-line">sudo apt-get install -y python3-dev</span>
+<span class="code-line">sudo apt-get install -y python3-pip</span>
+<span class="code-line">sudo apt-get install -y python3-nose python3-numpy python3-scipy</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><code><span class="code-line"><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install numpy scipy scikit-learn protobuf</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install numpy scipy scikit-learn protobuf</span>
+</code></pre></div>
+
+
+<p>Then we need the Python Package <strong>CUDAMat</strong>:</p>
+<div class="highlight"><pre><code><span class="code-line">git clone https://github.com/cudamat/cudamat</span>
+<span class="code-line"><span class="nb">cd</span> cudamat</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python2</span></span>
+<span class="code-line">python setup.py build</span>
+<span class="code-line">sudo python setup.py install</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">python3 setup.py build</span>
+<span class="code-line">sudo python3 setup.py install</span>
+</code></pre></div>
+
+
+<p><strong>For AWS Users:</strong> You will need to disable the camera driver or the computer will complain while working with images:</p>
+<div class="highlight"><pre><code><span class="code-line">sudo ln /dev/null /dev/raw1394</span>
+</code></pre></div>
+
+
+<p><strong>Now, we are ready to install Caffe:</strong></p>
+<div class="highlight"><pre><code><span class="code-line"><span class="nb">cd</span> ..</span>
+<span class="code-line">git clone https://github.com/BVLC/caffe.git</span>
+<span class="code-line"><span class="nb">cd</span> caffe</span>
+<span class="code-line">cp Makefile.config.example Makefile.config</span>
+<span class="code-line">make all</span>
+<span class="code-line">make <span class="nb">test</span></span>
+<span class="code-line">make runtest</span>
+<span class="code-line">make pycaffe</span>
+</code></pre></div>
+
+
+<p>Let us check that the installation is correct:</p>
+<div class="highlight"><pre><code><span class="code-line">make pycaffe</span>
+</code></pre></div>
+
+
+<p>Now, we need to compile the pycaffe library:</p>
+<div class="highlight"><pre><code><span class="code-line"><span class="nb">echo</span> -e <span class="s2">&quot;\nexport PYTHONPATH=/path/to/caffe/python:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span> &gt;&gt; .bashrc</span>
+</code></pre></div>
+
+
+<p>You can now test your caffe installation:</p>
+<div class="highlight"><pre><code><span class="code-line">python</span>
+<span class="code-line">&gt;&gt;&gt; import caffe</span>
+</code></pre></div>
+
+
+<hr>
+<h3>B. Installing TensorFlow</h3>
+<p>TensorFlow is one of the most supported library for deep learning applications and research. A low-level library which is extremely flexible when you need to access low-level features and precisely your models.</p>
+<p>It is also one of the easiest library to install:</p>
+<p><strong>CPU-Only Installation:</strong></p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install tensorflow</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install tensorflow</span>
+</code></pre></div>
+
+
+<p><strong>GPU-Enabled Installation:</strong></p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install tensorflow-gpu</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install tensorflow-gpu</span>
+</code></pre></div>
+
+
+<p>Let us try the installation:</p>
+<div class="highlight"><pre><code><span class="code-line">python</span>
+<span class="code-line">&gt;&gt;&gt; import tensorflow as tf</span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">hello</span> <span class="o">=</span> tf.constant<span class="o">(</span><span class="s1">&#39;Hello, TensorFlow!&#39;</span><span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">sess</span> <span class="o">=</span> tf.Session<span class="o">()</span></span>
+<span class="code-line">&gt;&gt;&gt; sess.run<span class="o">(</span>hello<span class="o">)</span></span>
+<span class="code-line"><span class="s1">&#39;Hello, TensorFlow!&#39;</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">a</span> <span class="o">=</span> tf.constant<span class="o">(</span><span class="m">10</span><span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">b</span> <span class="o">=</span> tf.constant<span class="o">(</span><span class="m">32</span><span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; sess.run<span class="o">(</span>a + b<span class="o">)</span></span>
+<span class="code-line"><span class="m">42</span></span>
+</code></pre></div>
+
+
+<hr>
+<h3>C. Installing Theano</h3>
+<p>Theano is great library that allows you to manage your data in a very similar way that NumPy does, which is very pratical for long time python users.</p>
+<p>This library is also quite easy to install:</p>
+<div class="highlight"><pre><code><span class="code-line"><span class="c1"># Python2</span></span>
+<span class="code-line">sudo pip install Theano</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Python3</span></span>
+<span class="code-line">sudo pip3 install Theano</span>
+</code></pre></div>
+
+
+<p>Let us try the installation:</p>
+<div class="highlight"><pre><code><span class="code-line">python</span>
+<span class="code-line">&gt;&gt;&gt; from theano import tensor as T, <span class="k">function</span>, printing</span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">x</span> <span class="o">=</span> T.dvector<span class="o">()</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">hello_world_op</span> <span class="o">=</span> printing.Print<span class="o">(</span><span class="s1">&#39;hello world&#39;</span><span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">printed_x</span> <span class="o">=</span> hello_world_op<span class="o">(</span>x<span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">f</span> <span class="o">=</span> <span class="k">function</span><span class="o">([</span>x<span class="o">]</span>, printed_x<span class="o">)</span></span>
+<span class="code-line">&gt;&gt;&gt; <span class="nv">r</span> <span class="o">=</span> f<span class="o">([</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">])</span></span>
+<span class="code-line">hello world <span class="nv">__str__</span> <span class="o">=</span> <span class="o">[</span> <span class="m">1</span>.  <span class="m">2</span>.  <span class="m">3</span>.<span class="o">]</span></span>
+</code></pre></div>
+
+
+<hr>
+<h3>D. Conclusion</h3>
+<p>We have now installed Caffe, TensorFlow and Theano. You can try to explore many of the available ressources online or keep installing the other libraries.</p>
+<ul>
+<li><a href="/2017/deeplearning_install-part1.html"><strong>Part 1 :</strong> Installation - Nvidia Drivers, CUDA and CuDNN</a></li>
+<li><a href="/2017/deeplearning_install-part2.html"><strong>Part 2 :</strong> Installation - Caffe, Tensorflow and Theano</a></li>
+<li><a href="/2017/deeplearning_install-part3.html"><strong>Part 3 :</strong> Installation - CNTK, Keras and PyTorch</a></li>
+<li><a href="/2017/deeplearning_install-part4.html"><strong>Part 4 :</strong> Installation - Docker for Deep Learning</a></li>
+</ul>
+    </article>
+
+    <div>
+        <hr>
+            <b>Category:</b>
+            <i class="fa fa-folder"></i>
+            <a class="folder" href="http://www.born2data.com/category/deep-learning.html">Deep Learning</a>
+            <br><br>
+            <b>Tags: </b>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/deep-learning.html">Deep Learning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/python.html">Python&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/tutorial.html">Tutorial&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/installation.html">Installation&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/machine-learning.html">Machine Learning&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/caffe.html">Caffe&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/tensorflow.html">TensorFlow&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/theano.html">Theano&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/tensor.html">Tensor&nbsp;</a>
+                </span>
+                <span class="tag">
+                    <i class="fa fa-tags"></i>
+                    <a href="http://www.born2data.com/tag/numpy.html">NumPy&nbsp;</a>
+                </span>
+    </div>
+
+<hr>
+<section>
+    <p id="post-share-links" style="text-align: center;">
+        <span style="margin-right: 15px; font-weight: 600; font-size: 16px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+            Share on:
+        </span>
+
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Facebook" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/facebook.svg" alt="Facebook" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?text=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Twitter" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/twitter.svg" alt="Twitter" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html&title=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&summary=Deep%20Learning%20Installation%20Tutorial%20-%20Index%0ADear%20fellow%20deep%20learner%2C%20here%20is%20a%20tutorial%20to%20quickly%20install%20some%20of%20the%20major%20Deep%20Learning%20libraries%20and%20set%20up%20a%20complete%20development%20environment.%0A%0APart%201%20%3A%20Installation%20-%20Nvidia%20Drivers%2C%20CUDA%20and%20CuDNN%0APart%202%20%3A%20Installation%20-%20Caffe%2C%20Tensorflow%20and%20Theano%0APart%203%20%3A%20Installation%20-%20CNTK%2C%20Keras%20%E2%80%A6&source=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on LinkedIn" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/linkedin.svg" alt="LinkedIn" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://news.ycombinator.com/submitlink?t=Deep%20Learning%20Installation%20Tutorial%20-%20Part%202%20-%20Caffe%2C%20Tensorflow%20and%20Theano&u=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on HackerNews" style="text-decoration: none; padding-right: 15px;">
+            <img src="/theme/images/social_networks/hackernews.svg" alt="HackerNews" style="height:50px; cursor: auto;"/>
+        </a>
+
+        <a href="https://plus.google.com/share?url=http%3A//www.born2data.com/2017/deeplearning_install-part2.html" target="_blank" title="Share on Google+" style="text-decoration: none;">
+            <img src="/theme/images/social_networks/gplus.svg" alt="Google+" style="height:50px; cursor: auto;"/>
+        </a>
+    </p>
+</section>
+    <hr>
+
+    <div class="comments">
+        <h2>Comments !</h2>
+        <div id="disqus_thread"></div>
+    </div>
+    <script>
+        var disqus_config = function () {
+            this.page.url        = 'http://www.born2data.com/2017/deeplearning_install-part2.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '/2017/deeplearning_install-part2.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://born2data.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://twitter.com/born2data">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DEKHTIARJonathan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://fr.linkedin.com/in/jonathandekhtiar">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.feedcrunch.io/@dataradar/rss/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@jonathandekhtiar.eu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+    <script id="dsq-count-scr" src="//born2data.disqus.com/count.js" async></script>
+</body>
+
+</html>
