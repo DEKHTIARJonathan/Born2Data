@@ -108,7 +108,7 @@ sudo usermod -aG docker ${USER}
 su - ${USER} # Reload the user rights
 
 #### If you need to give access to docker to a user which you are not logged in, you can use the following command:
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker <username>
 ```
 
 **Now let us perform a small test:**
