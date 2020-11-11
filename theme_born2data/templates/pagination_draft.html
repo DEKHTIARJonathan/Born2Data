@@ -1,0 +1,12 @@
+{% if DEFAULT_PAGINATION %}
+    <hr>
+    <!-- Pager -->
+    <ul class="pager">
+        {% for page in draft_pages|sort(attribute='date', reverse=True) %}
+        <li>
+             <h3><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h3>
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+{% endif %}

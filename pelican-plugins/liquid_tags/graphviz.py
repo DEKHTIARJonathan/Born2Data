@@ -45,12 +45,13 @@ Examples
 
 Output
 ------
-<div class="graphviz" style="text-align: center;"><img src="data:image/png;base64,_BASE64_IMAGE DATA_/></div>
+<span class="graphviz" style="text-align: center;"><img src="data:image/png;base64,_BASE64_IMAGE DATA_/></span>
 
 """
 
 import base64
 import re
+from errno import EINVAL, EPIPE
 from .mdx_liquid_tags import LiquidTags
 
 SYNTAX = '{% dot graphviz [program] [dot code] %}'
@@ -116,8 +117,7 @@ def graphviz_parser(preprocessor, tag, markup):
         output = run_graphviz(program, code)
 
         # Return Base64 encoded image
-        return '<div class="graphviz" style="text-align: center;"><img src="data:image/png;base64,%s"></div>' % base64.b64encode(output)
-
+        return '<span class="graphviz" style="text-align: center;"><img src="data:image/png;base64,%s"></span>' % base64.b64encode(output).decode('utf-8')
     else:
         raise ValueError('Error processing input. '
                          'Expected syntax: {0}'.format(SYNTAX))

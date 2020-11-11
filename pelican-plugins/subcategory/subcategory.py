@@ -5,13 +5,12 @@
 Adds support for subcategories on pelican articles
 """
 import os
-from collections import defaultdict
 from operator import attrgetter
 from functools import partial
 
 from pelican import signals
 from pelican.urlwrappers import URLWrapper, Category
-from pelican.utils import (slugify, python_2_unicode_compatible)
+from pelican.utils import slugify
 
 from six import text_type
 
@@ -49,8 +48,15 @@ def get_subcategories(generator, metadata):
                 'subcategory', '{savepath}.html')
     if 'SUBCATEGORY_URL' not in generator.settings:
         generator.settings['SUBCATEGORY_URL'] = 'subcategory/{fullurl}.html'
-    
-    category_list = text_type(metadata.get('category')).split('/')
+    if ('PAGINATED_TEMPLATES' in generator.settings and
+        'subcategory' not in generator.settings['PAGINATED_TEMPLATES']):
+        generator.settings['PAGINATED_TEMPLATES']['subcategory'] = None
+
+    if 'subcategory_path' in metadata:
+        category_list = text_type(metadata.get('subcategory_path')).split('/')
+    else:
+        category_list = text_type(metadata.get('category')).split('/')
+
     category = (category_list.pop(0)).strip()
     category = Category(category, generator.settings)
     metadata['category'] = category
@@ -58,8 +64,7 @@ def get_subcategories(generator, metadata):
     sub_list = []
     parent = category.name
     for subcategory in category_list:
-        subcategory.strip()
-        subcategory = parent + '/' + subcategory
+        subcategory = parent + '/' + subcategory.strip()
         sub_list.append(subcategory)
         parent = subcategory
     metadata['subcategories'] = sub_list
@@ -83,6 +88,18 @@ def create_subcategories(generator):
                 parent = new_sub
                 actual_subcategories.append(parent)
         article.subcategories = actual_subcategories
+        """Add subpath and suburl to the article metadata. This allows the
+        the last subcategory's fullurl and savepath to be used when definining
+        Article URL's. If an article has no subcategories, the Category slug
+        is used instead
+        """
+        try:
+            last_subcat = article.subcategories[-1]
+            article.metadata['subpath'] = last_subcat.savepath
+            article.metadata['suburl'] = last_subcat.fullurl
+        except IndexError: #No Subcategory
+            article.metadata['subpath'] = article.category.slug
+            article.metadata['suburl'] = article.category.slug
 
 def generate_subcategories(generator, writer):
     write = partial(writer.write_file,
@@ -93,8 +110,8 @@ def generate_subcategories(generator, writer):
         dates = [article for article in generator.dates if article in articles]
         write(subcat.save_as, subcategory_template, generator.context, 
                 subcategory=subcat, articles=articles, dates=dates, 
-                paginated={'articles': articles, 'dates': dates},
-                page_name=subcat.page_name, all_articles=generator.articles)
+                template_name='subcategory', page_name=subcat.page_name,
+                all_articles=generator.articles)
 
 def generate_subcategory_feeds(generator, writer):
     for subcat, articles in generator.subcategories:

@@ -54,7 +54,7 @@ ELISP = os.path.join(os.path.dirname(__file__), 'org_reader.el')
 LOG = logging.getLogger(__name__)
 
 
-class OrgReader(readers.BaseReader):
+class OrgEmacsReader(readers.BaseReader):
     enabled = True
 
     EMACS_ARGS = ["-Q", "--batch"]
@@ -62,12 +62,9 @@ class OrgReader(readers.BaseReader):
 
     file_extensions = ['org']
 
-    def __init__(self, settings):
-        super(OrgReader, self).__init__(settings)
+    def read(self, filename):
         assert 'ORG_READER_EMACS_LOCATION' in self.settings, \
             "No ORG_READER_EMACS_LOCATION specified in settings"
-
-    def read(self, filename):
         LOG.info("Reading Org file {0}".format(filename))
         cmd = [self.settings['ORG_READER_EMACS_LOCATION']]
         cmd.extend(self.EMACS_ARGS)
@@ -84,7 +81,7 @@ class OrgReader(readers.BaseReader):
         cmd.append('--eval')
         cmd.append(self.ELISP_EXEC.format(filename, backend))
 
-        LOG.debug("OrgReader: running command `{0}`".format(cmd))
+        LOG.debug("OrgEmacsReader: running command `{0}`".format(cmd))
 
         json_result = subprocess.check_output(cmd, universal_newlines=True)
         json_output = json.loads(json_result)
@@ -101,8 +98,8 @@ class OrgReader(readers.BaseReader):
                     'modified': json_output['modified'] or '',
                     'tags': json_output['tags'] or '',
                     'save_as': json_output['save_as'] or '',
-                    'summary': json_output['summary'] or ''}
-
+                    'summary': json_output['summary'] or '',
+                    'status': json_output['status'] or ''}
         # remove empty strings when necessary
         for key in ['save_as', 'modified', 'lang', 'summary']:
             if not metadata[key]:
@@ -118,7 +115,7 @@ class OrgReader(readers.BaseReader):
 
 
 def add_reader(readers):
-    readers.reader_classes['org'] = OrgReader
+    readers.reader_classes['org'] = OrgEmacsReader
 
 
 def register():

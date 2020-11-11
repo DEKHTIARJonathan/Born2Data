@@ -67,7 +67,7 @@ class LinkerBase(object):
 
     """
     commands = [] # link commands handled by the Linker. EXAMPLE: ['mailto']
-    builtins = ['filename', 'attach', 'category', 'tag', 'author', 'index']
+    builtins = ['attach', 'author', 'category', 'filename', 'index', 'static', 'tag']
 
 
     def __init__(self, settings):
@@ -109,7 +109,7 @@ class Linkers(object):
             link = Link(context, content_object, match)
 
             if link.cmd in LinkerBase.builtins:
-                pass # builtin commands not handled here
+                return match.group(0)  # builtin commands not handled here
             elif link.cmd in self.linkers:
                 self.linkers[link.cmd].link(link) # let Linker process the Link
             else:

@@ -1,6 +1,10 @@
 Sitemap
 -------
 
+**NOTE:** `This plugin has been moved to its own repository <https://github.com/pelican-plugins/sitemap>`_. Please file any issues/PRs there. Once all plugins have been migrated to the `new Pelican Plugins organization <https://github.com/pelican-plugins>`_, this monolithic repository will be archived.
+
+-------------------------------------------------------------------------------
+
 This plugin generates plain-text or XML sitemaps. You can use the ``SITEMAP``
 variable in your settings file to configure the behavior of the plugin.
 
@@ -44,6 +48,9 @@ use the following ``SITEMAP`` setting.
 If a key is missing or a value is incorrect, it will be replaced with the
 default value.
 
+You can also exclude an individual URL by adding metadata to it setting ``private``
+to ``True``.
+
 The sitemap is saved in ``<output_path>/sitemap.<format>``.
 
 .. note::
@@ -57,7 +64,9 @@ Here is an example configuration (it's also the default settings):
 
 .. code-block:: python
 
-    PLUGINS=['pelican.plugins.sitemap',]
+    # Where your plug-ins reside
+    PLUGIN_PATHS = ['/where/you/cloned/it/pelican-plugins/', ]
+    PLUGINS=['sitemap',]
 
     SITEMAP = {
         'format': 'xml',
