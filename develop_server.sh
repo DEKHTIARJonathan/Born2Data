@@ -9,7 +9,7 @@ BASEDIR=$(pwd)
 # echo $BASEDIR
 # exit 0;
 INPUTDIR=$BASEDIR/content
-OUTPUTDIR=$BASEDIR/../Born2Data_HTML
+OUTPUTDIR=$BASEDIR/../Born2Data_HTML/pelican_tmp
 CONFFILE=$BASEDIR/pelicanconf.py
 
 ###

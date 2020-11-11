@@ -57,7 +57,8 @@ regenerate: clean
 serve:
 	cd $(OUTPUTDIR) && python -m http.server 8080
 
-devserver: clean
+devserver:
+	rm -rf $(OUTPUT_BUILDDIR)/*
 	DEV_SERVER=1 $(BASEDIR)/develop_server.sh restart
 
 publish:
