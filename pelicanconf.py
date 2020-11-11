@@ -30,10 +30,15 @@ DRAFT_SAVE_AS = '%s/articles/{slug}.html' % DRAFT_BASE_URL
 DRAFT_LANG_URL = '%s/articles/{slug}-{lang}.html' % DRAFT_BASE_URL
 DRAFT_LANG_SAVE_AS = '%s/articles/{slug}-{lang}.html'
 
+DRAFTS_URL = "{}/".format(DRAFT_BASE_URL)
+DRAFTS_SAVE_AS = '{}/index.html'.format(DRAFT_BASE_URL)
+SHOW_DRAFTS = True
+
 THEME = "theme_born2data"
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = [
     'better_codeblock_line_numbering',
+    "drafts",
     'feed_summary',
     'render_math',  # https://github.com/barrysteyn/pelican_plugin-render_math
     'readtime',    # https://github.com/deepakrb/Pelican-Read-Time
@@ -43,13 +48,6 @@ PLUGINS = [
 # deactivate image optimization for the server
 if not os.environ.get("DEV_SERVER", 0):
     PLUGINS += ['optimize_images']
-
-else:
-    PLUGINS += ["drafts"]
-
-    DRAFTS_URL = "{}/".format(DRAFT_BASE_URL)
-    DRAFTS_SAVE_AS = '{}/index.html'.format(DRAFT_BASE_URL)
-    SHOW_DRAFTS = True
 
 MARKDOWN = {
     'extension_configs': {
